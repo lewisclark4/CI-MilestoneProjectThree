@@ -91,64 +91,50 @@ As defined the scope, we can create block content for:
 * Searching for recipes
 
 ### Skeleton
-* Base template
-
 <details>
-<summary>Base Template Wireframes</summary>
+<summary>Base template wireframes</summary>
 <p align="center">
     <img height="400" src="https://github.com/lewisclark4/CI-MilestoneProjectThree/blob/master/wireframes/base.png" alt="Base template wireframe">
 </p>
 </details>
 
-* Home template
-
 <details>
-<summary>Base Template Wireframes</summary>
+<summary>Home wireframes</summary>
 <p align="center">
     <img height="400" src="https://github.com/lewisclark4/CI-MilestoneProjectThree/blob/master/wireframes/home.png" alt="Home template wireframe">
 </p>
 </details>
 
-* Register template
-
 <details>
-<summary>Base Template Wireframes</summary>
+<summary>Register wireframes</summary>
 <p align="center">
     <img height="400" src="https://github.com/lewisclark4/CI-MilestoneProjectThree/blob/master/wireframes/register.png" alt="Register template wireframe">
 </p>
 </details>
 
-* Login template
-
 <details>
-<summary>Base Template Wireframes</summary>
+<summary>Login wireframes</summary>
 <p align="center">
     <img height="400" src="https://github.com/lewisclark4/CI-MilestoneProjectThree/blob/master/wireframes/login.png" alt="Login template wireframe">
 </p>
 </details>
 
-* View my recipes template
-
 <details>
-<summary>Base Template Wireframes</summary>
+<summary>View all recipes wireframes</summary>
 <p align="center">
     <img height="400" src="https://github.com/lewisclark4/CI-MilestoneProjectThree/blob/master/wireframes/all-recipes-my-recipes.png" alt="View all recipes template wireframe">
 </p>
 </details>
 
-* View a recipe template
-
 <details>
-<summary>Base Template Wireframes</summary>
+<summary>View a recipe wireframes</summary>
 <p align="center">
     <img height="400" src="https://github.com/lewisclark4/CI-MilestoneProjectThree/blob/master/wireframes/view-recipes.png" alt="View a recipe template wireframe">
 </p>
 </details>
 
-* Add, edit or delete recipes template
-
 <details>
-<summary>Base Template Wireframes</summary>
+<summary>Add, edit or delete recipe wireframes</summary>
 <p align="center">
     <img height="400" src="https://github.com/lewisclark4/CI-MilestoneProjectThree/blob/master/wireframes/add-edit-recipe.png" alt="Add, edit or delete template wireframe">
 </p>
