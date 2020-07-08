@@ -1,6 +1,18 @@
 # CI-MilestoneProjectThree
 ## Table of Contents
 1. [Overview](#overview)
+2. [Live Site](#live-site)
+3. [User Experience & Design](#uxd)
+
+        - [Wireframes](#skeleton)
+4. [Technologies and Tools](#technologies-and-tools)
+5. [Features](#features)
+6. [Testing](#testing)
+7. [Deployment](#deployment)
+8. [Credits](#credits)
+
+
+## Overview
 The inspiration behind this web application, **Foodology**, was to create a go-to place for *foodies* and other like-minded people to explore the vast cultural differences 
 across the culinary world, and share recipe ideas and find new favourite meals - That's the big picture.
 
@@ -14,19 +26,6 @@ view all recipes that have been created and shared by the wonderful food communi
 * Struggling for ideas for this week's shopping trip? We've got you covered.
 
 We want our brand to spread far and wide and to encourage the world to give thier taste buds the love that they deserve.
-
-2. [Live Site](#live-site)
-3. [User Experience & Design](#uxd)
-
-        - [Wireframes](#skeleton)
-4. [Technologies and Tools](#technologies-and-tools)
-5. [Features](#features)
-6. [Testing](#testing)
-7. [Deployment](#deployment)
-8. [Credits](#credits)
-
-
-## Overview
 
 ## Live site
 
@@ -92,6 +91,14 @@ As defined the scope, we can create block content for:
 * Searching for recipes
 
 ### Skeleton
+* Base template
+* Home template
+* Register template
+* Login template
+* View my recipes template
+* View all recipes template
+* Add, edit or delete recipes template
+
 ### Surface
 
 ## Technologies and Tools
