@@ -4,7 +4,7 @@
 2. [Live Site](#live-site)
 3. [User Experience & Design](#uxd)
 
-        - [Wireframes](#skeleton)
+    - [Wireframes](#skeleton)
 4. [Technologies and Tools](#technologies-and-tools)
 5. [Features](#features)
 6. [Testing](#testing)
