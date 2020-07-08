@@ -54,8 +54,43 @@ We want our brand to spread far and wide and to encourage the world to give thie
 * As a registered user, I want to be able to control whether other people can view my recipes.
 
 ### Strategy
+The key design principle of this site, is to have minimal text (excluding recipe details), and be very visual. 
+Visitors have come to search for recipe ideas, or find inspiration and don't want to be distracted by large bodies of text.
+Therefore we want to keep the application as sleek as possible and only display information that is applicable to the recipes as user is looking at.
+The application therefore needs to be very intuitive, and have simple to use navigation for the guests/users to be able to search for others' recipes or add, edit and delete their own recipes  
+
 ### Scope
+The scope is to cater for a variety of vistors wanting to find and add a wide variety of recipes.
+We therefore want to cater for this audience by allowing users to.
+* Create an account and log in.
+* Add recipes
+    - The type of meal a user is adding.
+    - The complexity of the recipe being cooked. 
+    - How long it will take to prepare and cook the meal.
+    - Add an image of the end product.
+    - Add the ingredients required to prepare the recipe.
+    - Add instructions on how to cook the recipe.
+* View your own recipes.
+* Edit or delete your own recipes.
+* View other recipes, or search on a particular criteria.
+
 ### Structure
+It was decided that the Flask framework could be adopted for this application.
+
+This enables the use of template inheritance, and routing, to create an efficient and interactive application with a consistent look and feel throughout.
+
+This allows for multiple blocks of content to be built and maintained, and ultimately utilised dependant on the users interaction with the application.
+
+As defined the scope, we can create block content for:
+
+* Application home/ landing
+* Registration 
+* Login
+* Creating new recipes
+* Updating or deleting existing recipes
+* Viewing recipes
+* Searching for recipes
+
 ### Skeleton
 ### Surface
 
