@@ -3,16 +3,40 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   overflow-x: hidden;
 }
 
 main {
-    flex: 1 0 auto;
-  }
+  flex: 1 0 auto;
+}
 
 /* Navbar */
-
 .brand-logo {
-    margin: 0px 20px;
+  margin: 0px 20px;
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.nav-item {
+  font-size: 1.25em;
+  font-weight: 500;
+}
+
+#mobile-demo .nav-item {
+  margin-top: 10px;
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+/* Footer */
+
+.social-icon {
+  font-size: 2em;
+  padding: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+  text-align: center;
+  color: #fff;
 }
