@@ -1,0 +1,20 @@
+{% extends 'base.html'%} {% block content %}
+
+
+<section class="container homecontainer">
+<img class="responsive-img" src="{{ url_for('static', filename='images/homeimage.jpg') }}" alt="title image">
+    <div class="card searchcard center-align">
+        <div class="row center">
+            <h5 class="col s12 green-text text-darken-3 ">Search for a recipe...</h5>
+        </div>
+        <div class="input-field col s4">
+            <input placeholder="Search for something new..." type="text" class="validate"/>
+        </div>
+    </div>
+</section>
+
+
+    
+
+
+{% endblock %}
