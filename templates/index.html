@@ -2,19 +2,33 @@
 
 
 <section class="container homecontainer">
-<img class="responsive-img" src="{{ url_for('static', filename='images/homeimage.jpg') }}" alt="title image">
     <div class="card searchcard center-align">
-        <div class="row center">
-            <h5 class="col s12 green-text text-darken-3 ">Search for a recipe...</h5>
+		<div class="row center searchtag">
+			<h5 class="col s12 green-text text-darken-3 ">Search for a recipe...</h5>
+		</div>
+		<div class="input-field searchbar valign-wrapper">
+			<i class="material-icons prefix green-text">search</i>
+			<input placeholder="Try something new..." type="text" class="validate green-text"/>
         </div>
-        <div class="input-field col s4">
-            <input placeholder="Search for something new..." type="text" class="validate"/>
-        </div>
+	</div>
+	<img class="responsive-img" src="{{ url_for('static', filename='images/homeimage.jpg') }}" alt="title image">
+	    <div class="row">
+    <h5 class="center signintext green-text text-darken-3">Or sign in below/ register to join our community</h5>
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s6 valign-wrapper">
+                    <i class="material-icons prefix green-text">account_circle</i>
+                    <input id="icon_prefix" type="text" class="validate">
+                    <label for="icon_prefix">Username</label>
+                </div>
+                <div class="input-field col s6 valign-wrapper">
+                    <i class="material-icons prefix green-text">lock</i>
+                    <input id="icon_lock" type="text" class="validate">
+                    <label for="icon_lock">Password</label>
+                </div>
+            </div>
+        </form>
     </div>
 </section>
-
-
-    
-
 
 {% endblock %}

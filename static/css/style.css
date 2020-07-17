@@ -32,10 +32,10 @@ main {
 /* Base Footer */
 
 .social-icon {
-  font-size: 2em;
-  padding: 15px;
-  margin-left: 10px;
-  margin-right: 10px;
+  font-size: 1.5em;
+  padding: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
   border-radius: 50%;
   text-align: center;
   color: #fff;
@@ -57,8 +57,32 @@ main {
   border-radius: 10px;
 }
 
-.searchcard {
-  width: 75%;
+.searchcard, .searchbar {
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.searchtag, .searchbar {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.signintext {
+    margin-top:2em;
+}
+
+
+/* guidance from https://stackoverflow.com/questions/37127123/change-color-of-underline-input-and-label-in-materialize-css-framework*/
+.input-field input[type]:not([readonly]),
+.input-field input[type]:focus:not([readonly]),
+.input-field textarea:not([readonly]),
+.input-field textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #4caf50;
+  box-shadow: 0 1px 0 0 #4caf50;
+}
+
+.input-field input[type]:focus:not([readonly]) + label,
+.input-field textarea:focus:not([readonly]) + label {
+  color: #4caf50;
 }
