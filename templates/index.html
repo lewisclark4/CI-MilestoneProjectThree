@@ -3,13 +3,13 @@
 
    <!--Search Tool -->
    <div class="card searchcard center-align">
-      <div class="row center searchtag">
-         <h5 class="col s12 green-text text-darken-3">Search for a recipe...</h5>
-      </div>
-      <div class="input-field searchbar valign-wrapper">
-         <i class="material-icons prefix green-text">search</i>
-         <input placeholder="Try something new..." type="text" class="validate green-text"/>
-      </div>
+        <div class="row center searchtag">
+            <h5 class="col s12 green-text text-darken-3">Search for a recipe...</h5>
+        </div>
+        <div class="input-field searchbar valign-wrapper">
+            <i class="material-icons prefix green-text">search</i>
+            <input placeholder="Try something new..." type="text" class="validate green-text"/>
+        </div>
    </div>
    <!--/Search Tool -->
 
@@ -18,25 +18,26 @@
    <!--Sign In -->
 
    <h5 class="center signintext green-text text-darken-3">Sign in below, or register to join our community
-   <a href="{{url_for('register')}}"><span class="green-text register"> here</span></a></h5>
-   <div class="container">
-      <div class="row">
-         <form class="col s12">
-            <div class="input-field col s12 l6 valign-wrapper">
-               <i class="material-icons prefix green-text">account_circle</i>
-               <input id="icon_account_circle" type="text" class="validate green-text" />
-               <label for="icon_account_circle">Username</label>
+   <a href="{{url_for('register')}}"><span class="green-text link"> here</span></a></h5>
+   
+        <div class="card registercard">
+            <div class="row center-align">
+                <form class="col s12">
+                    <div class="input-field col s12 l6 valign-wrapper">
+                        <i class="material-icons prefix green-text">account_circle</i>
+                        <input id="icon_account_circle" type="text" class="validate green-text" />
+                        <label for="icon_account_circle">Username</label>
+                    </div>
+                    <div class="input-field col s12 l6 valign-wrapper">
+                        <i class="material-icons prefix green-text">lock</i>
+                        <input id="icon_lock" type="text" class="validate green-text" />
+                        <label for="icon_lock">Password</label>
+                    </div>
+                    <button class="btn waves-effect submitbutton green darken-3" type="submit" name="action">Sign in
+                    <i class="material-icons right">send</i>
+                    </button>
+                </form>
             </div>
-            <div class="input-field col s12 l6 valign-wrapper">
-               <i class="material-icons prefix green-text">lock</i>
-               <input id="icon_lock" type="text" class="validate green-text" />
-               <label for="icon_lock">Password</label>
-            </div>
-            <button class="btn waves-effect submitbutton green darken-3" type="submit" name="action">Sign in
-            <i class="material-icons right">send</i>
-            </button>
-         </form>
-      </div>
    </div>
    <!--/Sign In -->
 

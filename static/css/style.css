@@ -1,4 +1,4 @@
-/* Base General */
+/*General */
 body {
   display: flex;
   min-height: 100vh;
@@ -9,6 +9,14 @@ body {
 
 main {
   flex: 1 0 auto;
+}
+
+form {
+    margin: 2em;
+}
+
+.card {
+    margin: 2em;
 }
 
 /* Base Navbar */
@@ -43,11 +51,6 @@ main {
 
 /* Index Content */
 
-.homecontainer {
-  position: relative;
-  width: 100%;
-}
-
 .homecontainer img {
   margin-top: 10px;
   display: block;
@@ -57,27 +60,20 @@ main {
   border-radius: 10px;
 }
 
-.searchcard {
-    margin-top: 2em;
-    margin-bottom: 2em;
-}
-
-.searchcard, .searchbar {
+.searchbar {
   width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 0 auto;
 }
 
-.searchtag, .searchbar {
-    margin-top: 0;
-    margin-bottom: 0;
+.searchtag {
+    margin: 0;
 }
 
 .signintext {
     margin-top:2em;
 }
 
-.register {
+.link {
     text-decoration: underline;
 }
 
@@ -104,10 +100,5 @@ main {
 }
 
 
-.registercard {
-    margin: 2em;
-}
+/* Register/ Login Content */
 
-.registerform {
-    margin: 2em;
-}

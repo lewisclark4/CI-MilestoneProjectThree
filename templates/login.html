@@ -1,5 +1,6 @@
 {% extends 'base.html'%} {% block content %}
-<section class="container valign-wrapper">
+<section class="container">
+    <h5 class="center signintext green-text text-darken-3">Been testing out some new ideas? Log in and share with our community!</h5>
     <div class="card registercard">
         <div class="row center-align">
             <form class="col s12 registerform">
@@ -19,5 +20,6 @@
             </form>
         </div>
     </div>
+    <p class="center green-text">Need an account? &nbsp;<a href="{{url_for('register')}}"><span class="green-text link">Register here</span></a>
 </section>
 {% endblock %}

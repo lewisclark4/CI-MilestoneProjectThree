@@ -1,5 +1,6 @@
 {% extends 'base.html'%} {% block content %}
-<section class="container valign-wrapper">
+<section class="container">
+    <h5 class="center signintext green-text text-darken-3">Register to add your own favourite recipes for your future use, and for everyone else to enjoy!</h5>
     <div class="card registercard">
         <div class="row center-align">
             <form class="col s12 registerform">
@@ -24,5 +25,6 @@
             </form>
         </div>
     </div>
+    <p class="center green-text">Already got an account? &nbsp;<a href="{{url_for('login')}}"><span class="green-text link">Sign in here</span></a>
 </section>
 {% endblock %}
