@@ -81,7 +81,11 @@ main {
     text-decoration: underline;
 }
 
-.signinbutton:hover{
+.submitbutton {
+    margin: 0.5em;
+}
+
+.submitbutton:hover{
     color: #000; 
 }
 
@@ -97,4 +101,13 @@ main {
 .input-field input[type]:focus:not([readonly]) + label,
 .input-field textarea:focus:not([readonly]) + label {
   color: #4caf50;
+}
+
+
+.registercard {
+    margin: 2em;
+}
+
+.registerform {
+    margin: 2em;
 }

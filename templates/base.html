@@ -21,16 +21,16 @@
 				<a href="" class="brand-logo">Foodology <i class="material-icons">restaurant</i></a>
 				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a href="" class="nav-item">Home</a></li>
+					<li><a href="{{url_for('index')}}" class="nav-item">Home</a></li>
 					<li><a href="" class="nav-item">Recipes</a></li>
 					<li><a href="" class="nav-item">Login</a></li>
-					<li><a href="" class="nav-item">Register</a></li>
+					<li><a href="{{url_for('register')}}" class="nav-item">Register</a></li>
 				</ul>
 				<ul id="mobile-demo" class="side-nav green">
-					<li><a href="" class="nav-item white-text">Home</a></li>
+					<li><a href="{{url_for('index')}}" class="nav-item white-text">Home</a></li>
 					<li><a href="" class="nav-item white-text">Recipes</a></li>
 					<li><a href="" class="nav-item white-text">Login</a></li>
-					<li><a href="" class="nav-item white-text">Register</a></li>
+					<li><a href="{{url_for('register')}}" class="nav-item white-text">Register</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -38,10 +38,8 @@
 	<!--/navbar -->
 
     <!--block content -->
-	<main>
-		<div class="container">
+	<main class="container valign-wrapper">
 			{% block content %} {% endblock %}
-		</div>
 	</main>
     <!--/block content -->
 
