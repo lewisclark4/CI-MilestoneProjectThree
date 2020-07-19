@@ -3,21 +3,21 @@
     <h5 class="center signintext green-text text-darken-3">Register to add your own favourite recipes for your future use, and for everyone else to enjoy!</h5>
     <div class="card registercard">
         <div class="row center-align">
-            <form class="col s12 registerform">
+            <form class="col s12 registerform" method="POST" action="{{url_for('register')}}">
                 <div class="input-field col s12 valign-wrapper">
                     <i class="material-icons prefix green-text">account_circle</i>
-                    <input id="icon_account_circle" type="text" class="validate green-text" />
-                    <label for="icon_account_circle">Username</label>
+                    <input id="username" name="username" type="text" class="validate green-text" />
+                    <label for="username">Username</label>
                 </div>
                 <div class="input-field col s12 valign-wrapper">
                     <i class="material-icons prefix green-text">lock</i>
-                    <input id="icon_lock" type="text" class="validate green-text" />
-                    <label for="icon_lock">Password</label>
+                    <input id="password" name="password" type="text" class="validate green-text" />
+                    <label for="password">Password</label>
                 </div>
                 <div class="input-field col s12 valign-wrapper">
                     <i class="material-icons prefix green-text">lock</i>
-                    <input id="icon_lock_2" type="text" class="validate green-text" />
-                    <label for="icon_lock_2">Re-type password</label>
+                    <input id="passwordcheck" type="text" class="validate green-text" />
+                    <label for="passwordcheck">Re-type password</label>
                 </div>
                 <button class="btn waves-effect submitbutton green darken-3 " type="submit" name="action">Create
                     <i class="material-icons right">send</i>
