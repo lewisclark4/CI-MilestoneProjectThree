@@ -59,6 +59,14 @@ def login():
 
     return render_template("login.html")
 
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    flash('Log out successful. We hope you found something tasty.', 'success')
+    return render_template("login.html")
+    
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
