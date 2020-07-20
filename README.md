@@ -14,7 +14,7 @@
 
 ## Overview
 The inspiration behind this web application, **Foodology**, was to create a go-to place for *foodies* and other like-minded people to explore the vast cultural differences 
-across the culinary world, and share recipe ideas and find new favourite meals - That's the big picture.
+across the culinary world, and share recipe ideas and find new favourite meals with fresh, natural ingredients - That's the big picture - who needs fast food?
 
 We also want to encourage friends and family to share their passion with each other and do so through the medium of cooking, and that can also be acheived here.
 
@@ -142,6 +142,34 @@ As defined the scope, we can create block content for:
 
 
 ### Surface
+#### Font
+In-keeping with the clean, modern & simplistic design for the application, the font 'Raleway' was chosen as the primary font for this site.
+
+Raleway is described as an elegant sans-serif typeface.
+
+Raleway is a symbolic representation of the fresh and natural cooking culture that we are trying to inspire.
+
+A standard Sans-serif font is used as a back-up font, should there be any issues with loading the Raleway font.
+
+#### Colour Scheme 
+
+Also in-line with our 'fresh' & 'natural' objective, the colour green was chosen as the brand colours.
+
+The colour green is often reference within health and nature environments and therefore we wanted to enhance these feelings and emotions when the application is being used.
+
+* ![#4caf50](https://placehold.it/15/4caf50/000000?text=+) `#4caf50` - Primary colour
+* ![#2e7d32](https://placehold.it/15/2e7d32/000000?text=+) `#2e7d32` - Secondary colour
+
+These are the main branding colours used across the application.
+
+The primary green is a bright fresh green and is aesthetically pleasing.
+
+The secondary green is a deeper darker green and offers a solid contrast, while not deviating from brand colours. 
+
+* ![#fff](https://placehold.it/15/fff/000000?text=+) `#fff` - Primary font colour
+* ![#000](https://placehold.it/15/000/000000?text=+) `#000` - Secondary font colour
+
+To keep with the cleanness and simplicity of the application, but to offer a clear contrast to the green branding, white and black font is used to ensure clear and easy to read content across the site.
 
 ## Technologies and Tools
 
