@@ -21,17 +21,29 @@
    <a href="{{url_for('register')}}"><span class="green-text link"> here</span></a></h5>
    
         <div class="card registercard">
+            {% with messages = get_flashed_messages(with_categories=true) %} 
+                {% if messages %} 
+                    {% for category, message in messages %}
+                        {% if category == 'success'%}
+                        <p class="error_message center-align green-text">{{ message }}</p>
+                        {% endif %}
+                        {% if category == 'error'%}
+                        <p class="error_message center-align red-text">{{ message }}</p>
+                        {% endif %}
+                    {% endfor %} 
+                {% endif %} 
+            {% endwith %}
             <div class="row center-align">
-                <form class="col s12">
+                <form class="col s12" method="POST" action="{{url_for('login')}}">
                     <div class="input-field col s12 l6 valign-wrapper">
                         <i class="material-icons prefix green-text">account_circle</i>
-                        <input id="icon_account_circle" type="text" class="validate green-text" />
-                        <label for="icon_account_circle">Username</label>
+                        <input id="indexusername" name="username" type="text" class="validate green-text" />
+                        <label for="indexusername">Username</label>
                     </div>
                     <div class="input-field col s12 l6 valign-wrapper">
                         <i class="material-icons prefix green-text">lock</i>
-                        <input id="icon_lock" type="text" class="validate green-text" />
-                        <label for="icon_lock">Password</label>
+                        <input id="indexpassword" name="password" type="password" class="validate green-text" />
+                        <label for="indexpassword">Password</label>
                     </div>
                     <button class="btn waves-effect submitbutton green darken-3" type="submit" name="action">Sign in
                     <i class="material-icons right">send</i>

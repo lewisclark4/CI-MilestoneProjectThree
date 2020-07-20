@@ -27,7 +27,7 @@ def index():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        user_exists = users.find_one({'username': request.form['username']})
+        user_exists = users.find_one({'username': request.form['username'].lower()})
         if not user_exists:
             if request.form['password'] == request.form['passwordcheck']:
                 hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'),
@@ -43,10 +43,21 @@ def register():
     return render_template('register.html')
 
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template("login.html")
+    if request.method == 'POST':
+        user_exists = users.find_one({'username': request.form['username'].lower()})
+        if user_exists:
+            if bcrypt.hashpw(request.form['password'].encode('utf-8'),
+                user_exists['password']) == user_exists['password']:
+                session["username"] = request.form["username"].lower()
+                flash('Login successful', 'success')
+            else:
+                flash('Invalid username/password combination',  'error')
+        else:
+            flash('Invalid username/password combination',  'error')
 
+    return render_template("login.html")
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

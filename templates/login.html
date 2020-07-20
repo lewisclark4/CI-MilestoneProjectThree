@@ -2,17 +2,29 @@
 <section class="container">
     <h5 class="center signintext green-text text-darken-3">Been testing out some new ideas? Log in and share with our community!</h5>
     <div class="card registercard">
+        {% with messages = get_flashed_messages(with_categories=true) %} 
+            {% if messages %} 
+                {% for category, message in messages %}
+                    {% if category == 'success'%}
+                    <p class="error_message center-align green-text">{{ message }}</p>
+                    {% endif %}
+                    {% if category == 'error'%}
+                    <p class="error_message center-align red-text">{{ message }}</p>
+                    {% endif %}
+                {% endfor %} 
+            {% endif %} 
+        {% endwith %}
         <div class="row center-align">
-            <form class="col s12 registerform">
+            <form class="col s12 registerform" method="POST" action="{{url_for('login')}}">
                 <div class="input-field col s12 valign-wrapper">
                     <i class="material-icons prefix green-text">account_circle</i>
-                    <input id="icon_account_circle" type="text" class="validate green-text" />
-                    <label for="icon_account_circle">Username</label>
+                    <input id="loginusername" name="username" type="text" class="validate green-text" />
+                    <label for="loginusername">Username</label>
                 </div>
                 <div class="input-field col s12 valign-wrapper">
                     <i class="material-icons prefix green-text">lock</i>
-                    <input id="icon_lock" type="text" class="validate green-text" />
-                    <label for="icon_lock">Password</label>
+                    <input id="loginpassword" name="password" type="password" class="validate green-text" />
+                    <label for="loginpassword">Password</label>
                 </div>
                 <button class="btn waves-effect submitbutton green darken-3 " type="submit" name="action">Sign In
                     <i class="material-icons right">send</i>
