@@ -5,15 +5,17 @@ from flask_pymongo import PyMongo
 import bcrypt
 
 if path.exists("env.py"):
-  import env 
+    import env
 
 app = Flask(__name__)
 
-app.config["MONGO_URI"] = "mongodb+srv://lcadmin:Password1@myfirstcluster-y3iip.mongodb.net/foodology?retryWrites=true&w=majority"
-app.config["MONGO_DBNAME"] = "foodology"
-app.config["SECRET_KEY"] = "MYSUPERSECRETKEY123"
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.config["MONGO_DBNAME"] = os.getenv('MONGO_DBNAME')
+app.config["MONGO_URI"] = os.getenv('MONGO_URI')
 
 mongo = PyMongo(app)
+users = mongo.db.users
+
 
 @app.route('/')
 @app.route('/home')
@@ -21,32 +23,30 @@ def index():
     return render_template("index.html")
 
 
-## https://www.youtube.com/watch?v=vVx1737auSE
+# https://www.youtube.com/watch?v=vVx1737auSE
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        session['username'] = request.form['username']
-        users = mongo.db.users
-        user_exists = users.find_one(
-                      {'username': request.form['username']})
-
-        if user_exists is None:
-            hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'),
-                                     bcrypt.gensalt())
-            users.insert({'username': request.form['username'].lower(),
-                         'password': hashpass})
-            session['username'] = request.form['username'].lower()
-            return redirect(url_for('index'))
-
-        session.pop('username', None)
-        return render_template('register.html')
-
+        user_exists = users.find_one({'username': request.form['username']})
+        if not user_exists:
+            if request.form['password'] == request.form['passwordcheck']:
+                hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'),
+                                         bcrypt.gensalt())
+                users.insert({'username': request.form['username'].lower(),
+                              'password': hashpass})
+                session['username'] = request.form['username'].lower()
+                flash('Account Created. You are now logged in' , 'success')
+            else:
+                flash('Passwords do not match, please try again.', 'error')
+        else:
+            flash('This username already exists. Please try again with another username.', 'error')
     return render_template('register.html')
 
 
 @app.route('/login')
 def login():
     return render_template("login.html")
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

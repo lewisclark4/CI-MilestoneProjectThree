@@ -2,6 +2,18 @@
 <section class="container">
     <h5 class="center signintext green-text text-darken-3">Register to add your own favourite recipes for your future use, and for everyone else to enjoy!</h5>
     <div class="card registercard">
+        {% with messages = get_flashed_messages(with_categories=true) %} 
+            {% if messages %} 
+                {% for category, message in messages %}
+                    {% if category == 'success'%}
+                    <p class="error_message center-align green-text">{{ message }}</p>
+                    {% endif %}
+                    {% if category == 'error'%}
+                    <p class="error_message center-align red-text">{{ message }}</p>
+                    {% endif %}
+                {% endfor %} 
+            {% endif %} 
+        {% endwith %}
         <div class="row center-align">
             <form class="col s12 registerform" method="POST" action="{{url_for('register')}}">
                 <div class="input-field col s12 valign-wrapper">
@@ -16,7 +28,7 @@
                 </div>
                 <div class="input-field col s12 valign-wrapper">
                     <i class="material-icons prefix green-text">lock</i>
-                    <input id="passwordcheck" type="text" class="validate green-text" />
+                    <input id="passwordcheck" name="passwordcheck" type="text" class="validate green-text" />
                     <label for="passwordcheck">Re-type password</label>
                 </div>
                 <button class="btn waves-effect submitbutton green darken-3 " type="submit" name="action">Create
