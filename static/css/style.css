@@ -16,7 +16,6 @@ form {
 }
 
 .card {
-    margin: 2em;
     border-radius: 10px;
 }
 
@@ -103,3 +102,8 @@ form {
 
 /* Register/ Login Content */
 
+
+
+.addrecipecard{
+
+}

@@ -64,7 +64,14 @@ def logout():
     session.clear()
     flash('Log out successful. We hope you found something tasty.', 'success')
     return render_template("login.html")
-    
+
+@app.route('/recipes')
+def recipes():
+    return render_template("recipes.html")
+
+@app.route('/addrecipe')
+def add_recipe():
+    return render_template("addrecipe.html")
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
