@@ -2,6 +2,7 @@ import os
 from os import path
 from flask import Flask, render_template, redirect, request, url_for, session, redirect, flash
 from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
 import bcrypt
 
 if path.exists("env.py"):
@@ -15,6 +16,7 @@ app.config["MONGO_URI"] =  os.environ.get('MONGO_URI')
 
 mongo = PyMongo(app)
 users = mongo.db.users
+recipe = mongo.db.recipes
 
 @app.route('/')
 @app.route('/home')
@@ -77,6 +79,18 @@ def add_recipe():
                            cuisines=mongo.db.cuisines.find(),
                            difficulty=mongo.db.difficulty.find(),
                            allergens=mongo.db.allergens.find())
+
+@app.route('/insert_recipe', methods=['POST'])
+def insert_recipe():
+    data = request.form.to_dict()
+    data.update({'created_by': session['username']})
+    data.update({'soft_delete': False})
+    data.update({'ingredients': request.form.getlist('ingredients')})
+    data.update({'preparation': request.form.getlist('preparation')})
+    data.update({'allergens': request.form.getlist('allergens')})
+    recipe.insert_one(data)
+    
+    return redirect(url_for('add_recipe'))
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
