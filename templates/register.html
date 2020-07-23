@@ -2,6 +2,7 @@
 <section class="container">
     <h5 class="center signintext green-text text-darken-3">Register to add your own favourite recipes for your future use, and for everyone else to enjoy!</h5>
     <div class="card registercard">
+        <!--Flash messages to the user when they attempt to register (havent retyped password correctly, or username already exists) -->
         {% with messages = get_flashed_messages(with_categories=true) %} 
             {% if messages %} 
                 {% for category, message in messages %}

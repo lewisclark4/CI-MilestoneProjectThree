@@ -1,5 +1,11 @@
 {% extends 'base.html'%} {% block content %}
 
+<!--If statement to prevent a user navigating to & using the route without being logged -->
+{% if 'username' not in session %}
+<section class="container">
+    <h5 class="center green-text text-darken-3">You aren't currently logged in. Please log in&nbsp;<a href="{{url_for('login')}}"><span class="green-text link">here</span></a></h5>
+</section>
+{% else %}
 <section class="container">
     <h5 class="center signintext green-text text-darken-3">Have a look through our wonderful recipes and see if there's anything that tingles your tastebuds!</h5>
     <div class="card addrecipecard">
@@ -61,6 +67,7 @@
             </form>
         </div>
     </div>
+{% endif %}
 
 
 {% endblock %}

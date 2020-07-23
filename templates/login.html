@@ -2,6 +2,7 @@
 <section class="container">
     <h5 class="center signintext green-text text-darken-3">Been testing out some new ideas? Log in and share with our community!</h5>
     <div class="card registercard">
+        <!--Flash messages to the user when they attempt to log in (incorrect user/ password or successful log in) -->
         {% with messages = get_flashed_messages(with_categories=true) %} 
             {% if messages %} 
                 {% for category, message in messages %}
