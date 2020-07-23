@@ -69,9 +69,14 @@ def logout():
 def recipes():
     return render_template("recipes.html")
 
-@app.route('/addrecipe')
+@app.route('/add_recipe')
 def add_recipe():
-    return render_template("addrecipe.html")
+    return render_template("addrecipe.html",
+                           recipes=mongo.db.recipes.find(),
+                           categories=mongo.db.categories.find(),
+                           cuisines=mongo.db.cuisines.find(),
+                           difficulty=mongo.db.difficulty.find(),
+                           allergens=mongo.db.allergens.find())
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

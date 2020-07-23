@@ -1,6 +1,6 @@
 {% extends 'base.html'%} {% block content %}
 
-<!--If statement to prevent a user navigating to & using the route without being logged -->
+<!--If statement to prevent a user navigating to & using the route without being logged in-->
 {% if 'username' not in session %}
 <section class="container">
     <h5 class="center green-text text-darken-3">You aren't currently logged in. Please log in&nbsp;<a href="{{url_for('login')}}"><span class="green-text link">here</span></a></h5>
@@ -13,7 +13,7 @@
             <form class="col s12 registerform" method="POST" action="{{url_for('add_recipe')}}">
                 <div class="input-field col s12 m6 valign-wrapper">
                     <i class="material-icons prefix green-text">restaurant</i>
-                    <input id="recipename" name="recipename" type="text" class="validate green-text" />
+                    <input id="recipename" name="recipename" type="text" class="validate green-text" required/>
                     <label for="recipename">Recipe Name</label>
                 </div>
                 <div class="input-field col s12 m6 valign-wrapper">
@@ -21,34 +21,49 @@
                     <input id="image" name="image" type="text" class="validate green-text" />
                     <label for="image">Image</label>
                 </div>
-                <div class="input-field col s12 m4 valign-wrapper">
+                <div class="input-field col s12 m4 valign-wrapper dropdown">
                     <i class="material-icons prefix green-text">language</i>
-                    <input id="cuisine" name="cuisine" type="text" class="validate green-text" />
+                    <select id="cuisine" name="cuisine" class=" validate green-text" required>
+                           <option value="" disabled selected class="green-text"></option>
+                            {% for cuisine in cuisines %}
+                                <option value="" >{{ cuisine.cuisine_type }}</option>
+                            {% endfor %}
+                    </select>    
                     <label for="cuisine">Cuisine</label>
                 </div>
-                <div class="input-field col s12 m4 valign-wrapper">
+                <div class="input-field col s12 m4 valign-wrapper center">
                     <i class="material-icons prefix green-text">timer</i>
-                    <input id="preptime" name="preptime" type="text" class="validate green-text" />
-                    <label for="preptime">Prep Time</label>
+                    <input id="preptime" name="preptime" type="number" class="validate green-text" min="1" required/>
+                    <label for="preptime">Prep Time (mins)</label>
                 </div>
                 <div class="input-field col s12 m4 valign-wrapper">
                     <i class="material-icons prefix green-text">timelapse</i>
-                    <input id="cooktime" name="cooktime" type="text" class="validate green-text" />
-                    <label for="cooktime">Cook Time</label>
+                    <input id="cooktime" name="cooktime" type="number" class="validate green-text" min="1" required/>
+                    <label for="cooktime">Cook Time (mins)</label>
                 </div>
-                <div class="input-field col s12 m4 valign-wrapper">
+                <div class="input-field col s12 m4 valign-wrapper dropdown">
                     <i class="material-icons prefix green-text">sort</i>
-                    <input id="difficulty" name="difficulty" type="text" class="validate green-text" />
+                    <select id="difficulty" name="difficulty" class=" validate green-text" required>
+                           <option value="" disabled selected class="green-text"></option>
+                            {% for level in difficulty %}
+                                <option value="" >{{ level.skill_level }}</option>
+                            {% endfor %}
+                    </select> 
                     <label for="difficulty">Difficulty</label>
                 </div>
                 <div class="input-field col s12 m4 valign-wrapper">
                     <i class="material-icons prefix green-text">people</i>
-                    <input id="serves" name="serves" type="text" class="validate green-text" />
+                    <input id="serves" name="serves" type="number" class="validate green-text" min="1" required/>
                     <label for="serves">Serves</label>
                 </div>
-                <div class="input-field col s12 m4 valign-wrapper">
+                <div class="input-field col s12 m4 valign-wrapper dropdown">
                     <i class="material-icons prefix green-text">warning</i>
-                    <input id="allergens" name="allergens" type="text" class="validate green-text" />
+                    <select id="allergens" name="allergens" class=" validate green-text" multiple>
+                           <option value="" disabled selected class="green-text"></option>
+                            {% for allergen in allergens %}
+                                <option value="" >{{ allergen.allergen_type }}</option>
+                            {% endfor %}
+                    </select> 
                     <label for="allergens">Allergens</label>
                 </div>
                 <div class="input-field col s12 valign-wrapper">
