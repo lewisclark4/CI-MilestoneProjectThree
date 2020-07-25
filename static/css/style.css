@@ -144,3 +144,9 @@ label {
 .signintext {
   margin-top: 2em;
 }
+
+/* add recipe form */
+
+.additem {
+    padding: 0 0 10px 10px;
+}
