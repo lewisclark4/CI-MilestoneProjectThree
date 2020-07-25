@@ -88,6 +88,10 @@ def insert_recipe():
     data.update({'ingredients': request.form.getlist('ingredients')})
     data.update({'preparation': request.form.getlist('preparation')})
     data.update({'allergens': request.form.getlist('allergens')})
+    if request.form.getlist('public')[0] == 'checked':
+        data.update({'public': True}) 
+    else:
+        data.update({'public': False}) 
     recipe.insert_one(data)
     
     return redirect(url_for('add_recipe'))

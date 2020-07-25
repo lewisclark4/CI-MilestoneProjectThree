@@ -96,14 +96,22 @@ form {
 
 .input-field input[type]:focus:not([readonly]) + label,
 .input-field textarea:focus:not([readonly]) + label {
-  color: #4caf50;
+  
 }
 
 
 /* Register/ Login Content */
 
 
+/* add recipe */
+/*https://stackoverflow.com/questions/35261021/change-color-of-checkbox-in-materialize-framework*/
 
-.addrecipecard{
 
+.checkbox[type="checkbox"].filled-in:checked + label:after{
+     border: 2px solid #4caf50;
+     background-color: #4caf50;
+}
+
+.checkbox[type="checkbox"]{
+     border: 2px solid #4caf50;
 }

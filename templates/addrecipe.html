@@ -9,8 +9,12 @@
 <section class="container">
     <h5 class="center signintext green-text text-darken-3">Have a look through our wonderful recipes and see if there's anything that tingles your tastebuds!</h5>
     <div class="card addrecipecard">
-        <div class="row center-align">
+       <div class="row center-align">
             <form class="col s12 registerform" method="POST" action="{{url_for('insert_recipe')}}">
+                <div>
+                    <input type="checkbox" class="filled-in checkbox checkbox-green" name="public" id="public" value="checked" checked="checked" />
+                    <label for=public>Public (uncheck to set to private)</label>
+                </div>
                 <div class="input-field col s12 m6 valign-wrapper">
                     <i class="material-icons prefix green-text">restaurant</i>
                     <input id="recipe_name" name="recipe_name" type="text" class="validate green-text" required/>
@@ -68,12 +72,12 @@
                 </div>
                 <div class="input-field col s12 valign-wrapper">
                     <i class="material-icons prefix green-text">list</i>
-                    <input id="ingredients" name="ingredients" type="text" class="validate green-text" />
+                    <input id="ingredients" name="ingredients" type="text" class="validate green-text" required/>
                     <label for="ingredients">Ingredients</label>
                 </div>
                 <div class="input-field col s12 valign-wrapper">
                     <i class="material-icons prefix green-text">format_list_numbered</i>
-                    <input id="preparation" name="preparation" type="text" class="validate green-text" />
+                    <input id="preparation" name="preparation" type="text" class="validate green-text" required/>
                     <label for="preparation">Preparation</label>
                 </div>
                 <button class="btn waves-effect submitbutton green darken-3 " type="submit" name="action">Create
