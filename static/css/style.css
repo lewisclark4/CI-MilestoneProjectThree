@@ -68,7 +68,7 @@ h5 {
 label {
     color: #4caf50;
 }
-/* guidance from https://stackoverflow.com/questions/37127123/change-color-of-underline-input-and-label-in-materialize-css-framework*/
+
 .input-field input[type]:focus:not([readonly]),
 .input-field textarea:focus:not([readonly]) {
   border-bottom: 1px solid #4caf50;
@@ -80,8 +80,6 @@ label {
 .input-field .prefix.active {
   color: #4caf50;
 }
-
-/*https://stackoverflow.com/questions/35261021/change-color-of-checkbox-in-materialize-framework*/
 
 .checkbox[type="checkbox"].filled-in:checked + label:after {
   border: 2px solid #4caf50;

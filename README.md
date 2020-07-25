@@ -166,10 +166,11 @@ The primary green is a bright fresh green and is aesthetically pleasing.
 
 The secondary green is a deeper darker green and offers a solid contrast, while not deviating from brand colours. 
 
-* ![#fff](https://placehold.it/15/fff/000000?text=+) `#fff` - Primary font colour
-* ![#000](https://placehold.it/15/000/000000?text=+) `#000` - Secondary font colour
+* ![#fff](https://placehold.it/15/fff/000000?text=+) `#fff` - font colour
+* ![#000](https://placehold.it/15/000/000000?text=+) `#000` - font colour
+* ![#f44336] (https://placehold.it/15/f44336/000000?text=+) `#f44336` - font colour
 
-To keep with the cleanness and simplicity of the application, but to offer a clear contrast to the green branding, white and black font is used to ensure clear and easy to read content across the site.
+To keep with the cleanness and simplicity of the application, but to offer a clear contrast to the green branding, white and black font is also used to ensure clear and easy to read content across the site. Red is also used across the site to indicate errors, or items to be addressed.
 
 ## Technologies and Tools
 
@@ -187,3 +188,14 @@ To keep with the cleanness and simplicity of the application, but to offer a cle
 ### Content
 ### Images
 ### Acknowledgements
+1. I took guidance from various sources on formatting & styling my web application
+
+* [Stackoverflow] https://stackoverflow.com/questions/37127123/change-color-of-underline-input-and-label-in-materialize-css-framework for guidance on colours on form input fields.
+* [Stackoverflow] https://stackoverflow.com/questions/35261021/change-color-of-checkbox-in-materialize-framework for guidance on styling of checkboxes.
+* [Materializecss] https://materializecss.com/ and their various guides on usage of their frameworks (icons, buttons, forms, inputs, checkboxes etc.).
+* [Tasty] https://tasty.co/ for general inspiration on styling.
+
+2. I used the following to help overcome issues during the development of my application
+
+* [Stackoverflow] https://stackoverflow.com/questions/10426190/how-to-clone-an-element-and-insert-it-multiple-times-in-one-go for guidance on how to insert and remove elements (e.g. ingredients & preparations).
+* [mdbootstrap] https://mdbootstrap.com/support/jquery/dropdown-needs-2-clicks-to-activate/ for guidance on how to prevent a bug stopping form selctions not working in initial click.

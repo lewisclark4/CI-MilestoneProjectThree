@@ -4,14 +4,11 @@ $(document).ready(function () {
   $(".button-collapse").sideNav();
 
 
-/* fixes issues that requires t clicks for dropdown to work https://mdbootstrap.com/support/jquery/dropdown-needs-2-clicks-to-activate/ */
+// fixes issues that requires t clicks for dropdown to work 
 $('.dropdown').click(e => e.stopPropagation()); 
 
 
- // Add / Remove Ingredients https://stackoverflow.com/questions/10426190/how-to-clone-an-element-and-insert-it-multiple-times-in-one-go
-
-
-
+// Add & Remove Ingredients/ Preparations 
 
  var ingredientCount = 1;
 $("#addingredient").on("click", function () {
