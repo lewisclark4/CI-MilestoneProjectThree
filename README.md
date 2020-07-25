@@ -195,7 +195,8 @@ To keep with the cleanness and simplicity of the application, but to offer a cle
 * [Materializecss] https://materializecss.com/ and their various guides on usage of their frameworks (icons, buttons, forms, inputs, checkboxes etc.).
 * [Tasty] https://tasty.co/ for general inspiration on styling.
 
-2. I used the following to help overcome issues during the development of my application
+2. I used the following to help overcome issues, bugs and hurdles during the development of my application
 
 * [Stackoverflow] https://stackoverflow.com/questions/10426190/how-to-clone-an-element-and-insert-it-multiple-times-in-one-go for guidance on how to insert and remove elements (e.g. ingredients & preparations).
 * [mdbootstrap] https://mdbootstrap.com/support/jquery/dropdown-needs-2-clicks-to-activate/ for guidance on how to prevent a bug stopping form selctions not working in initial click.
+* [Stackoverflow] https://stackoverflow.com/questions/31859903/get-the-value-of-a-checkbox-in-flask for guidance on passing a value to MongoDB from the checkbox in my add recipe form.
