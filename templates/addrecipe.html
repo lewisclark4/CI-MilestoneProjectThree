@@ -3,11 +3,11 @@
 <!--If statement to prevent a user navigating to & using the route without being logged in-->
 {% if 'username' not in session %}
 <section class="container">
-    <h5 class="center green-text text-darken-3">You aren't currently logged in. Please log in&nbsp;<a href="{{url_for('login')}}"><span class="green-text link">here</span></a></h5>
+    <h5 class="center">You aren't currently logged in. Please log in&nbsp;<a href="{{url_for('login')}}"><span class="link">here</span></a></h5>
 </section>
 {% else %}
 <section class="container">
-    <h5 class="center signintext green-text text-darken-3">Have a look through our wonderful recipes and see if there's anything that tingles your tastebuds!</h5>
+    <h5 class="center signintext">Have a look through our wonderful recipes and see if there's anything that tingles your tastebuds!</h5>
     <div class="card addrecipecard">
        <div class="row center-align">
             <form class="col s12 registerform" method="POST" action="{{url_for('insert_recipe')}}">
@@ -16,54 +16,55 @@
                     <label for=public>Public (uncheck to set to private)</label>
                 </div>
                 <div class="input-field col s12 m6 valign-wrapper">
-                    <i class="material-icons prefix green-text">restaurant</i>
-                    <input id="recipe_name" name="recipe_name" type="text" class="validate green-text" required/>
+                    <i class="material-icons prefix">restaurant</i>
+                    <input id="recipe_name" name="recipe_name" type="text" class="validate" required/>
                     <label for="recipe_name">Recipe Name</label>
                 </div>
                 <div class="input-field col s12 m6 valign-wrapper">
-                    <i class="material-icons prefix green-text">party_mode</i>
-                    <input id="image" name="image" type="text" class="validate green-text" />
+                    <i class="material-icons prefix">party_mode</i>
+                    <input id="image" name="image" type="text" class="validate" />
                     <label for="image">Image</label>
                 </div>
-                <div class="input-field col s12 m4 valign-wrapper dropdown">
-                    <i class="material-icons prefix green-text">language</i>
-                    <select id="cuisine" name="cuisine" class=" validate green-text" required>
-                           <option value="" disabled selected class="green-text"></option>
+                <div class="input-field col s12 m6 valign-wrapper dropdown">
+                    <i class="material-icons prefix">language</i>
+                    <select id="cuisine" name="cuisine" class=" validate" required>
+                           <option value="" disabled selected></option>
                             {% for cuisine in cuisines %}
                                 <option value="{{ cuisine.cuisine_type }}" >{{ cuisine.cuisine_type }}</option>
                             {% endfor %}
                     </select>    
                     <label for="cuisine">Cuisine</label>
                 </div>
-                <div class="input-field col s12 m4 valign-wrapper center">
-                    <i class="material-icons prefix green-text">timer</i>
-                    <input id="prep_time" name="prep_time" type="number" class="validate green-text" min="1" required/>
-                    <label for="prep_time">Prep Time (mins)</label>
-                </div>
-                <div class="input-field col s12 m4 valign-wrapper">
-                    <i class="material-icons prefix green-text">timelapse</i>
-                    <input id="cook_time" name="cook_time" type="number" class="validate green-text" min="1" required/>
-                    <label for="cook_time">Cook Time (mins)</label>
-                </div>
-                <div class="input-field col s12 m4 valign-wrapper dropdown">
-                    <i class="material-icons prefix green-text">sort</i>
-                    <select id="difficulty" name="difficulty" class=" validate green-text" required>
-                           <option value="" disabled selected class="green-text"></option>
+                <div class="input-field col s12 m6 valign-wrapper dropdown">
+                    <i class="material-icons prefix">sort</i>
+                    <select id="difficulty" name="difficulty" class=" validate" required>
+                           <option value="" disabled selected></option>
                             {% for level in difficulty %}
                                 <option value="{{ level.skill_level }}" >{{ level.skill_level }}</option>
                             {% endfor %}
                     </select> 
                     <label for="difficulty">Difficulty</label>
                 </div>
-                <div class="input-field col s12 m4 valign-wrapper">
-                    <i class="material-icons prefix green-text">people</i>
-                    <input id="serves" name="serves" type="number" class="validate green-text" min="1" required/>
+                <div class="input-field col s12 m6 valign-wrapper center">
+                    <i class="material-icons prefix">timer</i>
+                    <input id="prep_time" name="prep_time" type="number" class="validate" min="1" required/>
+                    <label for="prep_time">Prep Time (mins)</label>
+                </div>
+                <div class="input-field col s12 m6 valign-wrapper">
+                    <i class="material-icons prefix ">timelapse</i>
+                    <input id="cook_time" name="cook_time" type="number" class="validate" min="1" required/>
+                    <label for="cook_time">Cook Time (mins)</label>
+                </div>
+                
+                <div class="input-field col s12 m6 valign-wrapper">
+                    <i class="material-icons prefix">people</i>
+                    <input id="serves" name="serves" type="number" class="validate" min="1" required/>
                     <label for="serves">Serves</label>
                 </div>
-                <div class="input-field col s12 m4 valign-wrapper dropdown">
-                    <i class="material-icons prefix green-text">warning</i>
-                    <select id="allergens" name="allergens" class=" validate green-text" multiple>
-                           <option value="" disabled selected class="green-text"></option>
+                <div class="input-field col s12 m6 valign-wrapper dropdown">
+                    <i class="material-icons prefix">warning</i>
+                    <select id="allergens" name="allergens" class="validate" multiple>
+                           <option value="" disabled selected></option>
                             {% for allergen in allergens %}
                                 <option value="{{ allergen.allergen_type }}" >{{ allergen.allergen_type }}</option>
                             {% endfor %}
@@ -71,16 +72,16 @@
                     <label for="allergens">Allergens</label>
                 </div>
                 <div class="input-field col s12 valign-wrapper">
-                    <i class="material-icons prefix green-text">list</i>
-                    <input id="ingredients" name="ingredients" type="text" class="validate green-text" required/>
+                    <i class="material-icons prefix">list</i>
+                    <input id="ingredients" name="ingredients" type="text" class="validate" required/>
                     <label for="ingredients">Ingredients</label>
                 </div>
                 <div class="input-field col s12 valign-wrapper">
-                    <i class="material-icons prefix green-text">format_list_numbered</i>
-                    <input id="preparation" name="preparation" type="text" class="validate green-text" required/>
+                    <i class="material-icons prefix">format_list_numbered</i>
+                    <input id="preparation" name="preparation" type="text" class="validate" required/>
                     <label for="preparation">Preparation</label>
                 </div>
-                <button class="btn waves-effect submitbutton green darken-3 " type="submit" name="action">Create
+                <button class="btn waves-effect submitbutton" type="submit" name="action">Create
                     <i class="material-icons right">send</i>
                 </button>
             </form>

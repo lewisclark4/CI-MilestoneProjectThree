@@ -5,6 +5,7 @@ body {
   flex-direction: column;
   font-family: "Raleway", sans-serif;
   overflow-x: hidden;
+  color: #4caf50;
 }
 
 main {
@@ -12,11 +13,65 @@ main {
 }
 
 form {
-    margin: 2em;
+  margin: 2em;
 }
 
 .card {
-    border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* Colour scheme*/
+.nav-wrapper,
+.side-nav,
+.page-footer {
+  background-color: #4caf50;
+}
+
+h5 {
+  color: #2e7d32;
+}
+
+.link {
+  text-decoration: underline;
+  color: #4caf50;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: #2e7d32;
+}
+
+.submitbutton {
+  background-color: #2e7d32;
+}
+
+.submitbutton:hover {
+  color: #000;
+  background-color: #2e7d32;
+}
+
+/* guidance from https://stackoverflow.com/questions/37127123/change-color-of-underline-input-and-label-in-materialize-css-framework*/
+.input-field input[type]:focus:not([readonly]),
+.input-field textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #4caf50;
+  box-shadow: 0 1px 0 0 #4caf50;
+}
+
+.input-field input[type]:focus:not([readonly]) + label,
+.input-field textarea:focus:not([readonly]) + label,
+.input-field .prefix.active {
+  color: #4caf50;
+}
+
+/*https://stackoverflow.com/questions/35261021/change-color-of-checkbox-in-materialize-framework*/
+
+.checkbox[type="checkbox"].filled-in:checked + label:after {
+  border: 2px solid #4caf50;
+  background-color: #4caf50;
+}
+
+.checkbox[type="checkbox"] {
+  border: 2px solid #4caf50;
 }
 
 /* Base Navbar */
@@ -47,6 +102,7 @@ form {
   border-radius: 50%;
   text-align: center;
   color: #fff;
+  background-color: #2e7d32;
 }
 
 /* Index Content */
@@ -66,52 +122,9 @@ form {
 }
 
 .searchtag {
-    margin: 0;
+  margin: 0;
 }
 
 .signintext {
-    margin-top:2em;
-}
-
-.link {
-    text-decoration: underline;
-}
-
-.submitbutton {
-    margin: 0.5em;
-}
-
-.submitbutton:hover{
-    color: #000; 
-}
-
-/* guidance from https://stackoverflow.com/questions/37127123/change-color-of-underline-input-and-label-in-materialize-css-framework*/
-.input-field input[type]:not([readonly]),
-.input-field input[type]:focus:not([readonly]),
-.input-field textarea:not([readonly]),
-.input-field textarea:focus:not([readonly]) {
-  border-bottom: 1px solid #4caf50;
-  box-shadow: 0 1px 0 0 #4caf50;
-}
-
-.input-field input[type]:focus:not([readonly]) + label,
-.input-field textarea:focus:not([readonly]) + label {
-  
-}
-
-
-/* Register/ Login Content */
-
-
-/* add recipe */
-/*https://stackoverflow.com/questions/35261021/change-color-of-checkbox-in-materialize-framework*/
-
-
-.checkbox[type="checkbox"].filled-in:checked + label:after{
-     border: 2px solid #4caf50;
-     background-color: #4caf50;
-}
-
-.checkbox[type="checkbox"]{
-     border: 2px solid #4caf50;
+  margin-top: 2em;
 }
