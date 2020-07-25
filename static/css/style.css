@@ -43,6 +43,7 @@ h5 {
 
 .submitbutton {
   background-color: #2e7d32;
+  color:#fff;
 }
 
 .submitbutton:hover {
@@ -50,6 +51,23 @@ h5 {
   background-color: #2e7d32;
 }
 
+.removebutton {
+  background-color: #f44336 ;
+  color:#fff;
+}
+
+.removebutton:hover {
+  color: #000;
+  background-color: #f44336;
+}
+
+.input-field label {
+    color: #4caf50;
+}
+
+label {
+    color: #4caf50;
+}
 /* guidance from https://stackoverflow.com/questions/37127123/change-color-of-underline-input-and-label-in-materialize-css-framework*/
 .input-field input[type]:focus:not([readonly]),
 .input-field textarea:focus:not([readonly]) {

@@ -40,7 +40,7 @@
                     <select id="difficulty" name="difficulty" class=" validate" required>
                            <option value="" disabled selected></option>
                             {% for level in difficulty %}
-                                <option value="{{ level.skill_level }}" >{{ level.skill_level }}</option>
+                                <option value="{{ level.skill_level }}">{{ level.skill_level }}</option>
                             {% endfor %}
                     </select> 
                     <label for="difficulty">Difficulty</label>
@@ -71,15 +71,31 @@
                     </select> 
                     <label for="allergens">Allergens</label>
                 </div>
-                <div class="input-field col s12 valign-wrapper">
-                    <i class="material-icons prefix">list</i>
-                    <input id="ingredients" name="ingredients" type="text" class="validate" required/>
-                    <label for="ingredients">Ingredients</label>
+                <div class="additem left-align">
+                    <div class="ingredients input-field col s12 valign-wrapper">
+                        <i class="material-icons prefix">list</i>
+                        <input id="ingredients" name="ingredients" type="text" class="validate" required/>
+                        <label for="ingredients">Ingredients</label>
+                    </div>
+                    <button id="addingredient" class="btn waves-effect submitbutton" type="submit" name="action">
+                    <i class="material-icons center">add_box</i>
+                    </button>
+                    <button id="removeingredient" class="btn waves-effect removebutton" type="submit" name="action">
+                    <i class="material-icons center">indeterminate_check_box</i>
+                    </button>
                 </div>
-                <div class="input-field col s12 valign-wrapper">
-                    <i class="material-icons prefix">format_list_numbered</i>
-                    <input id="preparation" name="preparation" type="text" class="validate" required/>
-                    <label for="preparation">Preparation</label>
+                <div class="additem left-align">
+                    <div class="preparation input-field col s12 valign-wrapper">
+                        <i class="material-icons prefix">format_list_numbered</i>
+                        <input id="preparation" name="preparation" type="text" class="validate" required/>
+                        <label for="preparation">Preparation</label>
+                    </div>
+                    <button id="addprep" class="btn waves-effect submitbutton" type="submit" name="action">
+                        <i class="material-icons center">add_box</i>
+                    </button>
+                    <button id="removeprep"class="btn waves-effect removebutton" type="submit" name="action">
+                        <i class="material-icons center">indeterminate_check_box</i>
+                    </button>
                 </div>
                 <button class="btn waves-effect submitbutton" type="submit" name="action">Create
                     <i class="material-icons right">send</i>

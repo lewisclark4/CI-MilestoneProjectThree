@@ -53,12 +53,14 @@ def login():
                 user_exists['password']) == user_exists['password']:
                 session["username"] = request.form["username"].lower()
                 flash('Login successful', 'success')
+                return render_template("index.html")
             else:
                 flash('Invalid username/password combination',  'error')
         else:
             flash('Invalid username/password combination',  'error')
-
+    
     return render_template("login.html")
+    
 
 
 @app.route('/logout')
