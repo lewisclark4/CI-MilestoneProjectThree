@@ -88,7 +88,8 @@ def insert_recipe():
     data.update({'ingredients': request.form.getlist('ingredients')})
     data.update({'preparation': request.form.getlist('preparation')})
     data.update({'allergens': request.form.getlist('allergens')})
-    if request.form.getlist('public')[0] == 'checked':
+    # https://stackoverflow.com/questions/31859903/get-the-value-of-a-checkbox-in-flask
+    if request.form.getlist('public'):
         data.update({'public': True}) 
     else:
         data.update({'public': False}) 
