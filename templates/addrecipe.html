@@ -7,10 +7,10 @@
 </section>
 {% else %}
 <section class="container">
-    <h5 class="center signintext">Have a look through our wonderful recipes and see if there's anything that tingles your tastebuds!</h5>
-    <div class="card addrecipecard">
+    <h5 class="center headertext">Have a look through our wonderful recipes and see if there's anything that tingles your tastebuds!</h5>
+    <div class="card">
        <div class="row center-align">
-            <form class="col s12 registerform" method="POST" action="{{url_for('insert_recipe')}}">
+            <form class="col s12" method="POST" action="{{url_for('insert_recipe')}}">
                 <div>
                     <input type="checkbox" class="filled-in checkbox" name="public" id="public" value="checked" checked="checked"/>
                     <label for=public>Public (uncheck to set to private)</label>
