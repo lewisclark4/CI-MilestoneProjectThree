@@ -150,3 +150,9 @@ label {
 .additem {
     padding: 0 0 10px 10px;
 }
+
+/* View recipe*/
+
+.recipeimage {
+    margin-top: 2em; 
+}

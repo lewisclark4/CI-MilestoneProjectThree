@@ -98,6 +98,12 @@ def insert_recipe():
     
     return redirect(url_for('add_recipe'))
 
+@app.route('/view_recipe/<recipe_id>')
+def view_recipe(recipe_id):
+    my_recipe = recipe.find_one({"_id": ObjectId(recipe_id)})
+    return render_template('viewrecipe.html',
+                           view_recipe = my_recipe)
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),

@@ -1,0 +1,51 @@
+{% extends 'base.html'%} {% block content %}
+
+<section class="container">
+    <div class="card row">
+        <div class="center-align col s12 m5">
+            <img src="{{view_recipe.image}}" alt="recipe image" class="responsive-img recipeimage"> 
+        </div>
+        <div class="col s12 m7">
+            <div class="recipe-header center-align">
+                <h4>{{ view_recipe.recipe_name }}</h4>
+            </div>
+        </div>
+        <div class="col s12 m3 center-align">
+            <p><i class="material-icons prefix">account_circle</i>Created by:
+            <span>{{ view_recipe.created_by }}</span></p>
+        </div>
+        <div class="col s12 m3 center-align">
+            <p><i class="material-icons prefix">language</i>Cuisine: 
+            <span>{{ view_recipe.cuisine }}</span></p>
+        </div>
+        <div class="col s12 m3 center-align valign-wrapper">
+            <p><i class="material-icons prefix ">timelapse</i>Cook Time: 
+            <span>{{view_recipe.cook_time}}</span> min</p>
+        </div>
+        <div class="col s12 m3 center-align valign-wrapper">
+            <p><i class="material-icons prefix">timer</i>Prep Time: 
+            <span>{{view_recipe.prep_time}}</span> min</p>
+        </div>
+        <div class="col s12 m3 center-align valign-wrapper">
+            <p><i class="material-icons prefix">people</i> Serves:
+                <span class="">{{view_recipe.serves}}</span></p>
+        </div>
+        <div class="col s12 m3 center-align valign-wrapper">
+            <p><i class="material-icons prefix">sort</i>Difficulty:
+                <span>{{view_recipe.difficulty}}</span></p>
+        </div>
+        <div class="col s12 m6 center-align valign-wrapper">
+                {% if view_recipe.allergens|length >0 %}
+                    <p><i class="material-icons prefix">warning</i> Contains:
+                        {% for allergen in view_recipe.allergens %}
+                        <span>
+                            {{ allergen }},
+                        </span>
+                        {% endfor %}
+                    </p>
+                {% endif %}
+        </div>
+    </div>
+</Section>
+
+{% endblock %}
