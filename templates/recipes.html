@@ -1,3 +1,21 @@
 {% extends 'base.html'%} {% block content %}
 
+<section class="container">
+    <h5 class="center headertext">Have a look through our wonderful recipes and see if there's anything that tingles your tastebuds!</h5>
+    <div class="row">
+        <div class="col s12">
+        {% for recipe in recipes %}
+        <div class="col s12 m3 card center-align hoverable">
+            <div>
+                <img class="cardimage" src="{{recipe.image}}" alt="recipe-image">
+            </div>
+            <h5 class="cardname"> {{recipe.recipe_name.capitalize()}}</h5>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+  
+
+</section>
+
 {% endblock %}

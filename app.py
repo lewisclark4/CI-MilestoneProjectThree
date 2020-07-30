@@ -23,8 +23,6 @@ recipe = mongo.db.recipes
 def index():
     return render_template("index.html")
 
-
-# https://www.youtube.com/watch?v=vVx1737auSE
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -71,7 +69,8 @@ def logout():
 
 @app.route('/recipes')
 def recipes():
-    return render_template("recipes.html")
+    return render_template("recipes.html",
+                            recipes=mongo.db.recipes.find())
 
 @app.route('/add_recipe')
 def add_recipe():

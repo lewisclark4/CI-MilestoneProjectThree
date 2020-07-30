@@ -27,7 +27,8 @@ form {
   background-color: #4caf50;
 }
 
-h3, h5 {
+h3,
+h5 {
   color: #2e7d32;
 }
 
@@ -43,7 +44,7 @@ h3, h5 {
 
 .submitbutton {
   background-color: #2e7d32;
-  color:#fff;
+  color: #fff;
 }
 
 .submitbutton:hover {
@@ -52,8 +53,8 @@ h3, h5 {
 }
 
 .removebutton {
-  background-color: #f44336 ;
-  color:#fff;
+  background-color: #f44336;
+  color: #fff;
 }
 
 .removebutton:hover {
@@ -62,11 +63,11 @@ h3, h5 {
 }
 
 .input-field label {
-    color: #4caf50;
+  color: #4caf50;
 }
 
 label {
-    color: #4caf50;
+  color: #4caf50;
 }
 
 .input-field input[type]:focus:not([readonly]),
@@ -147,19 +148,33 @@ label {
 /* add recipe form */
 
 .additem {
-    padding: 0 0 10px 10px;
+  padding: 0 0 10px 10px;
 }
 
 /* View recipe*/
 
-.recipeheader{
-    margin: 0;
+.recipeheader {
+  margin: 0;
 }
 
 .recipeimage {
-    margin-top: 2em;
-    max-width: 80%;
-    max-height: 40vh;
-    object-fit: cover;
-    border-radius: 10px;
+  margin-top: 2em;
+  max-width: 80%;
+  max-height: 40vh;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* View all recipes*/
+
+.cardimage {
+  margin-top: 1em;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.cardname {
+  height: 3em;
 }

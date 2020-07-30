@@ -7,7 +7,7 @@
 </section>
 {% else %}
 <section class="container">
-    <h5 class="center headertext">Have a look through our wonderful recipes and see if there's anything that tingles your tastebuds!</h5>
+    <h5 class="center headertext">Got a special recipe you want to share or save for the future? Add it below!!</h5>
     <div class="card">
        <div class="row center-align">
             <form class="col s12" method="POST" action="{{url_for('insert_recipe')}}">
@@ -23,7 +23,7 @@
                 <div class="input-field col s12 m6 valign-wrapper">
                     <i class="material-icons prefix">party_mode</i>
                     <input id="image" name="image" type="text" class="validate" />
-                    <label for="image">Image</label>
+                    <label for="image">Image URL</label>
                 </div>
                 <div class="input-field col s12 m6 valign-wrapper dropdown">
                     <i class="material-icons prefix">language</i>
