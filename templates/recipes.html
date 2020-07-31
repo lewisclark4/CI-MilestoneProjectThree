@@ -2,19 +2,28 @@
 
 <section class="container">
     <h5 class="center headertext">Have a look through our wonderful recipes and see if there's anything that tingles your tastebuds!</h5>
-    <div class="row">
-        <div class="col s12">
-        {% for recipe in recipes %}
+    <div class="row ">
+    {% for recipe in recipes %}
+    {% if recipe.public and not recipe.soft_delete%}
+        <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}"> 
         <div class="col s12 m3 card center-align hoverable">
+        {% if recipe.image %}
             <div>
                 <img class="cardimage" src="{{recipe.image}}" alt="recipe-image">
             </div>
-            <h5 class="cardname"> {{recipe.recipe_name.capitalize()}}</h5>
+        {% else %}
+            <div>
+                <img class="cardimage" src="{{ url_for('static', filename='images/defaultmeal.jpg') }}" alt="recipe-image">
+            </div>
+        {% endif %} 
+            <h5 class="cardname"> {{recipe.recipe_name}}</h5>
         </div>
-        {% endfor %}
-        </div>
+        </a>
+    {% endif %}
+    {% endfor %}
     </div>
-  
+
+
 
 </section>
 
