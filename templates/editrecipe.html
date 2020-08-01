@@ -11,10 +11,17 @@
     <div class="card">
        <div class="row center-align">
             <form class="col s12" method="POST" action="{{url_for('update_recipe',recipe_id=recipe._id)}}">
+                {% if recipe.public == true %}
                 <div>
-                    <input type="checkbox" class="filled-in checkbox" name="public" id="public" value="checked" checked="checked"/>
+                    <input type="checkbox" class="filled-in checkbox" name="public" id="public" checked="checked"/>
                     <label for=public>Public (uncheck to set to private)</label>
                 </div>
+                {% else %}
+                <div>
+                    <input type="checkbox" class="filled-in checkbox" name="public" id="public"/>
+                    <label for=public>Public (uncheck to set to private)</label>
+                </div>
+                {% endif %}
                 <div class="input-field col s12 m6 valign-wrapper">
                     <i class="material-icons prefix">restaurant</i>
                     <input id="recipe_name" name="recipe_name" type="text" class="validate"  value="{{recipe.recipe_name}}" required/>

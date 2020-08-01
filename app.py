@@ -114,22 +114,26 @@ def edit_recipe(recipe_id):
                            allergens=mongo.db.allergens.find())
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
-    data = recipe.update({"_id": ObjectId(recipe_id)},
-                   {
-                    'created_by': session['username'],
-                    'soft_delete': False,
-                    'recipe_name': request.form.get('recipe_name'),
-                    'image': request.form.get('image'),
-                    'cuisine': request.form.get('cuisine'),
-                    'difficulty': request.form.get('difficulty'),
-                    'prep_time': request.form.get('prep_time'),
-                    'cook_time': request.form.get('cook_time'),
-                    'serves': request.form.get('serves'),
-                    'allergens': request.form.getlist('allergens'),
-                    'ingredients': request.form.getlist('ingredients'),
-                    'preparation': request.form.getlist('preparation'),
-                    })
-                    
+    data = {    'created_by': session['username'],
+                'soft_delete': False,
+                'recipe_name': request.form.get('recipe_name'),
+                'image': request.form.get('image'),
+                'cuisine': request.form.get('cuisine'),
+                'difficulty': request.form.get('difficulty'),
+                'prep_time': request.form.get('prep_time'),
+                'cook_time': request.form.get('cook_time'),
+                'serves': request.form.get('serves'),
+                'allergens': request.form.getlist('allergens'),
+                'ingredients': request.form.getlist('ingredients[]'),
+                'preparation': request.form.getlist('preparation[]'),
+                'public':request.form.get('public')
+            }
+    if request.form.getlist('public'):
+        data.update({'public': True}) 
+    else:
+        data.update({'public': False}) 
+    recipe.update({"_id": ObjectId(recipe_id)}, data)
+                
     return redirect(url_for('view_recipe', recipe_id=recipe_id))
 
 if __name__ == '__main__':
