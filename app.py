@@ -101,7 +101,18 @@ def insert_recipe():
 def view_recipe(recipe_id):
     my_recipe = recipe.find_one({"_id": ObjectId(recipe_id)})
     return render_template('viewrecipe.html',
-                           view_recipe = my_recipe)
+                           recipe = my_recipe)
+
+@app.route('/edit_recipe/<recipe_id>')
+def edit_recipe(recipe_id):
+    my_recipe = recipe.find_one({"_id": ObjectId(recipe_id)})
+    return render_template("editrecipe.html",
+                           recipe=my_recipe,
+                           categories=mongo.db.categories.find(),
+                           cuisines=mongo.db.cuisines.find(),
+                           difficulty=mongo.db.difficulty.find(),
+                           allergens=mongo.db.allergens.find())
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

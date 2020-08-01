@@ -151,6 +151,10 @@ label {
   padding: 0 0 10px 10px;
 }
 
+.helper-text{
+    font-size: 10px !important;
+}
+
 /* View recipe*/
 
 .recipeheader {
