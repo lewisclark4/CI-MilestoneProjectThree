@@ -1,63 +1,60 @@
 {% extends 'base.html'%} {% block content %}
 <section class="container homecontainer">
-
-   <!--Search Tool -->
-   <div class="card center-align">
-        <div class="row center searchtag">
-            <h5 class="col s12">Stuck for ideas? Search for a recipe below...</h5>
-        </div>
-        <div class="input-field searchbar valign-wrapper">
-            <i class="material-icons prefix">search</i>
-            <input placeholder="Try something new!" type="text" class="validate"/>
-        </div>
-   </div>
-   <!--/Search Tool -->
-
-   <img class="responsive-img" src="{{ url_for('static', filename='images/homeimage.jpg') }}" alt="steak and asparagus"/>
-    {% if 'username' not in session %}
-   <!--Sign In -->
-
-   <h5 class="center headertext">Sign in below, or register to join our community
-   <a href="{{url_for('register')}}"><span class="link"> here</span></a></h5>
-   
-        <div class="card">
-            {% with messages = get_flashed_messages(with_categories=true) %} 
-                {% if messages %} 
-                    {% for category, message in messages %}
-                        {% if category == 'success'%}
-                        <p class="center-align">{{ message }}</p>
-                        {% endif %}
-                        {% if category == 'error'%}
-                        <p class="center-align red-text">{{ message }}</p>
-                        {% endif %}
-                    {% endfor %} 
+  <!--Search Tool -->
+  <div class="card center-align">
+    <div class="row center searchtag">
+      <h5 class="col s12">Stuck for ideas? Search for a recipe below...</h5>
+    </div>
+    <div class="input-field searchbar valign-wrapper">
+      <i class="material-icons prefix">search</i>
+      <input placeholder="Try something new!" type="text" class="validate" />
+    </div>
+  </div>
+  <!--/Search Tool -->
+  <img class="responsive-img" src="{{ url_for('static', filename='images/homeimage.jpg') }}" alt="Recipe image"/>
+  {% if 'username' not in session %}
+  <!--Sign In -->
+  <h5 class="center headertext">Sign in below, or register to join our community
+    <a href="{{url_for('register')}}"><span class="link"> here</span></a>
+  </h5>
+  <div class="card">
+    {% with messages = get_flashed_messages(with_categories=true) %} 
+        {% if messages %} 
+            {% for category, message in messages %} 
+                {% if category == 'success'%}
+                    <p class="center-align">{{ message }}</p>
                 {% endif %} 
-            {% endwith %}
-            <div class="row center-align">
-                <form class="col s12" method="POST" action="{{url_for('login')}}">
-                    <div class="input-field col s12 l6 valign-wrapper">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input id="indexusername" name="username" type="text" class="validate" required/>
-                        <label for="indexusername">Username</label>
-                    </div>
-                    <div class="input-field col s12 l6 valign-wrapper">
-                        <i class="material-icons prefix">lock</i>
-                        <input id="indexpassword" name="password" type="password" class="validate" required/>
-                        <label for="indexpassword">Password</label>
-                    </div>
-                    <button class="btn waves-effect submitbutton" type="submit" name="action">Sign in
-                    <i class="material-icons right">send</i>
-                    </button>
-                </form>
-            </div>
-            {% else %}
-            <div class="row center-align">
-                <h5 class="center headertext">...Or show off and share your favourite recipes by adding them
-                <a href="{{url_for('add_recipe')}}"><span class="link"> here!</span></a></h5>
-            </div>
-            {% endif %}
-   </div>
-   <!--/Sign In -->
-
+                {% if category == 'error'%}
+                    <p class="center-align red-text">{{ message }}</p>
+                {% endif %} 
+            {% endfor %} 
+        {% endif %} 
+    {% endwith %}
+    <div class="row center-align">
+      <form class="col s12" method="POST" action="{{url_for('login')}}">
+        <div class="input-field col s12 l6 valign-wrapper">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="indexusername" name="username" type="text" class="validate" required/>
+          <label for="indexusername">Username</label>
+        </div>
+        <div class="input-field col s12 l6 valign-wrapper">
+          <i class="material-icons prefix">lock</i>
+          <input id="indexpassword" name="password" type="password" class="validate" required/>
+          <label for="indexpassword">Password</label>
+        </div>
+        <button class="btn waves-effect submitbutton" type="submit" name="action"> Sign in
+          <i class="material-icons right">send</i>
+        </button>
+      </form>
+    </div>
+    {% else %}
+    <div class="row center-align">
+      <h5 class="center headertext">...Or show off and share your favourite recipes by adding them
+        <a href="{{url_for('add_recipe')}}"><span class="link"> here!</span></a>
+      </h5>
+    </div>
+    {% endif %}
+  </div>
+  <!--/Sign In -->
 </section>
 {% endblock %}

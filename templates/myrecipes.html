@@ -1,30 +1,25 @@
 {% extends 'base.html'%} {% block content %}
-
 <section class="container">
-    <h5 class="center headertext">Have a look through our wonderful recipes and see if there's anything that tingles your tastebuds!</h5>
-    <div class="row ">
-    {% for recipe in recipes %}
+  <h5 class="center headertext">Here's all of the recipe's that you have added..</h5>
+  <div class="row">
+    {% for recipe in recipes %} 
     {% if session['username'] == recipe.created_by and not recipe.soft_delete%}
-        <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}"> 
+        <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}">
         <div class="col s12 m3 card center-align hoverable">
-        {% if recipe.image %}
-            <div>
-                <img class="cardimage" src="{{recipe.image}}" alt="recipe-image">
-            </div>
-        {% else %}
-            <div>
-                <img class="cardimage" src="{{ url_for('static', filename='images/defaultmeal.jpg') }}" alt="recipe-image">
-            </div>
-        {% endif %} 
-            <h5 class="cardname"> {{recipe.recipe_name}}</h5>
+            {% if recipe.image %}
+                <div>
+                <img class="cardimage" src="{{recipe.image}}" alt="recipe-image" />
+                </div>
+            {% else %}
+                <div>
+                <img class="cardimage" src="{{ url_for('static', filename='images/defaultmeal.jpg') }}" alt="recipe-image"/>
+                </div>
+            {% endif %}
+            <h5 class="cardname">{{recipe.recipe_name}}</h5>
         </div>
         </a>
-    {% endif %}
+        {% endif %} 
     {% endfor %}
-    </div>
-
-
-
+  </div>
 </section>
-
 {% endblock %}

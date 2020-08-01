@@ -1,132 +1,132 @@
 {% extends 'base.html'%} {% block content %}
-
 <!--If statement to prevent a user navigating to & using the route without being logged in-->
 {% if 'username' not in session %}
 <section class="container">
-    <h5 class="center">You aren't currently logged in. Please log in&nbsp;<a href="{{url_for('login')}}"><span class="link">here</span></a></h5>
+  <h5 class="center">You aren't currently logged in. Please log in&nbsp;
+    <a href="{{url_for('login')}}"><span class="link">here</span></a>
+  </h5>
 </section>
 {% else %}
 <section class="container">
-    <h5 class="center headertext">Update your recipe below</h5>
-    <div class="card">
-       <div class="row center-align">
-            <form class="col s12" method="POST" action="{{url_for('update_recipe',recipe_id=recipe._id)}}">
-                {% if recipe.public == true %}
-                <div>
-                    <input type="checkbox" class="filled-in checkbox" name="public" id="public" checked="checked"/>
-                    <label for=public>Public (uncheck to set to private)</label>
-                </div>
-                {% else %}
-                <div>
-                    <input type="checkbox" class="filled-in checkbox" name="public" id="public"/>
-                    <label for=public>Public (uncheck to set to private)</label>
-                </div>
-                {% endif %}
-                <div class="input-field col s12 m6 valign-wrapper">
-                    <i class="material-icons prefix">restaurant</i>
-                    <input id="recipe_name" name="recipe_name" type="text" class="validate"  value="{{recipe.recipe_name}}" required/>
-                    <label for="recipe_name">Recipe Name</label>
-                </div>
-                <div class="input-field col s12 m6 valign-wrapper">
-                    <i class="material-icons prefix">party_mode</i>
-                    <input id="image" name="image" type="text" class="validate" pattern="(https?://.+)(jpe?g|png)" value="{{recipe.image}}" />
-                    <label for="image">Image URL</label>
-                    <span class="helper-text">Insert '.jpg' or '.png' URL </span>
-                </div>
-                <div class="input-field col s12 m6 valign-wrapper dropdown">
-                    <i class="material-icons prefix">language</i>
-                    <select id="cuisine" name="cuisine" class=" validate" required>
-                           <option value="" disabled selected></option>
-                            {% for cuisine in cuisines %}
-                            {% if cuisine.cuisine_type == recipe.cuisine %}
-                                <option value="{{ cuisine.cuisine_type }}" selected >{{ cuisine.cuisine_type }}</option>
-                            {% else %}
-                                <option value="{{ cuisine.cuisine_type }}">{{ cuisine.cuisine_type }}</option>
-                            {% endif %}
-                            {% endfor %}
-                    </select>    
-                    <label for="cuisine">Cuisine</label>
-                </div>
-                <div class="input-field col s12 m6 valign-wrapper dropdown">
-                    <i class="material-icons prefix">sort</i>
-                    <select id="difficulty" name="difficulty" class=" validate" required>
-                           <option value="" disabled selected></option>
-                            {% for level in difficulty %}
-                            {% if level.skill_level == recipe.difficulty %}
-                                <option value="{{ level.skill_level }}" selected>{{ level.skill_level }}</option>
-                            {% else %}
-                                <option value="{{ level.skill_level }}" >{{ level.skill_level }}</option>
-                            {% endif %}
-                            {% endfor %}
-                    </select> 
-                    <label for="difficulty">Difficulty</label>
-                </div>
-                <div class="input-field col s12 m6 valign-wrapper center">
-                    <i class="material-icons prefix">timer</i>
-                    <input id="prep_time" name="prep_time" type="number" class="validate" min="1" value="{{recipe.prep_time}}" required/>
-                    <label for="prep_time">Prep Time (mins)</label>
-                </div>
-                <div class="input-field col s12 m6 valign-wrapper">
-                    <i class="material-icons prefix ">timelapse</i>
-                    <input id="cook_time" name="cook_time" type="number" class="validate" min="1" value="{{recipe.cook_time}}" required/>
-                    <label for="cook_time">Cook Time (mins)</label>
-                </div>
-                
-                <div class="input-field col s12 m6 valign-wrapper">
-                    <i class="material-icons prefix">people</i>
-                    <input id="serves" name="serves" type="number" class="validate" min="1" value="{{recipe.serves}}" required/>
-                    <label for="serves">Serves</label>
-                </div>
-                <div class="input-field col s12 m6 valign-wrapper dropdown">
-                    <i class="material-icons prefix">warning</i>
-                    <select id="allergens" name="allergens" class="validate" multiple>
-                        <option value="" disabled selected>Allergens</option> 
-                        {% for allergen in allergens %}
-                            {% if allergen.allergen_type in recipe.allergens %}
-                            <option value="{{ allergen.allergen_type }}" selected>{{ allergen.allergen_type }}</option>
-                            {% else %}
-                            <option value="{{ allergen.allergen_type }}">{{ allergen.allergen_type }}</option>
-                            {% endif %}
-                        {% endfor %}
-                    </select>
-                    <label for="allergens">Allergens</label>
-                </div>
-                <div class="additem left-align">
-                {% for ingredient in recipe.ingredients %}
-                    <div class="ingredients input-field col s12 valign-wrapper">
-                        <i class="material-icons prefix">list</i>
-                        <input id="ingredients" name="ingredients[]" type="text" class="validate" value="{{ingredient}}" required/>
-                        <label for="ingredients">Ingredients</label>
-                    </div>
-                {% endfor %}
-                    <a id="addingredient" class="btn waves-effect submitbutton">
-                    <i class="material-icons center">add_box</i>
-                    </a>
-                    <a id="removeingredient" class="btn waves-effect removebutton">
-                    <i class="material-icons center">indeterminate_check_box</i>
-                    </a>
-                </div>
-                <div class="additem left-align">
-                {% for prep in recipe.preparation %}
-                    <div class="preparation input-field col s12 valign-wrapper">
-                        <i class="material-icons prefix">format_list_numbered</i>
-                        <input id="preparation" name="preparation[]" type="text" class="validate" value="{{prep}}" required/>
-                        <label for="preparation">Preparation</label>
-                    </div>
-                {% endfor %}
-                    <a id="addprep" class="btn waves-effect submitbutton">
-                        <i class="material-icons center">add_box</i>
-                    </a>
-                    <a id="removeprep"class="btn waves-effect removebutton">
-                        <i class="material-icons center">indeterminate_check_box</i>
-                    </a>
-                </div>
-                <button class="btn waves-effect submitbutton" type="submit" name="action">Update
-                    <i class="material-icons right">send</i>
-                </button>
-            </form>
+  <h5 class="center headertext">Update your recipe below</h5>
+  <div class="card">
+    <div class="row center-align">
+      <form class="col s12" method="POST" action="{{url_for('update_recipe',recipe_id=recipe._id)}}">
+        {% if recipe.public == true %}
+            <div>
+            <input type="checkbox" class="filled-in checkbox" name="public" id="public" checked="checked"/>
+            <label for="public">Public (uncheck to set to private)</label>
+            </div>
+        {% else %}
+            <div>
+            <input type="checkbox" class="filled-in checkbox" name="public" id="public"/>
+            <label for="public">Public (uncheck to set to private)</label>
+            </div>
+        {% endif %}
+        <div class="input-field col s12 m6 valign-wrapper">
+          <i class="material-icons prefix">restaurant</i>
+          <input id="recipe_name" name="recipe_name" type="text" class="validate" value="{{recipe.recipe_name}}" required/>
+          <label for="recipe_name">Recipe Name</label>
         </div>
+        <div class="input-field col s12 m6 valign-wrapper">
+          <i class="material-icons prefix">party_mode</i>
+          <input id="image" name="image" type="text" class="validate" pattern="(https?://.+)(jpe?g|png)" value="{{recipe.image}}"/>
+          <label for="image">Image URL</label>
+          <span class="helper-text">Insert '.jpg' or '.png' URL </span>
+        </div>
+        <div class="input-field col s12 m6 valign-wrapper dropdown">
+          <i class="material-icons prefix">language</i>
+          <select id="cuisine" name="cuisine" class="validate" required>
+            <option value="" disabled selected></option>
+            {% for cuisine in cuisines %} 
+                {% if cuisine.cuisine_type == recipe.cuisine %}
+                    <option value="{{ cuisine.cuisine_type }}" selected>{{ cuisine.cuisine_type }}</option>
+                {% else %}
+                    <option value="{{ cuisine.cuisine_type }}">{{ cuisine.cuisine_type }}</option>
+                {% endif %} 
+            {% endfor %}
+          </select>
+          <label for="cuisine">Cuisine</label>
+        </div>
+        <div class="input-field col s12 m6 valign-wrapper dropdown">
+          <i class="material-icons prefix">sort</i>
+          <select id="difficulty" name="difficulty" class="validate" required>
+            <option value="" disabled selected></option>
+            {% for level in difficulty %} 
+                {% if level.skill_level ==recipe.difficulty %}
+                    <option value="{{ level.skill_level }}" selected>{{ level.skill_level }}</option>
+                {% else %}
+                    <option value="{{ level.skill_level }}">{{ level.skill_level }}</option>
+                {% endif %} 
+            {% endfor %}
+          </select>
+          <label for="difficulty">Difficulty</label>
+        </div>
+        <div class="input-field col s12 m6 valign-wrapper center">
+          <i class="material-icons prefix">timer</i>
+          <input id="prep_time" name="prep_time" type="number" class="validate" min="1" value="{{recipe.prep_time}}" required/>
+          <label for="prep_time">Prep Time (mins)</label>
+        </div>
+        <div class="input-field col s12 m6 valign-wrapper">
+          <i class="material-icons prefix">timelapse</i>
+          <input id="cook_time" name="cook_time" type="number" class="validate" min="1" value="{{recipe.cook_time}}" required/>
+          <label for="cook_time">Cook Time (mins)</label>
+        </div>
+        <div class="input-field col s12 m6 valign-wrapper">
+          <i class="material-icons prefix">people</i>
+          <input id="serves" name="serves" type="number" class="validate" min="1" value="{{recipe.serves}}" required/>
+          <label for="serves">Serves</label>
+        </div>
+        <div class="input-field col s12 m6 valign-wrapper dropdown">
+          <i class="material-icons prefix">warning</i>
+          <select id="allergens" name="allergens" class="validate" multiple>
+            <option value="" disabled selected>Allergens</option>
+            {% for allergen in allergens %} 
+                {% if allergen.allergen_type in recipe.allergens %}
+                    <option value="{{ allergen.allergen_type }}" selected>{{ allergen.allergen_type }}</option>
+                {% else %}
+                    <option value="{{ allergen.allergen_type }}">{{ allergen.allergen_type }}</option>
+                {% endif %} 
+            {% endfor %}
+          </select>
+          <label for="allergens">Allergens</label>
+        </div>
+        <div class="additem left-align">
+          {% for ingredient in recipe.ingredients %}
+          <div class="ingredients input-field col s12 valign-wrapper">
+            <i class="material-icons prefix">list</i>
+            <input id="ingredients" name="ingredients" type="text" class="validate" value="{{ingredient}}" required/>
+            <label for="ingredients">Ingredients</label>
+          </div>
+          {% endfor %}
+          <a id="addingredient" class="btn waves-effect submitbutton">
+            <i class="material-icons center">add_box</i>
+          </a>
+          <a id="removeingredient" class="btn waves-effect removebutton">
+            <i class="material-icons center">indeterminate_check_box</i>
+          </a>
+        </div>
+        <div class="additem left-align">
+          {% for prep in recipe.preparation %}
+          <div class="preparation input-field col s12 valign-wrapper">
+            <i class="material-icons prefix">format_list_numbered</i>
+            <input id="preparation" name="preparation[]" type="text" class="validate" value="{{prep}}" required/>
+            <label for="preparation">Preparation</label>
+          </div>
+          {% endfor %}
+          <a id="addprep" class="btn waves-effect submitbutton">
+            <i class="material-icons center">add_box</i>
+          </a>
+          <a id="removeprep" class="btn waves-effect removebutton">
+            <i class="material-icons center">indeterminate_check_box</i>
+          </a>
+        </div>
+        <button class="btn waves-effect submitbutton" type="submit" name="action">Update
+          <i class="material-icons right">send</i>
+        </button>
+      </form>
     </div>
-</Section>
+  </div>
+</section>
 {% endif %}
 {% endblock %}
