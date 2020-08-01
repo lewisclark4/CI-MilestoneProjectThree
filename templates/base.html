@@ -36,15 +36,17 @@
                 {% else %}
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
 					<li><a href="{{url_for('index')}}" class="nav-item">Home</a></li>
-					<li><a href="{{url_for('recipes')}}" class="nav-item">Recipes</a></li>
+					<li><a href="{{url_for('recipes')}}" class="nav-item">All Recipes</a></li>
 					<li><a href="{{url_for('add_recipe')}}" class="nav-item">Add Recipe</a></li>
+                    <li><a href="{{url_for('my_recipes')}}" class="nav-item">My Recipes</a></li>
 					<li><a href="{{url_for('logout')}}" class="nav-item">Log out</a></li>
 				</ul>
 				<ul id="mobile-demo" class="side-nav">
-					<li><a href="{{url_for('index')}}" class="nav-item white-text">Home</a></li>
-					<li><a href="{{url_for('recipes')}}" class="nav-item white-text">Recipes</a></li>
-					<li><a href="{{url_for('add_recipe')}}" class="nav-item white-text">Add Recipe</a></li>
-					<li><a href="{{url_for('logout')}}" class="nav-item white-text">Log out</a></li>
+					<li><a href="{{url_for('index')}}" class="nav-item">Home</a></li>
+					<li><a href="{{url_for('recipes')}}" class="nav-item">All Recipes</a></li>
+					<li><a href="{{url_for('add_recipe')}}" class="nav-item">Add Recipe</a></li>
+                    <li><a href="{{url_for('my_recipes')}}" class="nav-item">My Recipes</a></li>
+					<li><a href="{{url_for('logout')}}" class="nav-item">Log out</a></li>
 				</ul>
                 {% endif %}
 			</div>

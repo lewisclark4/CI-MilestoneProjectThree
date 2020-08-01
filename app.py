@@ -72,6 +72,11 @@ def recipes():
     return render_template("recipes.html",
                             recipes=mongo.db.recipes.find())
 
+@app.route('/my_recipes')
+def my_recipes():
+    return render_template("myrecipes.html",
+                            recipes=mongo.db.recipes.find())
+
 @app.route('/add_recipe')
 def add_recipe():
     return render_template("addrecipe.html",
