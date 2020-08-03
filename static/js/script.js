@@ -2,6 +2,7 @@ $(document).ready(function () {
   $(".collapsible").collapsible();
   $("select").material_select();
   $(".button-collapse").sideNav();
+   $('.modal').modal();
 
 
 // fixes issues that requires t clicks for dropdown to work 

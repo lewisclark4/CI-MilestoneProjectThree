@@ -117,6 +117,7 @@ def edit_recipe(recipe_id):
                            cuisines=mongo.db.cuisines.find(),
                            difficulty=mongo.db.difficulty.find(),
                            allergens=mongo.db.allergens.find())
+
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
     data = {    'created_by': session['username'],
@@ -138,8 +139,14 @@ def update_recipe(recipe_id):
     else:
         data.update({'public': False}) 
     recipe.update({"_id": ObjectId(recipe_id)}, data)
-                
+           
     return redirect(url_for('view_recipe', recipe_id=recipe_id))
+
+@app.route('/delete_recipe/<recipe_id>')
+def delete_recipe(recipe_id):
+    mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, {"$set": {"soft_delete": True}})
+    return render_template("myrecipes.html",
+                            recipes=mongo.db.recipes.find())
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
