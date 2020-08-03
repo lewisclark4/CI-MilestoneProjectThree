@@ -1,8 +1,8 @@
 {% extends 'base.html'%} {% block content %}
 <!--If statement to prevent a user navigating to & using the route without being logged in-->
-{% if 'username' not in session %}
+{% if session['username'] != recipe.created_by %}
 <section class="container">
-  <h5 class="center">You aren't currently logged in. Please log in&nbsp;
+  <h5 class="center">You aren't currently logged in, or your user does not have permission to edit this recipe. <br/> Please log in to an authorised user 
     <a href="{{url_for('login')}}"><span class="link">here</span></a>
   </h5>
 </section>

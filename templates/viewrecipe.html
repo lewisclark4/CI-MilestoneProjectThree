@@ -1,5 +1,4 @@
 {% extends 'base.html'%} {% block content %}
-
 <section class="container">
   <div class="row center-align">
     <h3>{{ recipe.recipe_name }}</h3>
@@ -81,7 +80,6 @@
       {% endif %}
     </div>
   </div>
-
   {% if session['username'] == recipe.created_by %}
     <div class="row">
         <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn waves-effect submitbutton" type="submit" name="action">Edit
@@ -98,10 +96,7 @@
                 <a href="#" class="modal-close waves-effect btn submitbutton">Cancel</a>
             </div>
         </div>
-    </div>
-   <!-- Modal Structure -->
-  
+    </div>  
   {% endif %}
 </section>
-
 {% endblock %}

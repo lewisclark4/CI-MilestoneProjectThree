@@ -35,6 +35,7 @@ def register():
                               'password': hashpass})
                 session['username'] = request.form['username'].lower()
                 flash('Account Created. You are now logged in' , 'success')
+                return render_template('index.html')
             else:
                 flash('Passwords do not match, please try again.', 'error')
         else:

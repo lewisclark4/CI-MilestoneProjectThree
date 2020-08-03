@@ -1,4 +1,9 @@
 {% extends 'base.html'%} {% block content %}
+{% if 'username' not in session %}
+<section class="container">
+<h5 class="center">You aren't currently logged in. Please log in&nbsp;<ahref="{{url_for('login')}}"><span class="link">here</span></a></h5>
+</section>
+{% else %}
 <section class="container">
   <h5 class="center headertext">Here's all of the recipe's that you have added..</h5>
   <div class="row">
@@ -22,4 +27,5 @@
     {% endfor %}
   </div>
 </section>
+{% endif %} 
 {% endblock %}
