@@ -33,20 +33,12 @@ We want our brand to spread far and wide and to encourage the world to give thie
 ### User stories
 * As a guest/ public user, I want to be able to search for recipes for a particular meal.
 * As a guest/ public user, I want to be able to view all recipes to see if something interests me.
-* As a guest/ public user, I want to be able to view all recipes of a particular type or theme (e.g. Breakfast, Lunch, Starter, Main, Dessert)
-* As a guest/ public user, I want to be able to create an account so that I can add my own recipes.
+* As a guest/ public user, I want to be able to view all recipes of a particular type or theme
 * As a guest/ public user, I want to be able to view all recipes for a specific user.
+* As a guest/ public user, I want to be able to create an account so that I can add my own recipes.
 * As a registered user, I want to be able to log in to my account.
 * As a registered user, I want to be able to log out of my account.
 * As a registered user, I want to be able to add my own recipes.
-* As a registered user, I want to be able to record the complexity of my recipe.
-* As a registered user, I want to be able to detail how many servings my recipe makes.
-* As a registered user, I want to be able to detail the prep time for my recipe.
-* As a registered user, I want to be able to detail the cook time for my recipe.
-* As a registered user, I want to be able to detail the type of meal my recipe is (e.g. Breakfast, Lunch, Starter, Main, Dessert).
-* As a registered user, I want to be able to add the ingredients for my recipe.
-* As a registered user, I want to be able to add the prepration intructions for my recipe.
-* As a registered user, I want to be able to add an image of my meal.
 * As a registered user, I want to be able to edit the details of my own recipes.
 * As a registered user, I want to be able to delete my own recipes.
 * As a registered user, I want to be able to view my own recipes.
@@ -175,6 +167,80 @@ To keep with the cleanness and simplicity of the application, but to offer a cle
 ## Technologies and Tools
 
 ## Features
+### Navigation Bar
+The navbar (collapsable on smaller devices) can be used to navigate to different areas of the site depending on user interaction.
+
+The navbar is fixed so that it can be selected by the user at all times for improved UX/ site navigation.
+
+The links in the nabbar are highlighted when hovered over, to give feedback to the user that they can interact with these links.
+
+The website logo & brand also acts as a link back to the home page, as is standard expectation for users.
+
+The links displayed to the users change depending on whether the visitor is a registered user and in session.
+
+This removes the unnecesary links to login or register, and displays links to view or add their own recipes, as well as log out if required. 
+
+### Footer
+The Footer has been kept very clean and simple, and just displays social media icons/ links. 
+
+Similar to the nav links, these social media links also have some simple styling applied to give feedback to a user when they are hovered over.
+
+### Registration
+This form is only available to users who are not in session. If a user is in session, they will be prompted to log out before they are able to register a new user.
+
+There is a registration function to enable a user to create an account for the application. This is a basic function that requires a user to create a username and password.
+
+There is validation to prevent a username being created multiple times, and there is also validation for a user to reenter their password to help ensure that it has been typed correctly.
+
+Feedback is given to the user if there are any issues with the data being submitted.
+
+Passwords are hashed using bcrypt to keep the sensitive data encoded.
+
+There is a link to the log-in page if a user has already registered.
+
+### Log in
+This form is only available to users who are not in session.
+
+The sign in page is slightly simpler than the registration, and users enter their username and password.
+
+The password is hashed and then compared to the stored, hashed password in the database.
+
+Feedback is given to the user if there are any issues with the data being submitted.
+
+There is a link to the register page if a user needs to create an account.
+
+There is also a log in form in the index.html which is loaded when a user first lands on the site.
+
+### Add Recipe
+This function is only available to a user that is logged in and in session, else they will be prompted to log-in.
+
+Here you can add all the details of your recipe:
+
+* Recipe Name
+* A URL to an image of the recipe/meal
+* Cuisine type
+* Difficulty level
+* Prep time
+* Cooking time
+* Number of servings
+* Any known allergens (a user can select multiple items from a defined list)
+* A list of ingredients (a user can add multiple records for each ingredient)
+* A list of instructions/ preparations to make the recipe/ meal (a user can add multiple records for each step of the process)
+
+Javascript is used to display picklists, and also insert or remove ingredient & preparation elements dependant on user interaction with the form.
+
+There are multiple validations in this form, some validations are to prompt the user to complete an input field, and some validations relate to the formatting of those input fields.
+
+A user can then submit the form which posts the data to the database.
+
+### Edit Recipe
+This function is only available to the user that created the recipe, and the user has to be in session to be able to update the recipe, else they are displayed a message to advise they are not authorised to make changes to the recipe.
+
+This is very similar to the add recipe feature, but the page will display the details previously saved by the user.
+
+The user is then able to amend, add or remove items from the form.
+
+Appropriate validations are still in place to ensure the form is completed correctly.
 
 ## Future Features to implement
 * Add a feature to enable a user to upload their own images, rather than need to specify a URL.
