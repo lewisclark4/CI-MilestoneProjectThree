@@ -151,10 +151,6 @@ label {
   padding: 0 0 10px 10px;
 }
 
-.helper-text{
-    font-size: 10px !important;
-}
-
 /* View recipe*/
 
 .recipeheader {
@@ -169,6 +165,11 @@ label {
   border-radius: 10px;
 }
 
+.recipeinfo {
+  text-decoration: underline;
+  color: #2e7d32;
+  font-weight: 600;
+}
 /* View all recipes*/
 
 .cardimage {

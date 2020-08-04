@@ -5,10 +5,10 @@
     <div class="row center searchtag">
       <h5 class="col s12">Stuck for ideas? Search for a recipe below...</h5>
     </div>
-    <div class="input-field searchbar valign-wrapper">
+    <form class="input-field searchbar valign-wrapper" action="{{url_for('search')}}" method="POST">
       <i class="material-icons prefix">search</i>
-      <input placeholder="Try something new!" type="text" class="validate" />
-    </div>
+      <input placeholder="Try something new!" name="search" type="text" class="validate" />
+    </form>
   </div>
   <!--/Search Tool -->
   <img class="responsive-img" src="{{ url_for('static', filename='images/homeimage.jpg') }}" alt="Recipe image"/>

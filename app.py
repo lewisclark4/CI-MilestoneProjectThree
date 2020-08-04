@@ -149,6 +149,17 @@ def delete_recipe(recipe_id):
     return render_template("myrecipes.html",
                             recipes=mongo.db.recipes.find())
 
+@app.route('/search/', methods=['POST'])
+def search():
+    search_text = request.form['search']
+    return redirect(url_for('search_results', search_text=search_text))
+
+@app.route('/search_results/<search_text>')
+def search_results(search_text):
+    search_results = mongo.db.recipes.find({'$text': {'$search': search_text}})
+    return render_template('recipes.html', recipes=search_results)
+                               
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
