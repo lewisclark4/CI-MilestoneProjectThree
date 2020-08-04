@@ -177,6 +177,13 @@ To keep with the cleanness and simplicity of the application, but to offer a cle
 ## Features
 
 ## Future Features to implement
+* Add a feature to enable a user to upload their own images, rather than need to specify a URL.
+* Add a favourites feature to enable users to mark a recipe as their favourite and have easy visibility of these recipes.
+* Add an upvote function to allow users to like others recipes.
+* Add a comments function to allow users to interact or ask questions about recipes.
+* Add a shopping list feature, to enable a user to create a shopping list using ingredients from a recipe they would like to make.
+* Add further information about a recipe (e.g. calories, macronutrient breakdown & any other nutritional information)
+
 
 ## Testing
 ### General
@@ -201,5 +208,5 @@ To keep with the cleanness and simplicity of the application, but to offer a cle
 * [mdbootstrap](https://mdbootstrap.com/support/jquery/dropdown-needs-2-clicks-to-activate/) for guidance on how to prevent a bug stopping form selctions not working in initial click.
 * [Stackoverflow](https://stackoverflow.com/questions/31859903/get-the-value-of-a-checkbox-in-flask) for guidance on passing a value to MongoDB from the checkbox in my add recipe form.
 * [Stackoverflow](https://stackoverflow.com/questions/9681601/how-can-i-count-the-number-of-elements-with-same-class) for guidance on how to count the number of classes in a page to allow me to use this in my jquery to add/ remove ingredients & preparations.
-* [w3schools](https://www.w3schools.com/tags/att_input_pattern.asp)for guidance on validating the values of text in input fields (allowed me to restrict input in the recipe images to .png & .jpg files).
+* [w3schools](https://www.w3schools.com/tags/att_input_pattern.asp) for guidance on validating the values of text in input fields (allowed me to restrict input in the recipe images to .png & .jpg files).
 * [Stackoverflow](https://stackoverflow.com/questions/48679305/want-to-update-only-value-element-of-specific-key-on-mongodb) for guidance on use of the 'Set' operator to update only the soft_delete field when a user deletes a recipe.
