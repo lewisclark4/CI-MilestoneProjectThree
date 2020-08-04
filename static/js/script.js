@@ -11,7 +11,7 @@ $('.dropdown').click(e => e.stopPropagation());
 
 // Add & Remove Ingredients/ Preparations 
 
- var ingredientCount = 1;
+ var ingredientCount = $('.ingredients').length
 $("#addingredient").on("click", function () {
     $('.ingredients:first').clone().insertBefore('#addingredient').find("input[type='text'], select, textarea").val("")
     ingredientCount += 1;
@@ -25,7 +25,7 @@ $("#removeingredient").on("click", function () {
 });
 
 
-var prepCount = 1;
+var prepCount = $('.preparation').length
 $("#addprep").on("click", function () {
     $('.preparation:first').clone().insertBefore('#addprep').find("input[type='text'], select, textarea").val("");
     prepCount += 1;
