@@ -168,7 +168,7 @@ The secondary green is a deeper darker green and offers a solid contrast, while 
 
 * ![#fff](https://placehold.it/15/fff/000000?text=+) `#fff` - font colour
 * ![#000](https://placehold.it/15/000/000000?text=+) `#000` - font colour
-* ![#f44336] (https://placehold.it/15/f44336/000000?text=+) `#f44336` - font colour
+* ![#f44336](https://placehold.it/15/f44336/000000?text=+) `#f44336` - font colour
 
 To keep with the cleanness and simplicity of the application, but to offer a clear contrast to the green branding, white and black font is also used to ensure clear and easy to read content across the site. Red is also used across the site to indicate errors, or items to be addressed.
 
@@ -190,13 +190,16 @@ To keep with the cleanness and simplicity of the application, but to offer a cle
 ### Acknowledgements
 1. I took guidance from various sources on formatting & styling my web application
 
-* [Stackoverflow] https://stackoverflow.com/questions/37127123/change-color-of-underline-input-and-label-in-materialize-css-framework for guidance on colours on form input fields.
-* [Stackoverflow] https://stackoverflow.com/questions/35261021/change-color-of-checkbox-in-materialize-framework for guidance on styling of checkboxes.
-* [Materializecss] https://materializecss.com/ and their various guides on usage of their frameworks (icons, buttons, forms, inputs, checkboxes etc.).
-* [Tasty] https://tasty.co/ for general inspiration on styling.
+* [Stackoverflow](https://stackoverflow.com/questions/37127123/change-color-of-underline-input-and-label-in-materialize-css-framework) for guidance on colours on form input fields.
+* [Stackoverflow](https://stackoverflow.com/questions/35261021/change-color-of-checkbox-in-materialize-framework) for guidance on styling of checkboxes.
+* [Materializecss](https://materializecss.com/) and their various guides on usage of their frameworks (icons, buttons, forms, inputs, checkboxes, modals etc.).
+* [Tasty](https://tasty.co/) for general inspiration on styling.
 
 2. I used the following to help overcome issues, bugs and hurdles during the development of my application
 
-* [Stackoverflow] https://stackoverflow.com/questions/10426190/how-to-clone-an-element-and-insert-it-multiple-times-in-one-go for guidance on how to insert and remove elements (e.g. ingredients & preparations).
-* [mdbootstrap] https://mdbootstrap.com/support/jquery/dropdown-needs-2-clicks-to-activate/ for guidance on how to prevent a bug stopping form selctions not working in initial click.
-* [Stackoverflow] https://stackoverflow.com/questions/31859903/get-the-value-of-a-checkbox-in-flask for guidance on passing a value to MongoDB from the checkbox in my add recipe form.
+* [Stackoverflow](https://stackoverflow.com/questions/10426190/how-to-clone-an-element-and-insert-it-multiple-times-in-one-go) for guidance on how to insert and remove elements (e.g. ingredients & preparations).
+* [mdbootstrap](https://mdbootstrap.com/support/jquery/dropdown-needs-2-clicks-to-activate/) for guidance on how to prevent a bug stopping form selctions not working in initial click.
+* [Stackoverflow](https://stackoverflow.com/questions/31859903/get-the-value-of-a-checkbox-in-flask) for guidance on passing a value to MongoDB from the checkbox in my add recipe form.
+* [Stackoverflow](https://stackoverflow.com/questions/9681601/how-can-i-count-the-number-of-elements-with-same-class) for guidance on how to count the number of classes in a page to allow me to use this in my jquery to add/ remove ingredients & preparations.
+* [w3schools](https://www.w3schools.com/tags/att_input_pattern.asp)for guidance on validating the values of text in input fields (allowed me to restrict input in the recipe images to .png & .jpg files).
+* [Stackoverflow](https://stackoverflow.com/questions/48679305/want-to-update-only-value-element-of-specific-key-on-mongodb) for guidance on use of the 'Set' operator to update only the soft_delete field when a user deletes a recipe.
