@@ -32,7 +32,7 @@
                     <select id="cuisine" name="cuisine" class="validate" required>
                         <option value="" disabled selected></option>
                         {% for cuisine in cuisines %}
-                            <option value="{{ cuisine.cuisine_type }}">{{ cuisine.cuisine_type }}</option>
+                            <option value="{{ cuisine._id }}">{{ cuisine.cuisine_type }}</option>
                         {% endfor %}
                     </select>
                     <label for="cuisine">Cuisine</label>

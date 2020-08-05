@@ -17,6 +17,7 @@ app.config["MONGO_URI"] =  os.environ.get('MONGO_URI')
 mongo = PyMongo(app)
 users = mongo.db.users
 recipe = mongo.db.recipes
+cuisine = mongo.db.cuisines
 
 @app.route('/')
 @app.route('/home')
@@ -82,19 +83,26 @@ def my_recipes():
 def add_recipe():
     return render_template("addrecipe.html",
                            recipes=mongo.db.recipes.find(),
-                           categories=mongo.db.categories.find(),
                            cuisines=mongo.db.cuisines.find(),
                            difficulty=mongo.db.difficulty.find(),
                            allergens=mongo.db.allergens.find())
 
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
-    data = request.form.to_dict()
-    data.update({'created_by': session['username']})
-    data.update({'soft_delete': False})
-    data.update({'ingredients': request.form.getlist('ingredients')})
-    data.update({'preparation': request.form.getlist('preparation')})
-    data.update({'allergens': request.form.getlist('allergens')})
+    data = {    'created_by': session['username'],
+                'soft_delete': False,
+                'recipe_name': request.form.get('recipe_name'),
+                'image': request.form.get('image'),
+                'cuisine': ObjectId(request.form.get('cuisine')),
+                'difficulty': request.form.get('difficulty'),
+                'prep_time': request.form.get('prep_time'),
+                'cook_time': request.form.get('cook_time'),
+                'serves': request.form.get('serves'),
+                'allergens': request.form.getlist('allergens'),
+                'ingredients': request.form.getlist('ingredients'),
+                'preparation': request.form.getlist('preparation'),
+                'public':request.form.get('public')
+            }
     if request.form.getlist('public'):
         data.update({'public': True}) 
     else:
@@ -106,8 +114,10 @@ def insert_recipe():
 @app.route('/view_recipe/<recipe_id>')
 def view_recipe(recipe_id):
     my_recipe = recipe.find_one({"_id": ObjectId(recipe_id)})
+    cuisine_type = cuisine.find_one({"_id": ObjectId(my_recipe["cuisine"])})
     return render_template('viewrecipe.html',
-                           recipe = my_recipe)
+                           recipe = my_recipe,
+                           cuisines=cuisine_type)
 
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
@@ -125,13 +135,13 @@ def update_recipe(recipe_id):
                 'soft_delete': False,
                 'recipe_name': request.form.get('recipe_name'),
                 'image': request.form.get('image'),
-                'cuisine': request.form.get('cuisine'),
+                'cuisine': ObjectId(request.form.get('cuisine')),
                 'difficulty': request.form.get('difficulty'),
                 'prep_time': request.form.get('prep_time'),
                 'cook_time': request.form.get('cook_time'),
                 'serves': request.form.get('serves'),
                 'allergens': request.form.getlist('allergens'),
-                'ingredients': request.form.getlist('ingredients[]'),
+                'ingredients': request.form.getlist('ingredients'),
                 'preparation': request.form.getlist('preparation[]'),
                 'public':request.form.get('public')
             }

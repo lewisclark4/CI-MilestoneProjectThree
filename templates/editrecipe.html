@@ -39,10 +39,10 @@
           <select id="cuisine" name="cuisine" class="validate" required>
             <option value="" disabled selected></option>
             {% for cuisine in cuisines %} 
-                {% if cuisine.cuisine_type == recipe.cuisine %}
-                    <option value="{{ cuisine.cuisine_type }}" selected>{{ cuisine.cuisine_type }}</option>
+                {% if cuisine._id == recipe.cuisine %}
+                    <option value="{{ cuisine._id }}" selected>{{ cuisine.cuisine_type }}</option>
                 {% else %}
-                    <option value="{{ cuisine.cuisine_type }}">{{ cuisine.cuisine_type }}</option>
+                    <option value="{{ cuisine._id }}">{{ cuisine.cuisine_type }}</option>
                 {% endif %} 
             {% endfor %}
           </select>
