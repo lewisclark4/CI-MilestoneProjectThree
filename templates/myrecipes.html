@@ -12,20 +12,20 @@
     </div>
     <div class="row">
     {% for recipe in recipes %} 
-    {% if session['username'] == recipe.created_by and not recipe.soft_delete%}
+        {% if session['username'] == recipe.created_by and not recipe.soft_delete%}
         <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}">
-        <div class="col s12 m3 card center-align hoverable">
-            {% if recipe.image %}
+            <div class="col s12 m3 card center-align hoverable">
+                {% if recipe.image %}
                 <div>
-                <img class="cardimage" src="{{recipe.image}}" alt="recipe-image" />
+                    <img class="cardimage" src="{{recipe.image}}" alt="recipe-image" />
                 </div>
-            {% else %}
+                {% else %}
                 <div>
-                <img class="cardimage" src="{{ url_for('static', filename='images/defaultmeal.jpg') }}" alt="recipe-image"/>
+                    <img class="cardimage" src="{{ url_for('static', filename='images/defaultmeal.jpg') }}" alt="recipe-image"/>
                 </div>
-            {% endif %}
-            <h5 class="cardname">{{recipe.recipe_name}}</h5>
-        </div>
+                {% endif %}
+                <h5 class="cardname">{{recipe.recipe_name}}</h5>
+            </div>
         </a>
         {% endif %} 
     {% endfor %}

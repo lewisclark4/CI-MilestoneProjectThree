@@ -1,49 +1,49 @@
 {% extends 'base.html'%} {% block content %} 
 {% if 'username' not in session %}
 <section class="container">
-  <h5 class="center headertext"> Register to add your own favourite recipes for your future use, and for everyone else to enjoy!</h5>
-  <div class="card">
-    <!--Flash messages to the user when they attempt to register (havent retyped password correctly, or username already exists) -->
-    {% with messages = get_flashed_messages(with_categories=true) %} 
-        {% if messages %}
-            {% for category, message in messages %}
-                {% if category == 'success' %}
+    <h5 class="center headertext"> Register to add your own favourite recipes for your future use, and for everyone else to enjoy!</h5>
+    <div class="card">
+        <!--Flash messages to the user when they attempt to register (havent retyped password correctly, or username already exists) -->
+        {% with messages = get_flashed_messages(with_categories=true) %} 
+            {% if messages %}
+                {% for category, message in messages %}
+                    {% if category == 'success' %}
                     <p class="center-align">{{ message }}</p>
-                {% endif %} 
-                {% if category == 'error'%}
+                    {% endif %} 
+                    {% if category == 'error'%}
                     <p class="center-align red-text">{{ message }}</p>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-    <div class="row center-align">
-      <form class="col s12" method="POST" action="{{url_for('register')}}">
-        <div class="input-field col s12 valign-wrapper">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="registerusername" name="username" type="text" class="validate" required/>
-          <label for="registerusername">Username</label>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="row center-align">
+            <form class="col s12" method="POST" action="{{url_for('register')}}">
+                <div class="input-field col s12 valign-wrapper">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="registerusername" name="username" type="text" class="validate" required/>
+                    <label for="registerusername">Username</label>
+                </div>
+                <div class="input-field col s12 valign-wrapper">
+                    <i class="material-icons prefix">lock</i>
+                    <input id="registerpassword" name="password" type="password" class="validate" required/>
+                    <label for="registerpassword">Password</label>
+                </div>
+                <div class="input-field col s12 valign-wrapper">
+                    <i class="material-icons prefix">check_circle</i>
+                    <input id="registerpasswordcheck" name="passwordcheck" type="password" class="validate" required/>
+                    <label for="registerpasswordcheck">Re-type password</label>
+                </div>
+                <button class="btn waves-effect submitbutton" type="submit" name="action">Create
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
         </div>
-        <div class="input-field col s12 valign-wrapper">
-          <i class="material-icons prefix">lock</i>
-          <input id="registerpassword" name="password" type="password" class="validate" required/>
-          <label for="registerpassword">Password</label>
-        </div>
-        <div class="input-field col s12 valign-wrapper">
-          <i class="material-icons prefix">check_circle</i>
-          <input id="registerpasswordcheck" name="passwordcheck" type="password" class="validate" required/>
-          <label for="registerpasswordcheck">Re-type password</label>
-        </div>
-        <button class="btn waves-effect submitbutton" type="submit" name="action">Create
-          <i class="material-icons right">send</i>
-        </button>
-      </form>
     </div>
-  </div>
-  <p class="center">Already got an account? &nbsp;<a href="{{url_for('login')}}"><span class="link">Sign in here</span></a></p>
+    <p class="center">Already got an account? &nbsp;<a href="{{url_for('login')}}"><span class="link">Sign in here</span></a></p>
 </section>
 {% else %}
 <section class="container">
-  <h5 class="center">You are already logged in. Please log out first if you need to register a new user</h5>
+    <h5 class="center">You are already logged in. Please log out first if you need to register a new user</h5>
 </section>
 {% endif %} 
 {% endblock %}

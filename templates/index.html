@@ -1,80 +1,80 @@
 {% extends 'base.html'%} {% block content %}
 <section class="container">
-<div class="card center-align">
-    <div class="row center searchtag">
-      <h5 class="col s12">Search for your favourite recipes, ingredients or you can even search by username to find a list of others' recipes..!</h5>
+    <div class="card center-align">
+        <div class="row center searchtag">
+            <h5 class="col s12">Search for your favourite recipes, ingredients or you can even search by username to find a list of others' recipes..!</h5>
+        </div>
+        <form class="input-field searchbar valign-wrapper" action="{{url_for('search')}}" method="POST">
+            <i class="material-icons prefix">search</i>
+            <input placeholder="Try something new!" name="search" type="text" class="validate" />
+        </form>
     </div>
-    <form class="input-field searchbar valign-wrapper" action="{{url_for('search')}}" method="POST">
-      <i class="material-icons prefix">search</i>
-      <input placeholder="Try something new!" name="search" type="text" class="validate" />
-    </form>
-  </div>
-  <div class="row center-align">
-    {% if count == 0 %}
+    <div class="row center-align">
+        {% if count == 0 %}
         <h5 class="red-text">No results were found for this search, please try again</h5>
-    {% endif %}
-    {% for recipe in recipes %}
-        {% if recipe.public and not recipe.soft_delete %}
-        <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}">
-            <div class="col s12 m3 card center-align hoverable">
-                {% if recipe.image %}
-                    <div>
-                    <img class="cardimage" src="{{recipe.image}}" alt="recipe-image" />
-                    </div>
-                {% else %}
-                    <div>
-                    <img class="cardimage" src="{{ url_for('static', filename='images/defaultmeal.jpg') }}" alt="recipe-image"/>
-                    </div>
-                {% endif %}
-                <p class="cardname recipeinfo">{{recipe.recipe_name}}</p>
-            </div>
-        </a>
         {% endif %}
-    {% endfor %}
+        {% for recipe in recipes %}
+            {% if recipe.public and not recipe.soft_delete %}
+            <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}">
+                <div class="col s12 m3 card center-align hoverable">
+                    {% if recipe.image %}
+                    <div>
+                        <img class="cardimage" src="{{recipe.image}}" alt="recipe-image" />
+                    </div>
+                    {% else %}
+                    <div>
+                        <img class="cardimage" src="{{ url_for('static', filename='images/defaultmeal.jpg') }}" alt="recipe-image"/>
+                    </div>
+                    {% endif %}
+                    <p class="cardname recipeinfo">{{recipe.recipe_name}}</p>
+                </div>
+            </a>
+            {% endif %}
+        {% endfor %}
     </div>
-  </div>
-  {% if 'username' not in session %}
-  <!--Sign In -->
-  <h5 class="center headertext">Sign in below, or register to join our community
-    <a href="{{url_for('register')}}"><span class="link"> here</span></a>
-  </h5>
-  <div class="card">
-    {% with messages = get_flashed_messages(with_categories=true) %} 
-        {% if messages %} 
-            {% for category, message in messages %} 
-                {% if category == 'success'%}
+    </div>
+    {% if 'username' not in session %}
+    <!--Sign In -->
+    <h5 class="center headertext">Sign in below, or register to join our community
+        <a href="{{url_for('register')}}"><span class="link"> here</span></a>
+    </h5>
+    <div class="card">
+        {% with messages = get_flashed_messages(with_categories=true) %} 
+            {% if messages %} 
+                {% for category, message in messages %} 
+                    {% if category == 'success'%}
                     <p class="center-align">{{ message }}</p>
-                {% endif %} 
-                {% if category == 'error'%}
+                    {% endif %} 
+                    {% if category == 'error'%}
                     <p class="center-align red-text">{{ message }}</p>
-                {% endif %} 
-            {% endfor %} 
-        {% endif %} 
-    {% endwith %}
-    <div class="row center-align">
-      <form class="col s12" method="POST" action="{{url_for('login')}}">
-        <div class="input-field col s12 l6 valign-wrapper">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="indexusername" name="username" type="text" class="validate" required/>
-          <label for="indexusername">Username</label>
+                    {% endif %} 
+                {% endfor %} 
+            {% endif %} 
+        {% endwith %}
+        <div class="row center-align">
+            <form class="col s12" method="POST" action="{{url_for('login')}}">
+                <div class="input-field col s12 l6 valign-wrapper">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="indexusername" name="username" type="text" class="validate" required/>
+                    <label for="indexusername">Username</label>
+                </div>
+                <div class="input-field col s12 l6 valign-wrapper">
+                    <i class="material-icons prefix">lock</i>
+                    <input id="indexpassword" name="password" type="password" class="validate" required/>
+                    <label for="indexpassword">Password</label>
+                </div>
+                <button class="btn waves-effect submitbutton" type="submit" name="action"> Sign in
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
         </div>
-        <div class="input-field col s12 l6 valign-wrapper">
-          <i class="material-icons prefix">lock</i>
-          <input id="indexpassword" name="password" type="password" class="validate" required/>
-          <label for="indexpassword">Password</label>
+        {% else %}
+        <div class="row center-align">
+            <h5 class="center headertext">...Or show off and share your favourite recipes by adding them
+                <a href="{{url_for('add_recipe')}}"><span class="link"> here!</span></a>
+            </h5>
         </div>
-        <button class="btn waves-effect submitbutton" type="submit" name="action"> Sign in
-          <i class="material-icons right">send</i>
-        </button>
-      </form>
+        {% endif %}
     </div>
-    {% else %}
-    <div class="row center-align">
-      <h5 class="center headertext">...Or show off and share your favourite recipes by adding them
-        <a href="{{url_for('add_recipe')}}"><span class="link"> here!</span></a>
-      </h5>
-    </div>
-    {% endif %}
-  </div>
 </section>
 {% endblock %}

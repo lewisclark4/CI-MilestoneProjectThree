@@ -2,13 +2,11 @@
 <!--If statement to prevent a user navigating to & using the route without being logged in-->
 {% if 'username' not in session %}
 <section class="container">
-<h5 class="center">You aren't currently logged in. Please log in&nbsp;<ahref="{{url_for('login')}}"><span class="link">here</span></a></h5>
+    <h5 class="center">You aren't currently logged in. Please log in&nbsp;<ahref="{{url_for('login')}}"><span class="link">here</span></a></h5>
 </section>
 {% else %}
 <section class="container">
-    <h5 class="center headertext">
-        Got a special recipe you want to share or save for the future? Add it below!!
-    </h5>
+    <h5 class="center headertext">Got a special recipe you want to share or save for the future? Add it below!!    </h5>
     <div class="card">
         <div class="row center-align">
             <form class="col s12" method="POST" action="{{url_for('insert_recipe')}}">
@@ -32,7 +30,7 @@
                     <select id="cuisine" name="cuisine" class="validate" required>
                         <option value="" disabled selected></option>
                         {% for cuisine in cuisines %}
-                            <option value="{{ cuisine._id }}">{{ cuisine.cuisine_type }}</option>
+                        <option value="{{ cuisine._id }}">{{ cuisine.cuisine_type }}</option>
                         {% endfor %}
                     </select>
                     <label for="cuisine">Cuisine</label>
@@ -42,7 +40,7 @@
                     <select id="difficulty" name="difficulty" class="validate" required>
                         <option value="" disabled selected></option>
                         {% for level in difficulty %}
-                            <option value="{{ level._id }}">{{ level.skill_level }}</option>
+                        <option value="{{ level._id }}">{{ level.skill_level }}</option>
                         {% endfor %}
                     </select>
                     <label for="difficulty">Difficulty</label>
@@ -67,7 +65,7 @@
                     <select id="allergens" name="allergens" class="validate" multiple>
                         <option value="" disabled selected></option>
                         {% for allergen in allergens %}
-                            <option value="{{ allergen.allergen_type }}">{{ allergen.allergen_type }}</option>
+                        <option value="{{ allergen.allergen_type }}">{{ allergen.allergen_type }}</option>
                         {% endfor %}
                     </select>
                     <label for="allergens">Allergens</label>
