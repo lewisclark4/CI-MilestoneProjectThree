@@ -19,9 +19,15 @@
     </div>
   </div>
   <div class="card row">
+    {% if recipe.image %}
     <div class="center-align col s12">
       <img src="{{recipe.image}}" alt="recipe image" class="recipeimage" />
     </div>
+    {% else %}
+    <div class="center-align col s12">
+      <img src="{{ url_for('static', filename='images/defaultmeal.jpg') }}" alt="recipe image" class="recipeimage" />
+    </div>
+    {% endif %}
     <div class="row center-align">
       <div class="col s6 m3">
         <i class="material-icons">sort</i><br />Difficulty
