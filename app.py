@@ -15,9 +15,12 @@ app.config["MONGO_DBNAME"] =  os.environ.get('MONGO_DBNAME')
 app.config["MONGO_URI"] =  os.environ.get('MONGO_URI')
 
 mongo = PyMongo(app)
+
 users = mongo.db.users
 recipe = mongo.db.recipes
 cuisine = mongo.db.cuisines
+difficulty = mongo.db.difficulty
+allergens = mongo.db.allergens
 
 @app.route('/')
 @app.route('/home')
@@ -94,7 +97,7 @@ def insert_recipe():
                 'recipe_name': request.form.get('recipe_name'),
                 'image': request.form.get('image'),
                 'cuisine': ObjectId(request.form.get('cuisine')),
-                'difficulty': request.form.get('difficulty'),
+                'difficulty': ObjectId(request.form.get('difficulty')),
                 'prep_time': request.form.get('prep_time'),
                 'cook_time': request.form.get('cook_time'),
                 'serves': request.form.get('serves'),
@@ -115,9 +118,11 @@ def insert_recipe():
 def view_recipe(recipe_id):
     my_recipe = recipe.find_one({"_id": ObjectId(recipe_id)})
     cuisine_type = cuisine.find_one({"_id": ObjectId(my_recipe["cuisine"])})
+    skill_level = difficulty.find_one({"_id": ObjectId(my_recipe["difficulty"])})
     return render_template('viewrecipe.html',
                            recipe = my_recipe,
-                           cuisines=cuisine_type)
+                           cuisines=cuisine_type,
+                           difficulty=skill_level)
 
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
@@ -136,7 +141,7 @@ def update_recipe(recipe_id):
                 'recipe_name': request.form.get('recipe_name'),
                 'image': request.form.get('image'),
                 'cuisine': ObjectId(request.form.get('cuisine')),
-                'difficulty': request.form.get('difficulty'),
+                'difficulty': ObjectId(request.form.get('difficulty')),
                 'prep_time': request.form.get('prep_time'),
                 'cook_time': request.form.get('cook_time'),
                 'serves': request.form.get('serves'),

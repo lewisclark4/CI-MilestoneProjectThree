@@ -53,10 +53,10 @@
           <select id="difficulty" name="difficulty" class="validate" required>
             <option value="" disabled selected></option>
             {% for level in difficulty %} 
-                {% if level.skill_level ==recipe.difficulty %}
-                    <option value="{{ level.skill_level }}" selected>{{ level.skill_level }}</option>
+                {% if level._id == recipe.difficulty %}
+                    <option value="{{ level._id }}" selected>{{ level.skill_level }}</option>
                 {% else %}
-                    <option value="{{ level.skill_level }}">{{ level.skill_level }}</option>
+                    <option value="{{ level._id }}">{{ level.skill_level }}</option>
                 {% endif %} 
             {% endfor %}
           </select>

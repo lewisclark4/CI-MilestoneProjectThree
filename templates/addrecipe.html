@@ -42,7 +42,7 @@
                     <select id="difficulty" name="difficulty" class="validate" required>
                         <option value="" disabled selected></option>
                         {% for level in difficulty %}
-                            <option value="{{ level.skill_level }}">{{ level.skill_level }}</option>
+                            <option value="{{ level._id }}">{{ level.skill_level }}</option>
                         {% endfor %}
                     </select>
                     <label for="difficulty">Difficulty</label>
