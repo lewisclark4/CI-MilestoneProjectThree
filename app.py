@@ -25,7 +25,8 @@ allergens = mongo.db.allergens
 @app.route('/')
 @app.route('/home')
 def index():
-    return render_template("index.html")
+    return render_template("index.html",
+                            recipes=recipe.find())
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -39,7 +40,8 @@ def register():
                               'password': hashpass})
                 session['username'] = request.form['username'].lower()
                 flash('Account Created. You are now logged in' , 'success')
-                return render_template('index.html')
+                return render_template('index.html',
+                                        recipes=recipe.find())
             else:
                 flash('Passwords do not match, please try again.', 'error')
         else:
@@ -56,7 +58,8 @@ def login():
                 user_exists['password']) == user_exists['password']:
                 session["username"] = request.form["username"].lower()
                 flash('Login successful', 'success')
-                return render_template("index.html")
+                return render_template("index.html",
+                                        recipes=recipe.find())
             else:
                 flash('Invalid username/password combination',  'error')
         else:
@@ -71,11 +74,6 @@ def logout():
     session.clear()
     flash('Log out successful. We hope you found something tasty.', 'success')
     return render_template("login.html")
-
-@app.route('/recipes')
-def recipes():
-    return render_template("recipes.html",
-                            recipes=recipe.find())
 
 @app.route('/my_recipes')
 def my_recipes():
@@ -165,7 +163,7 @@ def delete_recipe(recipe_id):
 def search():
     search_results = recipe.find({'$text': {'$search': request.form['search']}})
     count =  recipe.count_documents({'$text': {'$search': request.form['search']}})
-    return render_template('recipes.html', 
+    return render_template('index.html', 
                             recipes=search_results,
                             count=count,
                             search=True)

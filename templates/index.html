@@ -1,17 +1,38 @@
 {% extends 'base.html'%} {% block content %}
-<section class="container homecontainer">
-  <!--Search Tool -->
-  <div class="card center-align">
+<section class="container">
+<div class="card center-align">
     <div class="row center searchtag">
-      <h5 class="col s12">Stuck for ideas? Search for a recipe below...</h5>
+      <h5 class="col s12">Search for your favourite recipes, ingredients or you can even search by username to find a list of others' recipes..!</h5>
     </div>
     <form class="input-field searchbar valign-wrapper" action="{{url_for('search')}}" method="POST">
       <i class="material-icons prefix">search</i>
       <input placeholder="Try something new!" name="search" type="text" class="validate" />
     </form>
   </div>
-  <!--/Search Tool -->
-  <img class="responsive-img" src="{{ url_for('static', filename='images/homeimage.jpg') }}" alt="Recipe image"/>
+  <div class="row center-align">
+    {% if count == 0 %}
+        <h5 class="red-text">No results were found for this search, please try again</h5>
+    {% endif %}
+    {% for recipe in recipes %}
+        {% if recipe.public and not recipe.soft_delete %}
+        <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}">
+            <div class="col s12 m3 card center-align hoverable">
+                {% if recipe.image %}
+                    <div>
+                    <img class="cardimage" src="{{recipe.image}}" alt="recipe-image" />
+                    </div>
+                {% else %}
+                    <div>
+                    <img class="cardimage" src="{{ url_for('static', filename='images/defaultmeal.jpg') }}" alt="recipe-image"/>
+                    </div>
+                {% endif %}
+                <p class="cardname recipeinfo">{{recipe.recipe_name}}</p>
+            </div>
+        </a>
+        {% endif %}
+    {% endfor %}
+    </div>
+  </div>
   {% if 'username' not in session %}
   <!--Sign In -->
   <h5 class="center headertext">Sign in below, or register to join our community
@@ -55,6 +76,5 @@
     </div>
     {% endif %}
   </div>
-  <!--/Sign In -->
 </section>
 {% endblock %}
