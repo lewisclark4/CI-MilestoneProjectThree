@@ -75,20 +75,20 @@ def logout():
 @app.route('/recipes')
 def recipes():
     return render_template("recipes.html",
-                            recipes=mongo.db.recipes.find())
+                            recipes=recipe.find())
 
 @app.route('/my_recipes')
 def my_recipes():
     return render_template("myrecipes.html",
-                            recipes=mongo.db.recipes.find())
+                            recipes=recipe.find())
 
 @app.route('/add_recipe')
 def add_recipe():
     return render_template("addrecipe.html",
-                           recipes=mongo.db.recipes.find(),
-                           cuisines=mongo.db.cuisines.find(),
-                           difficulty=mongo.db.difficulty.find(),
-                           allergens=mongo.db.allergens.find())
+                           recipes=recipe.find(),
+                           cuisines=cuisine.find(),
+                           difficulty=difficulty.find(),
+                           allergens=allergens.find())
 
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
@@ -104,7 +104,6 @@ def insert_recipe():
                 'allergens': request.form.getlist('allergens'),
                 'ingredients': request.form.getlist('ingredients'),
                 'preparation': request.form.getlist('preparation'),
-                'public':request.form.get('public')
             }
     if request.form.getlist('public'):
         data.update({'public': True}) 
@@ -129,10 +128,9 @@ def edit_recipe(recipe_id):
     my_recipe = recipe.find_one({"_id": ObjectId(recipe_id)})
     return render_template("editrecipe.html",
                            recipe=my_recipe,
-                           categories=mongo.db.categories.find(),
-                           cuisines=mongo.db.cuisines.find(),
-                           difficulty=mongo.db.difficulty.find(),
-                           allergens=mongo.db.allergens.find())
+                           cuisines=cuisine.find(),
+                           difficulty=difficulty.find(),
+                           allergens=allergens.find())
 
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
@@ -148,7 +146,6 @@ def update_recipe(recipe_id):
                 'allergens': request.form.getlist('allergens'),
                 'ingredients': request.form.getlist('ingredients'),
                 'preparation': request.form.getlist('preparation[]'),
-                'public':request.form.get('public')
             }
     if request.form.getlist('public'):
         data.update({'public': True}) 
@@ -162,7 +159,7 @@ def update_recipe(recipe_id):
 def delete_recipe(recipe_id):
     mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, {"$set": {"soft_delete": True}})
     return render_template("myrecipes.html",
-                            recipes=mongo.db.recipes.find())
+                            recipes=recipe.find())
 
 @app.route('/search/', methods=['POST'])
 def search():
