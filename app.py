@@ -163,8 +163,12 @@ def delete_recipe(recipe_id):
 
 @app.route('/search/', methods=['POST'])
 def search():
-    search_results = mongo.db.recipes.find({'$text': {'$search': request.form['search']}})
-    return render_template('recipes.html', recipes=search_results)
+    search_results = recipe.find({'$text': {'$search': request.form['search']}})
+    count =  recipe.count_documents({'$text': {'$search': request.form['search']}})
+    return render_template('recipes.html', 
+                            recipes=search_results,
+                            count=count,
+                            search=True)
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
