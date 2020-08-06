@@ -155,7 +155,7 @@ def update_recipe(recipe_id):
 
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
-    mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, {"$set": {"soft_delete": True}})
+    recipe.update({"_id": ObjectId(recipe_id)}, {"$set": {"soft_delete": True}})
     return render_template("myrecipes.html",
                             recipes=recipe.find())
 
