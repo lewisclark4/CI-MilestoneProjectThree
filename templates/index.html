@@ -4,17 +4,21 @@
         <div class="row center searchtag">
             <h5 class="col s12">Search for your favourite recipes, ingredients or you can even search by username to find a list of others' recipes..!</h5>
         </div>
+        <!--Search bar -->
         <form class="input-field searchbar valign-wrapper" action="{{url_for('search')}}" method="POST">
             <i class="material-icons prefix">search</i>
             <input placeholder="Try something new!" name="search" type="text" class="validate" />
         </form>
     </div>
     <div class="row center-align">
+        <!--Display if search result returns no results -->
         {% if count == 0 %}
         <h5 class="red-text">No results were found for this search, please try again</h5>
         {% endif %}
+        <!--Display recipe cards for public recipes -->
         {% for recipe in recipes %}
             {% if recipe.public and not recipe.soft_delete %}
+            <!--Recipe cards with image and recipe name that link to recipe info -->
             <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}">
                 <div class="col s12 m3 card center-align hoverable">
                     {% if recipe.image %}
@@ -32,7 +36,8 @@
             {% endif %}
         {% endfor %}
     </div>
-     <div class="row center-align">
+    <!--Pagination -->
+    <div class="row center-align">
         <ul class="pagination">
             <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
             <li class="active green"><a href="#!">1</a></li>
@@ -40,13 +45,13 @@
             <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
         </ul>
     </div>
-    </div>
     {% if 'username' not in session %}
-    <!--Sign In -->
+    <!--Login card if user not in session -->
     <h5 class="center headertext">Sign in below, or register to join our community
         <a href="{{url_for('register')}}"><span class="link"> here</span></a>
     </h5>
     <div class="card">
+        <!--Flash messages to the user when they attempt to log in (incorrect user/ password or successful log in) -->
         {% with messages = get_flashed_messages(with_categories=true) %} 
             {% if messages %} 
                 {% for category, message in messages %} 
@@ -77,6 +82,7 @@
             </form>
         </div>
         {% else %}
+        <!--Link to add a new recipe if user is in session -->
         <div class="row center-align">
             <h5 class="center headertext">...Or show off and share your favourite recipes by adding them
                 <a href="{{url_for('add_recipe')}}"><span class="link"> here!</span></a>

@@ -1,3 +1,4 @@
+# Import modules
 import os
 from os import path
 from flask import Flask, render_template, redirect, request, url_for, session, redirect, flash
@@ -5,29 +6,36 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import bcrypt
 
+# Import Git ignored file contatining sensitive data
 if path.exists("env.py"):
     import env
 
+# Create app instance
 app = Flask(__name__)
 
+# secret key
 app.config['SECRET_KEY'] =  os.environ.get('SECRET_KEY')
 app.config["MONGO_DBNAME"] =  os.environ.get('MONGO_DBNAME')
+# mongoDB config
 app.config["MONGO_URI"] =  os.environ.get('MONGO_URI')
 
-mongo = PyMongo(app)
 
+# Constant Variables
+mongo = PyMongo(app)
 users = mongo.db.users
 recipe = mongo.db.recipes
 cuisine = mongo.db.cuisines
 difficulty = mongo.db.difficulty
 allergens = mongo.db.allergens
 
+# Index - Displays Public recipes#
 @app.route('/')
 @app.route('/home')
 def index():
     return render_template("index.html",
                             recipes=recipe.find())
 
+# Register - Allows user creation
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -48,7 +56,7 @@ def register():
             flash('This username already exists. Please try again with another username.', 'error')
     return render_template('register.html')
 
-
+# Login - User can log into session
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -68,18 +76,20 @@ def login():
     return render_template("login.html")
     
 
-
+# Logout - User can log out of session
 @app.route('/logout')
 def logout():
     session.clear()
     flash('Log out successful. We hope you found something tasty.', 'success')
     return render_template("login.html")
 
+# My Recipes - View all recipes that a user has added themselves (public or private)
 @app.route('/my_recipes')
 def my_recipes():
     return render_template("myrecipes.html",
                             recipes=recipe.find())
 
+# Add Recipe - Allows user to enter their own recipes
 @app.route('/add_recipe')
 def add_recipe():
     return render_template("addrecipe.html",
@@ -88,6 +98,7 @@ def add_recipe():
                            difficulty=difficulty.find(),
                            allergens=allergens.find())
 
+# Insert Recipe - Submits a recipe to MongoDB 
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
     data = {    'created_by': session['username'],
@@ -111,6 +122,7 @@ def insert_recipe():
     
     return redirect(url_for('add_recipe'))
 
+# View Recipe - Allows a user to view details of a recipe 
 @app.route('/view_recipe/<recipe_id>')
 def view_recipe(recipe_id):
     my_recipe = recipe.find_one({"_id": ObjectId(recipe_id)})
@@ -121,6 +133,7 @@ def view_recipe(recipe_id):
                            cuisines=cuisine_type,
                            difficulty=skill_level)
 
+# Edit Recipe - Allows a user to edit their own recipes
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     my_recipe = recipe.find_one({"_id": ObjectId(recipe_id)})
@@ -130,6 +143,7 @@ def edit_recipe(recipe_id):
                            difficulty=difficulty.find(),
                            allergens=allergens.find())
 
+# Update Recipe - Submits an edited recipe to MongoDB 
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
     data = {    'created_by': session['username'],
@@ -153,12 +167,14 @@ def update_recipe(recipe_id):
            
     return redirect(url_for('view_recipe', recipe_id=recipe_id))
 
+# Delete Recipe - 'soft deletes' a recipe record
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
     recipe.update({"_id": ObjectId(recipe_id)}, {"$set": {"soft_delete": True}})
     return render_template("myrecipes.html",
                             recipes=recipe.find())
 
+# Search - Allows a user to search for recipes and have results displayed.
 @app.route('/search/', methods=['POST'])
 def search():
     search_results = recipe.find({'$text': {'$search': request.form['search']}})

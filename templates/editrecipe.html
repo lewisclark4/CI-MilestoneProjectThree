@@ -1,5 +1,5 @@
 {% extends 'base.html'%} {% block content %}
-<!--If statement to prevent a user navigating to & using the route without being logged in-->
+<!--If statement to display message to user navigating to & using the route without being logged in-->
 {% if session['username'] != recipe.created_by %}
 <section class="container">
     <h5 class="center">You aren't currently logged in, or your user does not have permission to edit this recipe. <br/> Please log in to an authorised user 
@@ -12,6 +12,7 @@
     <div class="card">
         <div class="row center-align">
             <form class="col s12" method="POST" action="{{url_for('update_recipe',recipe_id=recipe._id)}}">
+                <!--Public checkbox dependant on recipe setting-->
                 {% if recipe.public == true %}
                 <div>
                     <input type="checkbox" class="filled-in checkbox" name="public" id="public" checked="checked"/>
@@ -23,17 +24,20 @@
                     <label for="public">Public (uncheck to set to private)</label>
                 </div>
                 {% endif %}
+                <!--Existing Recipe name -->
                 <div class="input-field col s12 m6 valign-wrapper">
                     <i class="material-icons prefix">restaurant</i>
                     <input id="recipe_name" name="recipe_name" type="text" class="validate" value="{{recipe.recipe_name}}" required/>
                     <label for="recipe_name">Recipe Name</label>
                 </div>
+                <!--Existing Image -->
                 <div class="input-field col s12 m6 valign-wrapper">
                     <i class="material-icons prefix">party_mode</i>
                     <input id="image" name="image" type="text" class="validate" pattern="(https?://.+)(jpe?g|png)" value="{{recipe.image}}"/>
                     <label for="image">Image URL</label>
                     <span class="helper-text">Insert '.jpg' or '.png' URL </span>
                 </div>
+                <!--Existing cuisine selection -->
                 <div class="input-field col s12 m6 valign-wrapper dropdown">
                     <i class="material-icons prefix">language</i>
                     <select id="cuisine" name="cuisine" class="validate" required>
@@ -48,6 +52,7 @@
                     </select>
                     <label for="cuisine">Cuisine</label>
                 </div>
+                <!--Existing difficulty selection -->
                 <div class="input-field col s12 m6 valign-wrapper dropdown">
                     <i class="material-icons prefix">sort</i>
                     <select id="difficulty" name="difficulty" class="validate" required>
@@ -61,22 +66,26 @@
                         {% endfor %}
                     </select>
                     <label for="difficulty">Difficulty</label>
+                <!--Existing prep time -->
                 </div>
                     <div class="input-field col s12 m6 valign-wrapper center">
                     <i class="material-icons prefix">timer</i>
                     <input id="prep_time" name="prep_time" type="number" class="validate" min="1" value="{{recipe.prep_time}}" required/>
                     <label for="prep_time">Prep Time (mins)</label>
                 </div>
+                <!--Existing cook time -->
                 <div class="input-field col s12 m6 valign-wrapper">
                     <i class="material-icons prefix">timelapse</i>
                     <input id="cook_time" name="cook_time" type="number" class="validate" min="1" value="{{recipe.cook_time}}" required/>
                     <label for="cook_time">Cook Time (mins)</label>
                 </div>
+                <!--Existing servings -->
                 <div class="input-field col s12 m6 valign-wrapper">
                     <i class="material-icons prefix">people</i>
                     <input id="serves" name="serves" type="number" class="validate" min="1" value="{{recipe.serves}}" required/>
                     <label for="serves">Serves</label>
                 </div>
+                <!--Existing allergen selections -->
                 <div class="input-field col s12 m6 valign-wrapper dropdown">
                     <i class="material-icons prefix">warning</i>
                     <select id="allergens" name="allergens" class="validate" multiple>
@@ -91,6 +100,7 @@
                     </select>
                     <label for="allergens">Allergens</label>
                 </div>
+                <!--Existing ingredients -->
                 <div class="additem left-align">
                     {% for ingredient in recipe.ingredients %}
                     <div class="ingredients input-field col s12 valign-wrapper">
@@ -99,13 +109,16 @@
                         <label for="ingredients">Ingredients</label>
                     </div>
                     {% endfor %}
+                    <!--Add button-->
                     <a id="addingredient" class="btn waves-effect submitbutton">
                         <i class="material-icons center">add_box</i>
                     </a>
+                    <!--Remove button-->
                     <a id="removeingredient" class="btn waves-effect removebutton">
                         <i class="material-icons center">indeterminate_check_box</i>
                     </a>
                 </div>
+                <!--Existing preparations -->
                 <div class="additem left-align">
                     {% for prep in recipe.preparation %}
                     <div class="preparation input-field col s12 valign-wrapper">
@@ -114,13 +127,16 @@
                         <label for="preparation">Preparation</label>
                     </div>
                     {% endfor %}
+                    <!--Add button-->
                     <a id="addprep" class="btn waves-effect submitbutton">
                         <i class="material-icons center">add_box</i>
                     </a>
+                    <!--Remove button-->
                     <a id="removeprep" class="btn waves-effect removebutton">
                         <i class="material-icons center">indeterminate_check_box</i>
                     </a>
                 </div>
+                <!--Update button-->
                 <button class="btn waves-effect submitbutton" type="submit" name="action">Update
                     <i class="material-icons right">send</i>
                 </button>

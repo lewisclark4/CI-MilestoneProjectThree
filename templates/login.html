@@ -19,21 +19,25 @@
         {% endwith %}
         <div class="row center-align">
             <form class="col s12" method="POST" action="{{url_for('login')}}">
+                <!--Username input -->
                 <div class="input-field col s12 valign-wrapper">
                     <i class="material-icons prefix">account_circle</i>
                     <input id="loginusername" name="username" type="text" class="validate" required/>
                     <label for="loginusername">Username</label>
                 </div>
+                <!--Password input -->
                 <div class="input-field col s12 valign-wrapper">
                     <i class="material-icons prefix">lock</i>
                     <input id="loginpassword" name="password" type="password" class="validate" required/>
                     <label for="loginpassword">Password</label>
                 </div>
+                <!--Login input -->
                 <button class="btn waves-effect submitbutton" type="submit" name="action">Sign In
                     <i class="material-icons right">send</i>
                 </button>
             </form>
         </div>
+    <!--Link to register -->
     </div>
     <p class="center">Need an account? &nbsp;<a href="{{url_for('register')}}"><span class="link">Register here</span></a></p>
 </section>
