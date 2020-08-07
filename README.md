@@ -29,6 +29,8 @@ We want our brand to spread far and wide and to encourage the world to give thie
 
 ## Live site
 
+The deployed site can be found at [Foodology](https://foodology.herokuapp.com/).
+
 ## UXD
 ### User stories
 * As a guest/ public user, I want to be able to search for recipes for a particular meal.
@@ -132,7 +134,12 @@ As defined the scope, we can create block content for:
 </p>
 </details>
 
-
+<details>
+<summary>Schema overview</summary>
+<p align="center">
+    <img height="400" src="https://github.com/lewisclark4/CI-MilestoneProjectThree/blob/master/wireframes/schema.png" alt="Add, edit or delete template wireframe">
+</p>
+</details>
 ### Surface
 #### Font
 In-keeping with the clean, modern & simplistic design for the application, the font 'Raleway' was chosen as the primary font for this site.
@@ -164,7 +171,58 @@ The secondary green is a deeper darker green and offers a solid contrast, while 
 
 To keep with the cleanness and simplicity of the application, but to offer a clear contrast to the green branding, white and black font is also used to ensure clear and easy to read content across the site. Red is also used across the site to indicate errors, or items to be addressed.
 
+[Back to Top](#overview)
+
 ## Technologies and Tools
+
+The following is a list of tools and technologies used to create the web application
+* [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
+    - Used as the main language for the templates
+* [CSS3](https://www.w3.org/Style/CSS/current-work.en.html)
+    - Used for styling the webpage
+* [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+    - Used mostly for DOM manipulation upon user interaction
+* [Python](https://www.python.org/)
+    - Used for backend data manipulation
+* [Materialize](https://materializecss.com/)
+    - Used as the main frontend framework
+* [Google fonts](https://fonts.google.com/)
+    - Used for website fonts
+* [Font Awesome](https://fontawesome.com/)
+    - To utilise the icon set alongside materialize
+* [jQuery](https://jquery.com/)
+    - Used to initialize some of the materialize components.
+* [Flask](https://palletsprojects.com/p/flask/)
+    - Used as the main framework for my application
+* [Jinja2 ](https://pypi.org/project/Jinja2/)
+    - Used as the main language for the flask templates
+* [Pymongo](https://docs.mongodb.com/drivers/pymongo)
+    - Used to enable the application to communicate with the mongoDB database
+* [MongoDB](https://www.mongodb.com/cloud/atlas)
+    - Used as my database host
+* [GitHub](https://github.com/)
+    - Used to store my project source code
+* [Gitpod](https://www.gitpod.io/)
+    - Used as my IDE
+* [Heroku](https://www.heroku.com/)
+    - Used to host the website
+
+### Other Tools
+
+* [Cacoo](https://cacoo.com/)
+    - Used to build my Wireframes
+* [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools)
+    - Used to check site responsiveness, and also help identify and fix bugs
+* [W3C Markup Validation Service](https://validator.w3.org/)
+    - Used to validate HTML
+* [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
+    - Used to validate css
+* [JSHint](https://jshint.com/)
+    - Used to validate Javascript
+* [PEP8 Online](http://pep8online.com/)
+    - Used to validate Python
+
+[Back to Top](#overview)
 
 ## Features
 ### Navigation Bar
@@ -212,6 +270,8 @@ There is a link to the register page if a user needs to create an account.
 There is also a log in form in the index.html which is loaded when a user first lands on the site.
 
 ### Add Recipe
+**C**RUD **C**reate or 'add' a new recipe.
+
 This function is only available to a user that is logged in and in session, else they will be prompted to log-in.
 
 Here you can add all the details of your recipe:
@@ -233,7 +293,21 @@ There are multiple validations in this form, some validations are to prompt the 
 
 A user can then submit the form which posts the data to the database.
 
+### Search recipes
+This function is available to all users on the recipes/ index page.
+
+This allows a user to enter a search for a key word (e.g. a recipe name, an ingredient or a username), and any applicable results will be returned.
+
+If there are no results returned, then a message is presented to the user to advise to try another search.
+
+### View Recipe
+C**R**UD -  **R**ead or 'view' recipes, either public or private.
+
+This is available to all users to select a recipe from the public or private recipe pages, and be able to view the details of that recipe, and the image that has been provided.
+
 ### Edit Recipe
+CR**U**D **U**pdate or 'edit' a recipe.
+
 This function is only available to the user that created the recipe, and the user has to be in session to be able to update the recipe, else they are displayed a message to advise they are not authorised to make changes to the recipe.
 
 This is very similar to the add recipe feature, but the page will display the details previously saved by the user.
@@ -241,6 +315,18 @@ This is very similar to the add recipe feature, but the page will display the de
 The user is then able to amend, add or remove items from the form.
 
 Appropriate validations are still in place to ensure the form is completed correctly.
+
+### Delete Recipe
+CRU**D** Delete or 'remove' a user's own recipes.
+
+This function is only available to the user that created the recipe, and the user has to be in session to be able to update the recipe, else they are displayed a message to advise they are not able to delete the recipe
+
+This function does not fully delete the recipe from the database, it sets a boolean field called 'soft_delete' to True.
+
+This in turn prevents the recipe being displayed as either a public or private recipe.
+
+A user is prompted to confirm they wish to delete the recipe, and is able to cancel at this stage.
+
 
 ## Future Features to implement
 * Add a feature to enable a user to upload their own images, rather than need to specify a URL.
@@ -250,15 +336,24 @@ Appropriate validations are still in place to ensure the form is completed corre
 * Add a shopping list feature, to enable a user to create a shopping list using ingredients from a recipe they would like to make.
 * Add further information about a recipe (e.g. calories, macronutrient breakdown & any other nutritional information)
 
+[Back to Top](#overview)
 
 ## Testing
 ### General
 ### Bugs Encoutered & Fixed
 
+[Back to Top](#overview)
+
 ## Deployment
+
+[Back to Top](#overview)
 
 ## Credits
 ### Content
+Recipe ideas we all taken from [BBC Good Food](https://www.bbcgoodfood.com/), although ingredients & recipe details were not carried over verbatim.
+
+All images have been source from the [Pixabay](https://pixabay.com/) images library, and are all free for use, sharing or modification.
+
 ### Images
 ### Acknowledgements
 1. I took guidance from various sources on formatting & styling my web application
@@ -276,3 +371,11 @@ Appropriate validations are still in place to ensure the form is completed corre
 * [Stackoverflow](https://stackoverflow.com/questions/9681601/how-can-i-count-the-number-of-elements-with-same-class) for guidance on how to count the number of classes in a page to allow me to use this in my jquery to add/ remove ingredients & preparations.
 * [w3schools](https://www.w3schools.com/tags/att_input_pattern.asp) for guidance on validating the values of text in input fields (allowed me to restrict input in the recipe images to .png & .jpg files).
 * [Stackoverflow](https://stackoverflow.com/questions/48679305/want-to-update-only-value-element-of-specific-key-on-mongodb) for guidance on use of the 'Set' operator to update only the soft_delete field when a user deletes a recipe.
+* [MongoDB](https://docs.mongodb.com/manual/text-search/) for guidance on creating my search function.
+* [Stackoverflow](https://stackoverflow.com/questions/16073865/search-by-objectid-in-mongodb-with-pymongo) for guidance on storing object IDs in my database tables and then calling data back from them.
+
+3. General acknowledgements
+
+* [Pretty Printed Youtube](https://www.youtube.com/channel/UC-QDfvrRIDB6F0bIO4I4HkQ) I have been watching various videos on this channel on use of python and flask to help supplement my learning from Code Institute.
+
+[Back to Top](#overview)
