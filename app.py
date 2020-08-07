@@ -2,7 +2,7 @@
 import os
 from os import path
 from flask import Flask, render_template, redirect, request, url_for, session, redirect, flash
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 import bcrypt
 
