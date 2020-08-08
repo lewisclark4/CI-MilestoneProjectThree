@@ -48,7 +48,7 @@ def register():
                               "password": hashpass})
                 session["username"] = request.form["username"].lower()
                 flash("Account Created. You are now logged in" , "success")
-                return redirect(url_for('index'))
+                return redirect(url_for("index"))
             else:
                 flash("Passwords do not match, please try again.", "error")
         else:
@@ -64,7 +64,7 @@ def login():
             if bcrypt.hashpw(request.form["password"].encode("utf-8"),
                 user_exists["password"]) == user_exists["password"]:
                 session["username"] = request.form["username"].lower()
-                return redirect(url_for('index'))
+                return redirect(url_for("index"))
             else:
                 flash("Invalid username/password combination",  "error")
         else:
@@ -77,7 +77,7 @@ def login():
 def logout():
     session.clear()
     flash("Log out successful. We hope you found something tasty.", "success")
-    return render_template("login.html")
+    return redirect(url_for("login"))
 
 # My Recipes - View all recipes that a user has added themselves (public or private)
 @app.route("/my_recipes")
@@ -115,8 +115,8 @@ def insert_recipe():
     else:
         data.update({"public": False}) 
     recipe.insert_one(data)
-    new_recipe = recipe.find_one({"recipe_name": data['recipe_name']})['_id']
-    return redirect(url_for('view_recipe', recipe_id=new_recipe))
+    new_recipe = recipe.find_one({"recipe_name": data["recipe_name"]})["_id"]
+    return redirect(url_for("view_recipe", recipe_id=new_recipe))
 
 # View Recipe - Allows a user to view details of a recipe 
 @app.route("/view_recipe/<recipe_id>")
@@ -163,15 +163,14 @@ def update_recipe(recipe_id):
            
     return redirect(url_for("view_recipe", recipe_id=recipe_id))
 
-# Delete Recipe - Allows normal user to "soft delete" a recipe record, but enables the "admin" user to delete the record from the db.
+# Delete Recipe - Allows recipe owner to "soft delete" a recipe record, but enables the "admin" user to delete the record from the db.
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     if session["username"] != "admin":
         recipe.update({"_id": ObjectId(recipe_id)}, {"$set": {"soft_delete": True}})
     else: 
         recipe.remove({"_id": ObjectId(recipe_id)})
-    return render_template("myrecipes.html",
-                            recipes=recipe.find())
+    return redirect(url_for("my_recipes", recipes=recipe.find())
 
 # Search - Allows a user to search for recipes and have results displayed.
 @app.route("/search/", methods=["POST"])
