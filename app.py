@@ -48,8 +48,7 @@ def register():
                               "password": hashpass})
                 session["username"] = request.form["username"].lower()
                 flash("Account Created. You are now logged in" , "success")
-                return render_template("index.html",
-                                        recipes=recipe.find())
+                return redirect(url_for('index'))
             else:
                 flash("Passwords do not match, please try again.", "error")
         else:
@@ -65,14 +64,11 @@ def login():
             if bcrypt.hashpw(request.form["password"].encode("utf-8"),
                 user_exists["password"]) == user_exists["password"]:
                 session["username"] = request.form["username"].lower()
-                flash("Login successful", "success")
-                return render_template("index.html",
-                                        recipes=recipe.find())
+                return redirect(url_for('index'))
             else:
                 flash("Invalid username/password combination",  "error")
         else:
             flash("Invalid username/password combination",  "error")
-    
     return render_template("login.html")
     
 
@@ -119,8 +115,8 @@ def insert_recipe():
     else:
         data.update({"public": False}) 
     recipe.insert_one(data)
-    
-    return redirect(url_for("add_recipe"))
+    new_recipe = recipe.find_one({"recipe_name": data['recipe_name']})['_id']
+    return redirect(url_for('view_recipe', recipe_id=new_recipe))
 
 # View Recipe - Allows a user to view details of a recipe 
 @app.route("/view_recipe/<recipe_id>")
