@@ -86,7 +86,7 @@
             {% endif %}
         </div>
     </div>
-    {% if session['username'] == recipe.created_by %}
+    {% if session['username'] == recipe.created_by or session['username'] == "admin" %}
         <div class="row">
             <!--Edit button-->
             <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn waves-effect submitbutton" type="submit" name="action">Edit

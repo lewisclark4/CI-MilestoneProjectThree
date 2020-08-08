@@ -1,7 +1,7 @@
 # Import modules
 import os
 from os import path
-from flask import Flask, render_template, redirect, request, url_for, session, redirect, flash
+from flask import Flask, render_template, redirect, request, url_for, session, redirect, flash, jsonify
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 import bcrypt
@@ -167,10 +167,13 @@ def update_recipe(recipe_id):
            
     return redirect(url_for('view_recipe', recipe_id=recipe_id))
 
-# Delete Recipe - 'soft deletes' a recipe record
+# Delete Recipe - Allows normal user to 'soft delete' a recipe record, but enables the 'admin' user to delete the record from the db.
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
-    recipe.update({"_id": ObjectId(recipe_id)}, {"$set": {"soft_delete": True}})
+    if session['username'] != 'admin':
+        recipe.update({"_id": ObjectId(recipe_id)}, {"$set": {"soft_delete": True}})
+    else: 
+        recipe.remove({"_id": ObjectId(recipe_id)})
     return render_template("myrecipes.html",
                             recipes=recipe.find())
 
