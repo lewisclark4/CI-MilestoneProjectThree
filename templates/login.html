@@ -1,4 +1,4 @@
-{% extends 'base.html'%} {% block content %}
+{% extends "base.html"%} {% block content %}
 <section class="container">
     <h5 class="center headertext">
         Been testing out some new ideas? Log in and share with our community!
@@ -8,10 +8,10 @@
         {% with messages = get_flashed_messages(with_categories=true) %} 
             {% if messages %}
                 {% for category, message in messages %}
-                    {% if category == 'success' %}
+                    {% if category == "success" %}
                     <p class="center-align">{{ message }}</p>
                     {% endif %} 
-                    {% if category == 'error'%}
+                    {% if category == "error"%}
                     <p class="center-align red-text">{{ message }}</p>
                     {% endif %}
                 {% endfor %}

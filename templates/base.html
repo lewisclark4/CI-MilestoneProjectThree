@@ -28,7 +28,7 @@
             <a href="#" data-activates="mobile-demo" class="button-collapse">
                 <i class="material-icons">menu</i>
             </a>
-            {% if 'username' not in session %}
+            {% if "username" not in session %}
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="{{url_for('index')}}" class="nav-item">Recipes</a></li>
                 <li><a href="{{url_for('login')}}" class="nav-item">Login</a></li>

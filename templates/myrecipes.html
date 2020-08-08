@@ -1,6 +1,6 @@
-{% extends 'base.html'%} {% block content %}
+{% extends "base.html"%} {% block content %}
 <!--If statement to display message to user navigating to & using the route without being logged in-->
-{% if 'username' not in session %}
+{% if "username" not in session %}
 <section class="container">
     <h5 class="center">You aren't currently logged in. Please log in&nbsp;<ahref="{{url_for('login')}}"><span class="link">here</span></a></h5>
 </section>
@@ -15,7 +15,7 @@
     <div class="row">
     <!--Display recipes a user has already added (and not deleted) that are public or private -->
     {% for recipe in recipes %} 
-        {% if session['username'] == recipe.created_by and not recipe.soft_delete%}
+        {% if session["username"] == recipe.created_by and not recipe.soft_delete%}
         <!--Recipe cards with image and recipe name that link to recipe info -->
         <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}">
             <div class="col s12 m3 card center-align hoverable">
