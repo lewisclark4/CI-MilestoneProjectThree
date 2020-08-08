@@ -170,7 +170,7 @@ def delete_recipe(recipe_id):
         recipe.update({"_id": ObjectId(recipe_id)}, {"$set": {"soft_delete": True}})
     else: 
         recipe.remove({"_id": ObjectId(recipe_id)})
-    return redirect(url_for("my_recipes", recipes=recipe.find())
+    return redirect(url_for("my_recipes", recipes=recipe.find()))
 
 # Search - Allows a user to search for recipes and have results displayed.
 @app.route("/search/", methods=["POST"])

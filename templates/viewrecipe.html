@@ -1,6 +1,6 @@
 {% extends "base.html"%} {% block content %}
 <section class="container">
-    <div class="row center-align">
+    <div class="row card center-align">
         <!--Recipe name-->
         <h3>{{ recipe.recipe_name }}</h3>
         <div class="row center-align recipeheader">
@@ -19,29 +19,33 @@
         </div>
     </div>
     <!--Recipe image-->
-    <div class="card row">
+    <div class="row center-align">
+        <div class="col s12">
         {% if recipe.image %}
-        <div class="center-align col s12">
-            <img src="{{recipe.image}}" alt="recipe image" class="recipeimage" />
-        </div>
-        {% else %}
-        <div class="center-align col s12">
-            <img src="{{ url_for('static', filename='images/defaultmeal.jpg') }}" alt="recipe image" class="recipeimage" />
-        </div>
+            <div class="s12">
+                <img src="{{recipe.image}}" alt="recipe image" class="recipeimage" />
+            </div>
+            {% else %}
+            <div class="s12">
+                <img src="{{ url_for('static', filename='images/defaultmeal.jpg') }}" alt="recipe image" class="recipeimage" />
+            </div>
         {% endif %}
-        <div class="row center-align">
+        </div>
+    </div>
+    <div class="row card center-align">
+        <div class="col s12">
             <!--Recipe difficulty-->
             <div class="col s6 m3">
                 <i class="material-icons">sort</i><br />Difficulty
                 <p class="recipeinfo">{{difficulty.skill_level}}</p>
             </div>
             <!--Recipe Prep time-->
-            <div class="col s6 m3 ">
+            <div class="col s6 m3">
                 <i class="material-icons">timer</i><br />Prep Time
                 <p class="recipeinfo">{{recipe.prep_time}} mins</p>
             </div>
             <!--Recipe Cook time-->
-            <div class="col s6 m3 ">
+            <div class="col s6 m3">
                 <i class="material-icons">timelapse</i><br />Cook Time
                 <p class="recipeinfo">{{recipe.cook_time}} mins</p>
             </div>
@@ -51,17 +55,21 @@
                 <p class="recipeinfo">{{recipe.serves}}</p>
             </div>
         </div>
-        <!--Recipe Allergens-->
-        <div class="col s12">
-        {% if recipe.allergens|length >0 %}
-        <p>This recipe contains: 
+    </div>
+    <!--Recipe Allergens-->
+    <div class="row card">
+        <div class="col s12 center-align">
+            {% if recipe.allergens|length >0 %}
+            <p class = "allergens">This recipe contains: 
             {% for allergen in recipe.allergens %}
             <span><i class="tiny material-icons red-text">error_outline</i>{{ allergen}}</span>&nbsp; 
             {% endfor %}
-        </p>
-        {% endif %}
+            </p>
+            {% endif %}
         </div>
     </div>
+        
+       
     <div class="card row">
         <div class="col s12 m6 left-align">
             <h5><i class="material-icons prefix">list</i>Ingredients</h5>

@@ -159,8 +159,7 @@ label {
 }
 
 .recipeimage {
-  margin-top: 2em;
-  max-width: 80%;
+  max-width: 100%;
   max-height: 40vh;
   object-fit: cover;
   border-radius: 10px;
@@ -171,6 +170,12 @@ label {
   color: #2e7d32;
   font-weight: 600;
 }
+
+.allergens {
+  font-size: 1em;
+  font-weight: 600;
+}
+
 /* View all recipes*/
 
 .cardimage {
