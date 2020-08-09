@@ -37,10 +37,13 @@
     <!--Pagination -->
     <div class="row center-align">
         <ul class="pagination">
-            <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-            <li class="active green"><a href="#!">1</a></li>
-            <li class="waves-effect"><a href="#!">2</a></li>
-            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+        {% for page in pages %}
+            {% if page == page_number %}
+            <li class="active green"><a href="#!">{{ page }}</a></li>
+            {% else %}
+            <li class="waves-effect"><a href="{{ url_for('my_recipes', page_number=page) }}">{{ page }}</a></li>
+            {% endif %}
+        {% endfor %}        
         </ul>
     </div>
 </section>

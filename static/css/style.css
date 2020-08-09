@@ -46,6 +46,7 @@ h5 {
 .submitbutton {
   background-color: #2e7d32;
   color: #fff;
+  margin-top: 1em;
 }
 
 .submitbutton:hover {
@@ -56,7 +57,9 @@ h5 {
 .removebutton {
   background-color: #f44336;
   color: #fff;
+  margin-top: 1em;
 }
+
 
 .removebutton:hover {
   color: #000;
