@@ -2,9 +2,10 @@
 import os
 from os import path
 from flask import Flask, render_template, redirect, request, url_for, session, redirect, flash, jsonify
-from flask_pymongo import PyMongo, pymongo
+from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import bcrypt
+import math
 
 # Import Git ignored file contatining sensitive data
 if path.exists("env.py"):
@@ -13,12 +14,10 @@ if path.exists("env.py"):
 # Create app instance
 app = Flask(__name__)
 
-# secret key
+# mongoDB config
 app.config["SECRET_KEY"] =  os.environ.get("SECRET_KEY")
 app.config["MONGO_DBNAME"] =  os.environ.get("MONGO_DBNAME")
-# mongoDB config
 app.config["MONGO_URI"] =  os.environ.get("MONGO_URI")
-
 
 # Constant Variables
 mongo = PyMongo(app)
@@ -32,8 +31,18 @@ allergens = mongo.db.allergens
 @app.route("/")
 @app.route("/home")
 def index():
+    recipes = recipe.find()
+    limit = 4
+    page_number = int(request.args.get('page_number', 1))
+    count = recipe.count_documents({})
+    skip = (page_number - 1) * limit
+    recipes.skip(skip).limit(limit)
+    pages = range(1, int(math.ceil(count / limit)))
     return render_template("index.html",
-                            recipes=recipe.find())
+                            recipes=recipes,
+                            page_number=page_number,
+                            pages=pages,
+                            count=count)
 
 # Register - Allows user creation
 @app.route("/register", methods=["GET", "POST"])
