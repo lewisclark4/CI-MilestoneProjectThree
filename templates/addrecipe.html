@@ -2,7 +2,7 @@
 <!--If statement to display message to user navigating to & using the route without being logged in-->
 {% if "username" not in session %}
 <section class="container">
-    <h5 class="center">You aren't currently logged in. Please log in&nbsp;<a href="{{url_for('login')}}"><span class="link">here</span></a></h5>
+    <h5 class="center">You aren't currently logged in. Please log in&nbsp;<a href="{{url_for('login')}}" aria-label="Log in"><span class="link">here</span></a></h5>
 </section>
 {% else %}
 <section class="container">
