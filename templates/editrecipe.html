@@ -2,8 +2,8 @@
 <!--If statement to display message to user navigating to & using the route without being logged in-->
 {% if session["username"] != recipe.created_by %}
 <section class="container">
-    <h5 class="center">You aren't currently logged in, or your user does not have permission to edit this recipe. <br/> Please log in to an authorised user 
-        <a href="{{url_for('login')}}" aria-label="Log in"><span class="link">here</span></a>
+    <h5 class="center">You aren't currently logged in, or your user does not have permission to edit this recipe. <br/> Please use an authorised user. 
+        <a href="{{url_for('login')}}" aria-label="Log in"><span class="link">Log in here</span></a>
     </h5>
 </section>
 {% else %}
