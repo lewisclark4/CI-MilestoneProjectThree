@@ -34,18 +34,6 @@
         {% endif %} 
     {% endfor %}
     </div>
-    <!--Pagination -->
-    <div class="row center-align">
-        <ul class="pagination">
-        {% for page in pages %}
-            {% if page == page_number %}
-            <li class="active green"><a href="#!">{{ page }}</a></li>
-            {% else %}
-            <li class="waves-effect"><a href="{{ url_for('my_recipes', page_number=page) }}">{{ page }}</a></li>
-            {% endif %}
-        {% endfor %}        
-        </ul>
-    </div>
 </section>
 {% endif %} 
 {% endblock %}

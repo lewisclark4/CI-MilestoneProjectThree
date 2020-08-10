@@ -34,16 +34,16 @@ limit = 8
 @app.route("/home")
 def index():
     recipes = recipe.find()
-
     count = recipe.count_documents({})
     page_number = int(request.args.get('page_number', 1))
     skip = (page_number - 1) * limit
     recipes.skip(skip).limit(limit)
-    pages = range(1, int(math.ceil(count / limit)) +1)
+    pages = int(math.ceil(count / limit))
+    total_pages = range(1, pages +1)
     return render_template("index.html",
                             recipes=recipes,
                             page_number=page_number,
-                            pages=pages,
+                            pages=total_pages,
                             count=count)
 
 # Register - Allows user creation
@@ -93,18 +93,8 @@ def logout():
 # My Recipes - View all recipes that a user has added themselves (public or private)
 @app.route("/my_recipes")
 def my_recipes():
-    recipes = recipe.find()
-    count = recipe.count_documents({})
-    page_number = int(request.args.get('page_number', 1))
-    skip = (page_number - 1) * limit
-    recipes.skip(skip).limit(limit)
-    pages = range(1, int(math.ceil(count / limit)) +1)
-    return render_template("myrecipes.html",
-                            recipes=recipes,
-                            page_number=page_number,
-                            pages=pages,
-                            count=count)
-
+    return render_template("myrecipes.html",	   
+                            recipes=recipe.find())
 
 # Add Recipe - Allows user to enter their own recipes
 @app.route("/add_recipe")
