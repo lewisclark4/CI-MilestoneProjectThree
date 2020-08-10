@@ -1,5 +1,10 @@
 {% extends "base.html"%} {% block content %}
 <section class="container">
+    {% if session["username"] == recipe.created_by %}
+    <a href="{{url_for('my_recipes')}}" class="modal-close waves-effect btn submitbutton">Back to My Recipes</a>
+    {% else %}
+    <a href="{{url_for('index')}}" class="modal-close waves-effect btn submitbutton">Back to Recipes</a>
+    {% endif %}
     <div class="row card center-align">
         <!--Recipe name-->
         <h3>{{ recipe.recipe_name }}</h3>
