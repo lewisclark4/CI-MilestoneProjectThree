@@ -1,4 +1,5 @@
 {% extends "base.html"%} {% block content %}
+{% if "username" not in session %}
 <section class="container">
     <h5 class="center header-text">
         Been testing out some new ideas? Log in and share with our community!
@@ -41,4 +42,9 @@
     </div>
     <p class="center">Need an account? &nbsp;<a href="{{url_for('register')}}"><span class="link">Register here</span></a></p>
 </section>
+{% else %}
+<section class="container">
+    <h5 class="center">You are already logged in.</h5>
+</section>
+{% endif %}
 {% endblock %}
