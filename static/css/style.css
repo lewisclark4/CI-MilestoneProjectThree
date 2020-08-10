@@ -21,6 +21,10 @@ form {
   background-color: #f5f5f5;
 }
 
+.header-text {
+  margin-top: 2em;
+}
+
 /* Colour scheme*/
 .nav-wrapper,
 .side-nav,
@@ -43,25 +47,25 @@ h5 {
   color: #2e7d32;
 }
 
-.submitbutton {
+.submit-button {
   background-color: #2e7d32;
   color: #fff;
   margin-top: 1em;
 }
 
-.submitbutton:hover {
+.submit-button:hover {
   color: #000;
   background-color: #2e7d32;
 }
 
-.removebutton {
+.remove-button {
   background-color: #f44336;
   color: #fff;
   margin-top: 1em;
 }
 
 
-.removebutton:hover {
+.remove-button:hover {
   color: #000;
   background-color: #f44336;
 }
@@ -128,47 +132,34 @@ label {
 
 /* Index Content */
 
-.homecontainer img {
-  margin-top: 2em;
-  display: block;
-  width: 100%;
-  height: 50vh;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
 .searchbar {
   margin: 0 auto 0 auto;
 }
 
-.searchtag {
+.search-header {
   margin: 0;
-}
-
-.headertext {
-  margin-top: 2em;
 }
 
 /* add recipe form */
 
-.additem {
+.item-info {
   padding: 0 0 10px 10px;
 }
 
 /* View recipe*/
 
-.recipeheader {
+.recipe-header {
   margin: 0;
 }
 
-.recipeimage {
+.recipe-image {
   max-width: 100%;
   max-height: 40vh;
   object-fit: cover;
   border-radius: 10px;
 }
 
-.recipeinfo {
+.recipe-info {
   text-decoration: underline;
   color: #2e7d32;
   font-weight: 600;
@@ -179,9 +170,9 @@ label {
   font-weight: 600;
 }
 
-/* View all recipes*/
+/* View recipes*/
 
-.cardimage {
+.card-image {
   margin-top: 1em;
   width: 100%;
   height: 150px;
@@ -189,6 +180,6 @@ label {
   border-radius: 10px;
 }
 
-.cardname {
+.card-name {
   height: 2.5em;
 }

@@ -8,7 +8,7 @@
 </section>
 {% else %}
 <section class="container">
-    <h5 class="center headertext">Update your recipe below</h5>
+    <h5 class="center header-text">Update your recipe below</h5>
     <div class="card">
         <div class="row center-align">
             <form class="col s12" method="POST" action="{{url_for('update_recipe',recipe_id=recipe._id)}}">
@@ -27,8 +27,8 @@
                 <!--Existing Recipe name -->
                 <div class="input-field col s12 m6 valign-wrapper">
                     <i class="material-icons prefix">restaurant</i>
-                    <input id="recipe_name" name="recipe_name" type="text" class="validate" value="{{recipe.recipe_name}}" required/>
-                    <label for="recipe_name">Recipe Name</label>
+                    <input id="recipe-name" name="recipe_name" type="text" class="validate" value="{{recipe.recipe_name}}" required/>
+                    <label for="recipe-name">Recipe Name</label>
                 </div>
                 <!--Existing Image -->
                 <div class="input-field col s12 m6 valign-wrapper">
@@ -70,14 +70,14 @@
                 </div>
                     <div class="input-field col s12 m6 valign-wrapper center">
                     <i class="material-icons prefix">timer</i>
-                    <input id="prep_time" name="prep_time" type="number" class="validate" min="1" value="{{recipe.prep_time}}" required/>
-                    <label for="prep_time">Prep Time (mins)</label>
+                    <input id="prep-time" name="prep_time" type="number" class="validate" min="1" value="{{recipe.prep_time}}" required/>
+                    <label for="prep-time">Prep Time (mins)</label>
                 </div>
                 <!--Existing cook time -->
                 <div class="input-field col s12 m6 valign-wrapper">
                     <i class="material-icons prefix">timelapse</i>
-                    <input id="cook_time" name="cook_time" type="number" class="validate" min="1" value="{{recipe.cook_time}}" required/>
-                    <label for="cook_time">Cook Time (mins)</label>
+                    <input id="cook-time" name="cook_time" type="number" class="validate" min="1" value="{{recipe.cook_time}}" required/>
+                    <label for="cook-time">Cook Time (mins)</label>
                 </div>
                 <!--Existing servings -->
                 <div class="input-field col s12 m6 valign-wrapper">
@@ -101,7 +101,7 @@
                     <label for="allergens">Allergens</label>
                 </div>
                 <!--Existing ingredients -->
-                <div class="additem left-align">
+                <div class="item-info left-align">
                     {% for ingredient in recipe.ingredients %}
                     <div class="ingredients input-field col s12 valign-wrapper">
                         <i class="material-icons prefix">list</i>
@@ -110,16 +110,16 @@
                     </div>
                     {% endfor %}
                     <!--Add button-->
-                    <a id="addingredient" class="btn waves-effect submitbutton">
+                    <a id="add-ingredient" class="btn waves-effect submit-button">
                         <i class="material-icons center">add_box</i>
                     </a>
                     <!--Remove button-->
-                    <a id="removeingredient" class="btn waves-effect removebutton">
+                    <a id="remove-ingredient" class="btn waves-effect remove-button">
                         <i class="material-icons center">indeterminate_check_box</i>
                     </a>
                 </div>
                 <!--Existing preparations -->
-                <div class="additem left-align">
+                <div class="item-info left-align">
                     {% for prep in recipe.preparation %}
                     <div class="preparation input-field col s12 valign-wrapper">
                         <i class="material-icons prefix">format_list_numbered</i>
@@ -128,16 +128,16 @@
                     </div>
                     {% endfor %}
                     <!--Add button-->
-                    <a id="addprep" class="btn waves-effect submitbutton">
+                    <a id="add-prep" class="btn waves-effect submit-button">
                         <i class="material-icons center">add_box</i>
                     </a>
                     <!--Remove button-->
-                    <a id="removeprep" class="btn waves-effect removebutton">
+                    <a id="remove-prep" class="btn waves-effect remove-button">
                         <i class="material-icons center">indeterminate_check_box</i>
                     </a>
                 </div>
                 <!--Update button-->
-                <button class="btn waves-effect submitbutton" type="submit" name="action">Update
+                <button class="btn waves-effect submit-button" type="submit" name="action">Update
                     <i class="material-icons right">send</i>
                 </button>
             </form>

@@ -1,7 +1,7 @@
 {% extends "base.html"%} {% block content %}
 <section class="container">
     <div class="card center-align">
-        <div class="row center searchtag">
+        <div class="row center search-header">
             <h5 class="col s12">Search for your favourite recipes, ingredients or you can even search by username to find a list of others' recipes..!</h5>
         </div>
         <!--Search bar -->
@@ -23,14 +23,14 @@
                 <div class="col s12 m3 card center-align hoverable">
                     {% if recipe.image %}
                     <div>
-                        <img class="cardimage" src="{{recipe.image}}" alt="recipe-image" />
+                        <img class="card-image" src="{{recipe.image}}" alt="recipe-image" />
                     </div>
                     {% else %}
                     <div>
-                        <img class="cardimage" src="{{ url_for('static', filename='images/defaultmeal.jpg') }}" alt="recipe-image"/>
+                        <img class="card-image" src="{{ url_for('static', filename='images/defaultmeal.jpg') }}" alt="recipe-image"/>
                     </div>
                     {% endif %}
-                    <p class="cardname recipeinfo">{{recipe.recipe_name}}</p>
+                    <p class="card-name recipe-info">{{recipe.recipe_name}}</p>
                 </div>
             </a>
             {% endif %}
@@ -50,7 +50,7 @@
     </div>
     {% if "username" not in session %}
     <!--Login card if user not in session -->
-    <h5 class="center headertext">Sign in below, or register to join our community
+    <h5 class="center header-text">Sign in below, or register to join our community
         <a href="{{url_for('register')}}"><span class="link"> here</span></a>
     </h5>
     <div class="card">
@@ -79,7 +79,7 @@
                     <input id="indexpassword" name="password" type="password" class="validate" required/>
                     <label for="indexpassword">Password</label>
                 </div>
-                <button class="btn waves-effect submitbutton" type="submit" name="action"> Sign in
+                <button class="btn waves-effect submit-button" type="submit" name="action"> Sign in
                     <i class="material-icons right">send</i>
                 </button>
             </form>
@@ -87,7 +87,7 @@
         {% else %}
         <!--Add a new recipe button -->
         <div class="row center-align">
-            <a href="{{url_for('add_recipe')}}" class="waves-effect waves-light btn submitbutton modal-trigger">Add New Recipe
+            <a href="{{url_for('add_recipe')}}" class="waves-effect waves-light btn submit-button modal-trigger">Add New Recipe
                 <i class="material-icons right">add</i>
             </a>
         </div>

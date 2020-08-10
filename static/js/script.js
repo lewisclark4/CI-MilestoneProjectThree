@@ -11,13 +11,13 @@ $('.dropdown').click(e => e.stopPropagation());
 
 // Add ingredient element into recipe form
  var ingredientCount = $('.ingredients').length
-$("#addingredient").on("click", function () {
-    $('.ingredients:first').clone().insertBefore('#addingredient').find("input[type='text'], select, textarea").val("")
+$("#add-ingredient").on("click", function () {
+    $('.ingredients:first').clone().insertBefore('#add-ingredient').find("input[type='text'], select, textarea").val("")
     ingredientCount += 1;
 });
 
 // Remove ingredient element from recipe form
-$("#removeingredient").on("click", function () {
+$("#remove-ingredient").on("click", function () {
     if (ingredientCount > 1) {
         $(".ingredients:last").remove();
         ingredientCount-= 1;
@@ -26,13 +26,13 @@ $("#removeingredient").on("click", function () {
 
 // Add Preparation element into recipe form
 var prepCount = $('.preparation').length
-$("#addprep").on("click", function () {
-    $('.preparation:first').clone().insertBefore('#addprep').find("input[type='text'], select, textarea").val("");
+$("#add-prep").on("click", function () {
+    $('.preparation:first').clone().insertBefore('#add-prep').find("input[type='text'], select, textarea").val("");
     prepCount += 1;
 });
 
 // Remove Preparation element from recipe form
-$("#removeprep").on("click", function () {
+$("#remove-prep").on("click", function () {
     if (prepCount > 1) {
         $(".preparation:last").remove();
         prepCount-= 1;

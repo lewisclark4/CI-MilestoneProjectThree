@@ -6,7 +6,7 @@
 </section>
 {% else %}
 <section class="container">
-    <h5 class="center headertext">Got a special recipe you want to share or save for the future? Add it below!!    </h5>
+    <h5 class="center header-text">Got a special recipe you want to share or save for the future? Add it below!!    </h5>
     <div class="card">
         <div class="row center-align">
             <form class="col s12" method="POST" action="{{url_for('insert_recipe')}}">
@@ -80,39 +80,39 @@
                     <label for="allergens">Allergens</label>
                 </div>
                 <!--Ingredients-->
-                <div class="additem left-align">
+                <div class="item-info left-align">
                     <div class="ingredients input-field col s12 valign-wrapper">
                         <i class="material-icons prefix">list</i>
                         <input id="ingredients" name="ingredients" type="text" class="validate" required/>
                         <label for="ingredients">Ingredients</label>
                     </div>
                     <!--Add button-->
-                    <a id="addingredient" class="btn waves-effect submitbutton">
+                    <a id="add-ingredient" class="btn waves-effect submit-button">
                         <i class="material-icons center">add_box</i>
                     </a>
                     <!--Remove button-->
-                    <a id="removeingredient" class="btn waves-effect removebutton">
+                    <a id="remove-ingredient" class="btn waves-effect remove-button">
                         <i class="material-icons center">indeterminate_check_box</i>
                     </a>
                 </div>
                 <!--Preparations-->
-                <div class="additem left-align">
+                <div class="item-info left-align">
                     <div class="preparation input-field col s12 valign-wrapper">
                         <i class="material-icons prefix">format_list_numbered</i>
                         <input id="preparation" name="preparation" type="text" class="validate" required/>
                         <label for="preparation">Preparation</label>
                     </div>
                     <!--Add button-->
-                    <a id="addprep" class="btn waves-effect submitbutton">
+                    <a id="add-prep" class="btn waves-effect submit-button">
                         <i class="material-icons center">add_box</i>
                     </a>
                     <!--Remove button-->
-                    <a id="removeprep" class="btn waves-effect removebutton">
+                    <a id="remove-prep" class="btn waves-effect remove-button">
                         <i class="material-icons center">indeterminate_check_box</i>
                     </a>
                 </div>
                 <!--Submit Recipe button-->
-                <button class="btn waves-effect submitbutton" type="submit" name="action">Create
+                <button class="btn waves-effect submit-button" type="submit" name="action">Create
                     <i class="material-icons right">send</i>
                 </button>
             </form>

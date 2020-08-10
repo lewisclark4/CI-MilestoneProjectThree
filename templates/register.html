@@ -1,7 +1,7 @@
 {% extends "base.html"%} {% block content %} 
 {% if "username" not in session %}
 <section class="container">
-    <h5 class="center headertext"> Register to add your own favourite recipes for your future use, and for everyone else to enjoy!</h5>
+    <h5 class="center header-text"> Register to add your own favourite recipes for your future use, and for everyone else to enjoy!</h5>
     <div class="card">
         <!--Flash messages to the user when they attempt to register (havent retyped password correctly, or username already exists) -->
         {% with messages = get_flashed_messages(with_categories=true) %} 
@@ -37,7 +37,7 @@
                     <label for="registerpasswordcheck">Re-type password</label>
                 </div>
                 <!--Register validation -->
-                <button class="btn waves-effect submitbutton" type="submit" name="action">Create
+                <button class="btn waves-effect submit-button" type="submit" name="action">Create
                     <i class="material-icons right">send</i>
                 </button>
             </form>

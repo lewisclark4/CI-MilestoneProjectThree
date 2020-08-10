@@ -8,7 +8,7 @@
 <section class="container">
     <!--Add a new recipe button -->
     <div class="row center-align">
-        <a href="{{url_for('add_recipe')}}" class="waves-effect waves-light btn submitbutton modal-trigger">Add New Recipe
+        <a href="{{url_for('add_recipe')}}" class="waves-effect waves-light btn submit-button modal-trigger">Add New Recipe
             <i class="material-icons right">add</i>
         </a>
     </div>
@@ -21,14 +21,14 @@
             <div class="col s12 m3 card center-align hoverable">
                 {% if recipe.image %}
                 <div>
-                    <img class="cardimage" src="{{recipe.image}}" alt="recipe-image" />
+                    <img class="card-image" src="{{recipe.image}}" alt="recipe-image" />
                 </div>
                 {% else %}
                 <div>
-                    <img class="cardimage" src="{{ url_for('static', filename='images/defaultmeal.jpg') }}" alt="recipe-image"/>
+                    <img class="card-image" src="{{ url_for('static', filename='images/defaultmeal.jpg') }}" alt="recipe-image"/>
                 </div>
                 {% endif %}
-                <h5 class="cardname">{{recipe.recipe_name}}</h5>
+                <h5 class="card-name">{{recipe.recipe_name}}</h5>
             </div>
         </a>
         {% endif %} 
