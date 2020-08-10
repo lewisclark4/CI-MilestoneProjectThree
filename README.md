@@ -218,7 +218,7 @@ The following is a list of tools and technologies used to create the web applica
 * [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
     - Used to validate css
 * [JSHint](https://jshint.com/)
-    - Used to validate Javascript
+    - Used to validate JavaScript
 * [PEP8 Online](http://pep8online.com/)
     - Used to validate Python
 
@@ -236,7 +236,7 @@ The website logo & brand also acts as a link back to the home page, as is standa
 
 The links displayed to the users change depending on whether the visitor is a registered user and in session.
 
-This removes the unnecesary links to login or register, and displays links to view or add their own recipes, as well as log out if required. 
+This removes the unnecesary links to login or register, and displays links to view or add their personal recipes, as well as log out if required. 
 
 ### Footer
 The Footer has been kept very clean and simple, and just displays social media icons/ links. 
@@ -330,9 +330,9 @@ A user is prompted to confirm they wish to delete the recipe, and is able to can
 However, this function does allow the 'admin' user to delete a recipe from the database completely.
 
 ## Future Features to implement
-* Add a feature to enable a user to upload their own images, rather than need to specify a URL.
+* Add a feature to enable a user to upload personal images directly, rather than need to specify a URL.
 * Add a favourites feature to enable users to mark a recipe as their favourite and have easy visibility of these recipes.
-* Add an upvote function to allow users to like others recipes.
+* Add an up-vote/ like function to allow users to like others recipes.
 * Add a comments function to allow users to interact or ask questions about recipes.
 * Add a shopping list feature, to enable a user to create a shopping list using ingredients from a recipe they would like to make.
 * Add further information about a recipe (e.g. calories, macronutrient breakdown & any other nutritional information)
@@ -341,7 +341,7 @@ However, this function does allow the 'admin' user to delete a recipe from the d
 
 ## Testing
 ### General
-### Bugs Encoutered & Fixed
+### Bugs Encountered & Fixed
 
 [Back to Top](#overview)
 
