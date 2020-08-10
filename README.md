@@ -321,12 +321,13 @@ CRU**D** Delete or 'remove' a user's own recipes.
 
 This function is only available to the user that created the recipe, and the user has to be in session to be able to update the recipe, else they are displayed a message to advise they are not able to delete the recipe
 
-This function does not fully delete the recipe from the database, it sets a boolean field called 'soft_delete' to True.
+This function does not fully delete the recipe from the database when requested by a user, it sets a boolean field called 'soft_delete' to True.
 
 This in turn prevents the recipe being displayed as either a public or private recipe.
 
 A user is prompted to confirm they wish to delete the recipe, and is able to cancel at this stage.
 
+However, this function does allow the 'admin' user to delete a recipe from the database completely.
 
 ## Future Features to implement
 * Add a feature to enable a user to upload their own images, rather than need to specify a URL.
