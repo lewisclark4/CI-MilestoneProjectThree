@@ -3,16 +3,16 @@ $(document).ready(function () {
   $(".collapsible").collapsible();
   $("select").material_select();
   $(".button-collapse").sideNav();
-   $('.modal').modal();
+  $('.modal').modal();
 
 
 // fixes issues that requires t clicks for dropdown to work 
 $('.dropdown').click(e => e.stopPropagation()); 
 
 // Add ingredient element into recipe form
- var ingredientCount = $('.ingredients').length
+ var ingredientCount = $('.ingredients').length;
 $("#add-ingredient").on("click", function () {
-    $('.ingredients:first').clone().insertBefore('#add-ingredient').find("input[type='text'], select, textarea").val("")
+    $('.ingredients:first').clone().insertBefore('#add-ingredient').find("input[type='text'], select, textarea").val("");
     ingredientCount += 1;
 });
 
@@ -25,7 +25,7 @@ $("#remove-ingredient").on("click", function () {
 });
 
 // Add Preparation element into recipe form
-var prepCount = $('.preparation').length
+var prepCount = $('.preparation').length;
 $("#add-prep").on("click", function () {
     $('.preparation:first').clone().insertBefore('#add-prep').find("input[type='text'], select, textarea").val("");
     prepCount += 1;

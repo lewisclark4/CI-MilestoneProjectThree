@@ -140,6 +140,7 @@ As defined the scope, we can create block content for:
     <img height="400" src="https://github.com/lewisclark4/CI-MilestoneProjectThree/blob/master/wireframes/schema.png" alt="Add, edit or delete template wireframe">
 </p>
 </details>
+
 ### Surface
 #### Font
 In-keeping with the clean, modern & simplistic design for the application, the font 'Raleway' was chosen as the primary font for this site.
@@ -341,6 +342,11 @@ However, this function does allow the 'admin' user to delete a recipe from the d
 
 ## Testing
 ### General
+* HTML validation with [W3C Markup Validation Service](https://validator.w3.org/). While there are some 'errors' as this validator does not interpret Jinja, this allowed me to identify instances where I had missed closing tags etc.
+* CSS validation with [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/). My code is fully compliant and there are no errors.
+* Javascript validation with [JSHint](https://jshint.com/). My code is fully compliant. There are some warnings about the undefined $ variable being used, given the use of jQuery in my script.js file.
+* Python validation with [PEP8 Online](http://pep8online.com/). My code is fully compliant, and there are no errors.
+
 ### Bugs Encountered & Fixed
 
 [Back to Top](#overview)

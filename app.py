@@ -89,8 +89,8 @@ def register():
             else:
                 flash("Passwords do not match, please try again.", "error")
         else:
-            flash("This username already exists.
-                  Please try again with another username.", "error")
+            flash("This username already exists. "
+                  "Please try again with another username.", "error")
     return render_template("register.html")
 
 
