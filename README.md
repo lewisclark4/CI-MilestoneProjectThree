@@ -341,11 +341,62 @@ However, this function does allow the 'admin' user to delete a recipe from the d
 [Back to Top](#overview)
 
 ## Testing
-### General
+### General code validation
 * HTML validation with [W3C Markup Validation Service](https://validator.w3.org/). While there are some 'errors' as this validator does not interpret Jinja, this allowed me to identify instances where I had missed closing tags etc.
 * CSS validation with [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/). My code is fully compliant and there are no errors.
 * Javascript validation with [JSHint](https://jshint.com/). My code is fully compliant. There are some warnings about the undefined $ variable being used, given the use of jQuery in my script.js file.
 * Python validation with [PEP8 Online](http://pep8online.com/). My code is fully compliant, and there are no errors.
+
+### Browser & Device Compatibility
+
+| **Browser**      | **Device** | **Compatibility**                                            | **Version**            |
+| :--------------- | :--------- | :----------------------------------------------------------- | :--------------------- |
+| Google Chrome    | PC         | Excellent - Fully compatible                                 | Version 83.0.4103.116  |
+| Microsoft Edge   | PC         | Excellent - Fully compatible                                 | Version 84.0.522.59    |
+| IE 11            | PC         | Poor - Some styling issues. Add Recipe page unusuable        | Version 11.0.9600.19750|
+| Google Chrome    | Mobile     | Excellent - Fully compatible                                 | Version 84.0.4147.125  |
+| Firefox          | Mobile     | Excellent - Fully compatible                                 | Version 68.11.0        |
+| Microsoft Edge   | Mobile     | Excellent - Fully compatible                                 | Version 45.07.4.505    |
+| Mi Browser       | Mobile     | Excellent - Fully compatible                                 | Version 12.4.4-g       |
+| Safari           | iPad       | Excellent - Fully compatible                                 | Version 12.4.8         |
+
+### Google Lighthouse
+
+I used Google Lighthouse in the chrome browser to help improve performance & improve Accessibility by flagging missing alt tags for images etc.
+
+| **Device** | **Performance** | **Accessibility** | **Best Practices** | **SEO** |
+| :----------| :---------      | :-----------------| :----------------- | :------ |
+| Desktop    | 90              | 86                | 86                 | 100     |
+| Mobile     | 94              | 86                | 86                 | 100     |
+
+To improve performance, Lighthouse suggests improvements such as resizing images, but as this is user driven across the site, this will not be possible.
+
+To improve accessibility, Lighthouse suggests increaing the contrast ration of background and foreground colours, but I felt the contrast was sufficient and wanted to retain brand colours.
+
+To Improve best practice, Lighthouse suggests using HTTPS. This would require an SSL certficate for my site. Lighthouse also notes the use of jQuery libraries with known vulnerabilities.
+
+### Functional testing
+- [x] Test nav links redirect users as appropriate.
+- [x] Test all other links redirect users as appropriate.
+- [x] Test errors by typing in incorrect page redirects.
+- [x] Test access to my recipes, or add and edit recipes without being logged in and confirm I am unable.
+- [x] Test access to login and register pages when logged in and confirm I am unable.
+- [x] Test search function returns desired results.
+- [x] Test social links open new tab as appropriate.
+- [x] Test user registration validation - if username exists in DB
+- [x] Test user registration validation - if password reentered correctly
+- [x] Test user registration - record created in DB with hashed password
+- [x] Test user login validation - if username exists in DB
+- [x] Test user login validation - if hashed password matches DB record.
+- [x] Test user login - user logged in/ session created when correct details added.
+- [x] Test create recipe forms and form validations.
+- [x] Test add / remove ingredients & preparation records
+- [x] Test public vs private recipe toggle.
+- [x] Test edit recipe records
+- [x] Test soft delete recipe
+- [x] Test hard delete recipe 
+- [x] Test log out
+
 
 ### Bugs Encountered & Fixed
 
