@@ -49,19 +49,28 @@ allergens = mongo.db.allergens
 limit = 8
 
 
-# Index - Displays Public recipes#
+# Index - Displays Public recipes
+# Includes pagination logic
 
 
 @app.route("/")
 @app.route("/home")
 def index():
+    # find all recipes
     recipes = recipe.find()
+    # count all recipes
     count = recipe.count_documents({})
+    # Find the requested page number (or default to page 1)
     page_number = int(request.args.get('page_number', 1))
+    # identify how many recipe records to be skipped based on page number
     skip = (page_number - 1) * limit
+    # skip relevant number of recipes
     recipes.skip(skip).limit(limit)
+    # identify how many pages of results are needed
     pages = int(math.ceil(count / limit))
+    # create a page range
     total_pages = range(1, pages + 1)
+    # render the results
     return render_template("index.html",
                            recipes=recipes,
                            page_number=page_number,
@@ -75,19 +84,25 @@ def index():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
+        # Search the database for the requted username
         user_exists = users.find_one(
             {"username": request.form["username"].lower()})
         if not user_exists:
+            # If a new username, confirm the user has retyped the password correctly
             if request.form["password"] == request.form["passwordcheck"]:
+                #hash the password to improve data security
                 hashpass = bcrypt.hashpw(
                     request.form["password"].encode("utf-8"), bcrypt.gensalt())
+                #Create a record of the username and hashed password in the database.
                 users.insert({"username": request.form["username"].lower(),
                               "password": hashpass})
+                # Create a new session for the username
                 session["username"] = request.form["username"].lower()
-                flash("Account Created. You are now logged in", "success")
                 return redirect(url_for("index"))
+            # Display a message to the user that the password entered do not match
             else:
                 flash("Passwords do not match, please try again.", "error")
+        # Display a message to the user that the username already exists
         else:
             flash("This username already exists. "
                   "Please try again with another username.", "error")
@@ -100,16 +115,21 @@ def register():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
+        # Search the database for the requted username
         user_exists = users.find_one(
             {"username": request.form["username"].lower()})
         if user_exists:
+            # If the user exists, hash pw the user has entered and compare hashed pw in the database
             if bcrypt.hashpw(
                     request.form["password"].encode("utf-8"),
                     user_exists["password"]) == user_exists["password"]:
+                    # if the passwords match, create a session for the user
                     session["username"] = request.form["username"].lower()
                     return redirect(url_for("index"))
+            # Display a generic message that the login credentials are incorrect.
             else:
                 flash("Invalid username/password combination",  "error")
+        # Display a generic message that the login credentials are incorrect.
         else:
             flash("Invalid username/password combination",  "error")
     return render_template("login.html")
@@ -120,7 +140,9 @@ def login():
 
 @app.route("/logout")
 def logout():
+    # If a user selects to log out, then clear the session
     session.clear()
+    # Display a confirmation message to the user.
     flash("Log out successful. We hope you found something tasty.", "success")
     return redirect(url_for("login"))
 
@@ -152,6 +174,7 @@ def add_recipe():
 
 @app.route("/insert_recipe", methods=["POST"])
 def insert_recipe():
+    # Take the data input by the user in the form
     data = {"created_by": session["username"],
             "soft_delete": False,
             "recipe_name": request.form.get("recipe_name"),
@@ -169,8 +192,11 @@ def insert_recipe():
         data.update({"public": True})
     else:
         data.update({"public": False})
+    # Insert the data into the database
     recipe.insert_one(data)
+    # find the object ID of the recipe created
     new_recipe = recipe.find_one({"recipe_name": data["recipe_name"]})["_id"]
+    # pass the object ID into the view_recipe route
     return redirect(url_for("view_recipe", recipe_id=new_recipe))
 
 
@@ -179,10 +205,14 @@ def insert_recipe():
 
 @app.route("/view_recipe/<recipe_id>")
 def view_recipe(recipe_id):
+    # find the unique recipe in the database
     my_recipe = recipe.find_one({"_id": ObjectId(recipe_id)})
+    # Identify the cuisine type based on the object ID stored in the recipe
     cuisine_type = cuisine.find_one({"_id": ObjectId(my_recipe["cuisine"])})
+    # Identify the skill level based on the object ID stored in the recipe
     skill_level = difficulty.find_one(
         {"_id": ObjectId(my_recipe["difficulty"])})
+    # Render the relevant recipe details in the viewrecipe.html
     return render_template("viewrecipe.html",
                            recipe=my_recipe,
                            cuisines=cuisine_type,
@@ -194,7 +224,9 @@ def view_recipe(recipe_id):
 
 @app.route("/edit_recipe/<recipe_id>")
 def edit_recipe(recipe_id):
+    # Find the recipe details 
     my_recipe = recipe.find_one({"_id": ObjectId(recipe_id)})
+    # Render the relevant recipe details in the editrecipe.html
     return render_template("editrecipe.html",
                            recipe=my_recipe,
                            cuisines=cuisine.find(),
@@ -207,6 +239,7 @@ def edit_recipe(recipe_id):
 
 @app.route("/update_recipe/<recipe_id>", methods=["POST"])
 def update_recipe(recipe_id):
+    # Take the data input by the user in the form
     data = {"created_by": session["username"],
             "soft_delete": False,
             "recipe_name": request.form.get("recipe_name"),
@@ -224,8 +257,9 @@ def update_recipe(recipe_id):
         data.update({"public": True})
     else:
         data.update({"public": False})
+    # Update the data into the database
     recipe.update({"_id": ObjectId(recipe_id)}, data)
-
+    # Render the relevant recipe details in the viewrecipe.html
     return redirect(url_for("view_recipe", recipe_id=recipe_id))
 
 
@@ -236,9 +270,11 @@ def update_recipe(recipe_id):
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     if session["username"] != "admin":
+        # If the username is not admin, update the soft_delete boolean.
         recipe.update(
             {"_id": ObjectId(recipe_id)}, {"$set": {"soft_delete": True}})
     else:
+        # If the username is admin, delete the record from the database.
         recipe.remove({"_id": ObjectId(recipe_id)})
     return redirect(url_for("my_recipes", recipes=recipe.find()))
 
@@ -248,10 +284,13 @@ def delete_recipe(recipe_id):
 
 @app.route("/search/", methods=["POST"])
 def search():
+    # Search the database for the users search value, and find applicable recipes
     search_results = recipe.find(
         {"$text": {"$search": request.form["search"]}})
+    # Count the number of results
     count = recipe.count_documents(
         {"$text": {"$search": request.form["search"]}})
+    # Render the results of the search
     return render_template("index.html",
                            recipes=search_results,
                            count=count,
