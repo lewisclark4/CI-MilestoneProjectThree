@@ -1,0 +1,11 @@
+{% extends "base.html"%} {% block content %}
+<section class="container center-align">
+    <h3>It looks like something went wrong!</h3>
+    <h5>"{{ exception }}"</h5>
+    <div class="row center-align">
+        <a href="{{url_for('index')}}" class="waves-effect waves-light btn submit-button">Return home
+            <i class="material-icons right">home</i>
+        </a>
+    </div>
+</section>
+{% endblock %}

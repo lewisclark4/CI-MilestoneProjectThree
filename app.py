@@ -296,6 +296,19 @@ def search():
                            count=count,
                            search=True)
 
+# Error Handlers
+@app.errorhandler(403)
+def page_forbidden(exception):
+    return render_template('error.html', exception=exception)
+
+@app.errorhandler(404)
+def response_404(exception):
+    return render_template('error.html', exception=exception)
+
+@app.errorhandler(500)
+def response_500(exception):
+    return render_template('error.html', exception=exception)
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
