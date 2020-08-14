@@ -440,15 +440,65 @@ I therefore replace this with an a tag and removed the submit action.
 
 ## Deployment
 
+The repository for this project is hosted via [GitHub](https://github.com/) and the application is hosted via [Heroku](https://www.heroku.com/).
+
+### Cloning
+The site can also be ran locally by creating a clone of this repository. 
+1. In the git hub repository, click on the clone or download button
+2. Copy the URL of the repo.
+3. Open your own local IDE terminal.
+4. You can clone the project with the command "git clone 'Copied URL'"
+
+Next you will need to install all the projects dependencies type `pip install -r requirements.txt`. 
+
+If you add any new packages to the project use `pip freeze --local > requirements.txt ` to update the [requirements.txt](requirements.txt) file with new dependencies.
+
+### Environment Variables
+
+| Config Variable       | Used for                 | Comment                                                      |
+| --------------------- | ------------------------ | ------------------------------------------------------------ |
+| MONGO_DBNAME          | Mongo DB                 | This is the name of your database collection                 |
+| MONGO_URI             | Mongo DB                 | Found when 'connecting' your database cluster in MongoDB     |
+| SECRET_KEY            | Session Variable         | Used for cookie encryption.  A secret/unique random string   |
+| IP                    | Flask                    | You can use `0.0.0.0` here to indicate a local IP address    |
+| PORT                  | Flask                    | You can use the default port `5000`                          |
+
+In your local IDE you can create an env.py file to store the MONGO_DBNAME, MONGO_URI & SECRET_KEY variables.
+
+Add the following code to your env.py and insert your applicable variables.
+
+#### env.py
+Import os
+
+os.environ["SECRET_KEY"] = "Your secret key"
+os.environ["MONGO_URI"] = mongodb+srv://<username>:<password>@<clustername>-y3iip.mongodb.net/<dbname>?retryWrites=true&w=majority
+os.environ["MONGO_DBNAME"] = "your MongoDB collection name"
+
+### Heroku Deployment
+
+1. Create a new app in Heroku
+2. In the settings tab, set the following config various
+  * MONGO_DBNAME = "Your MongoDB collection name"
+  * MONGO_URI = mongodb+srv://<username>:<password>@<clustername>-y3iip.mongodb.net/<dbname>?retryWrites=true&w=majority
+  * SECRET_KEY = "Your secret key"
+  * IP = `5000`
+  * PORT = `0.0.0.0`
+3. From the heroku dashboard of your application, click on "Deploy" > "Deployment method" and select GitHub.
+4. Connect to the appropriate GitHub repository.
+5. If you set the project up for automatic deploys it will deploy once the master branch is updated.
+6. OR in the manual deployment section, select the master branch and click 'Deploy Branch".
+7. The site should be successfully deployed
+
 [Back to Top](#overview)
 
 ## Credits
 ### Content
 Recipe ideas we all taken from [BBC Good Food](https://www.bbcgoodfood.com/), although ingredients & recipe details were not carried over verbatim.
 
+### Images
+
 All images have been source from the [Pixabay](https://pixabay.com/) images library, and are all free for use, sharing or modification.
 
-### Images
 ### Acknowledgements
 1. I took guidance from various sources on formatting & styling my web application
 
@@ -471,5 +521,7 @@ All images have been source from the [Pixabay](https://pixabay.com/) images libr
 3. General acknowledgements
 
 * [Pretty Printed Youtube](https://www.youtube.com/channel/UC-QDfvrRIDB6F0bIO4I4HkQ) I have been watching various videos on this channel on use of python and flask to help supplement my learning from Code Institute.
+* [Code Institute](https://codeinstitute.net/) For the excellent overall content & mini projects which have given me a solid base knowledge of python, flask and Jinja to add to my previous, HTML, CSS & JavaScript experience.
+* My mentor, **Antonio Rodriguez**, for guidance on the content and design for my site.
 
 [Back to Top](#overview)
