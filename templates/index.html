@@ -2,12 +2,12 @@
 <section class="container">
     <div class="card center-align">
         <div class="row center search-header">
-            <h5 class="col s12">Search for your favourite recipes, ingredients or you can even search by username to find a list of others' recipes..!</h5>
+            <h5 class="col s12 search-label">Search for your favourite meal...</h5>
         </div>
         <!--Search bar -->
         <form class="input-field searchbar valign-wrapper" action="{{url_for('search')}}" method="POST">
             <i class="material-icons prefix">search</i>
-            <input placeholder="Try something new!" name="search" type="text" class="validate" />
+            <input placeholder="Search by recipe, ingredients or username" name="search" type="text" class="validate" />
         </form>
     </div>
     <div class="row center-align">

@@ -64,7 +64,6 @@ h5 {
   margin-top: 1em;
 }
 
-
 .remove-button:hover {
   color: #000;
   background-color: #f44336;
@@ -138,6 +137,10 @@ label {
 
 .search-header {
   margin: 0;
+}
+
+.search-label {
+  margin: 0.5em;
 }
 
 /* add recipe form */
