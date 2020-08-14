@@ -376,29 +376,65 @@ To improve accessibility, Lighthouse suggests increaing the contrast ration of b
 To Improve best practice, Lighthouse suggests using HTTPS. This would require an SSL certficate for my site. Lighthouse also notes the use of jQuery libraries with known vulnerabilities.
 
 ### Functional testing
-- [x] Test nav links redirect users as appropriate.
-- [x] Test all other links redirect users as appropriate.
+- [x] Nav Links.
+  * Successfully tested that all nav links redirect to the approriate route.
+- [x] Test all other links
+  * Successfully tested that all  links redirect to the approriate route, for example the <a> tags on the login page & register page that allows users to navigate between the two.
 - [x] Test errors by typing in incorrect page redirects.
+  * errors.html was successully loaded.
 - [x] Test access to my recipes, or add and edit recipes without being logged in and confirm I am unable.
+  * I am correctly presented a message to advise me to log in, and there is a link to the log in page.
 - [x] Test access to login and register pages when logged in and confirm I am unable.
+  * I am correctly presented a message to advise I am unable to perform these actions while logged in.
 - [x] Test search function returns desired results.
+  * The search function successfully returns recipes where there is a full word match.
 - [x] Test social links open new tab as appropriate.
+  * New tabs are successfully opened redirecting me to the applicable social network.
 - [x] Test user registration validation - if username exists in DB
+  * Successfully presented a flashed message advising the username already exists.
 - [x] Test user registration validation - if password reentered correctly
-- [x] Test user registration - record created in DB with hashed password
+  * Successfully presented a flashed message the password was not reentered correctly.
+- [x] Test user registration - record created in DB with hashed password.
+  * New record created within the users collection & the pashword is hashed.
 - [x] Test user login validation - if username exists in DB
+  * Successfully presented a flashed message advising the credentials do not match if the username doesn't exist.
 - [x] Test user login validation - if hashed password matches DB record.
+  * Successfully presented a flashed message advising the credentials do not match if hashed password is incorrect.
 - [x] Test user login - user logged in/ session created when correct details added.
+  * Successfully logged into session when correct credentials submitted.
 - [x] Test create recipe forms and form validations.
+  * The validations in the add recipe form are successful and only accept inputs in the correct format.
 - [x] Test add / remove ingredients & preparation records
+  * Successfully able to add/remove multiple ingredient or preparation records with the JavaScript on the add and remove buttons. Always leaving a minimum of 1 record.
 - [x] Test public vs private recipe toggle.
+  * Successfully able to make a recipe private and only visible in my recipes, or public and visible in both my recipes and all recipes.
 - [x] Test edit recipe records
+  * Successfully able to update an existing recipe record, and add new or remove existing recipe ingredients or instructions
 - [x] Test soft delete recipe
+  * Successfully able to 'delete' my own recipe record as a standard user, and this updates the soft_delete boolean and the recipe is hidden from view on the site.
 - [x] Test hard delete recipe 
+  * Successfully able to delete a recipe using the 'admin' user, and this will fully delete the recipe record from the DB. 
 - [x] Test log out
-
+  * Successfully able to log out of session, and a flashed message is presented to advise this is successful.
 
 ### Bugs Encountered & Fixed
+* Throughout development, there were many tiny fixes found by completing ongoing checks of functionality.
+  * When editing a recipe, I was originally not overwriting the boolean Public/ Private record, fixed by adding logic into my edit recipe function to update this field.
+  * When creating pagination logic, I wasn't getting the correct number of pages returned, fixed by adding into my pagination logic.
+  * Minor bug where an a tag was not redirecting to the login page because there was no space between the tag and the href.
+  * Constant iterations of styling to fix responsiveness issues across devices.
+
+* When I originally created my add and remove recipes button on the, I set a static var = 1, so I could add and remove records and make it mandatory that one record was added.
+
+However when I came to edit a recipe, the var = 1 was preventing me from removing existing ingredients or preparation instructions.
+
+I therefore created a dynamic count of the number of applicable 'class' elements on the page. This allowed me to always be able to add or remove a record for new and existing recipes, and always retain the mandatory single record.
+
+* I had a bug when adding a recipe that the form was being submitted before I had completed my recipe. 
+
+This was because I had erroneously added a submit button, instead of the add a record button for adding ingredients and preparation instructions. 
+
+I therefore replace this with an a tag and removed the submit action.
 
 [Back to Top](#overview)
 
