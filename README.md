@@ -471,7 +471,9 @@ Add the following code to your env.py and insert your applicable variables.
 Import os
 
 os.environ["SECRET_KEY"] = "Your secret key"
+
 os.environ["MONGO_URI"] = mongodb+srv://<username>:<password>@<clustername>-y3iip.mongodb.net/<dbname>?retryWrites=true&w=majority
+
 os.environ["MONGO_DBNAME"] = "your MongoDB collection name"
 
 ### Heroku Deployment
