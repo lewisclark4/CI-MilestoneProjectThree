@@ -360,6 +360,8 @@ However, this function does allow the 'admin' user to delete a recipe from the d
 | Mi Browser       | Mobile     | Excellent - Fully compatible                                 | Version 12.4.4-g       |
 | Safari           | iPad       | Excellent - Fully compatible                                 | Version 12.4.8         |
 
+Given the introduction of Microsoft Edge, I am reasonably comfortable to have some issues with IE11, as I have added a Javascript message that will advise users with IE11, that to have the best experience using the site, they should upgrade their browser.
+
 ### Google Lighthouse
 
 I used Google Lighthouse in the chrome browser to help improve performance & improve Accessibility by flagging missing alt tags for images etc.
@@ -495,8 +497,13 @@ os.environ["MONGO_DBNAME"] = "your MongoDB collection name"
 
 ## Credits
 ### Content
-Recipe ideas we all taken from [BBC Good Food](https://www.bbcgoodfood.com/), although ingredients & recipe details were not carried over verbatim.
+All code has been written by myself (except code for outdated browser script, see below). 
 
+There have been instances where I have used online sources for guidance on particular issues, but the code has been adapted by myself for the purpose of my site - [see Acknowledgements](#acknowledgements).
+
+The script code added to browser-validate.js to display an alert if the user has an out of date browser, was sourced from [browser-update.org](https://browser-update.org/).
+
+Recipe ideas we all taken from [BBC Good Food](https://www.bbcgoodfood.com/), although ingredients & recipe details were not carried over verbatim.
 ### Images
 
 All images have been source from the [Pixabay](https://pixabay.com/) images library, and are all free for use, sharing or modification.
@@ -525,5 +532,6 @@ All images have been source from the [Pixabay](https://pixabay.com/) images libr
 * [Pretty Printed Youtube](https://www.youtube.com/channel/UC-QDfvrRIDB6F0bIO4I4HkQ) I have been watching various videos on this channel on use of python and flask to help supplement my learning from Code Institute.
 * [Code Institute](https://codeinstitute.net/) For the excellent overall content & mini projects which have given me a solid base knowledge of python, flask and Jinja to add to my previous, HTML, CSS & JavaScript experience.
 * My mentor, **Antonio Rodriguez**, for guidance on the content and design for my site.
+* The Code Institute Slack Community for feedback on my site re various styling tweaks.
 
 [Back to Top](#overview)
