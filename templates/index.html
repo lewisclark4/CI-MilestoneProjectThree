@@ -1,16 +1,16 @@
 {% extends "base.html"%} {% block content %}
-<section class="container">
-    <div class="card center-align">
+<section class="container center-align">
+    <div class="card">
         <div class="row center search-header">
-            <h5 class="col s12 search-label">Search for your favourite meal...</h5>
+            <h5 class="col s12 search-label">Search for recipes, ingredients or usernames...</h5>
         </div>
         <!--Search bar -->
         <form class="input-field searchbar valign-wrapper" action="{{url_for('search')}}" method="POST">
             <i class="material-icons prefix">search</i>
-            <input placeholder="Search by recipe, ingredients or username" name="search" type="text" class="validate" />
+            <input placeholder="Try something new!" name="search" type="text" class="validate" />
         </form>
     </div>
-    <div class="row center-align">
+    <div class="row">
         <!--Display if search result returns no results -->
         {% if count == 0 %}
         <h5 class="red-text">No results were found for this search, please try again</h5>
@@ -20,17 +20,19 @@
             {% if recipe.public and not recipe.soft_delete %}
             <!--Recipe cards with image and recipe name that link to recipe info -->
             <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}">
-                <div class="col s12 m3 card center-align hoverable">
-                    {% if recipe.image %}
-                    <div>
-                        <img class="card-image" src="{{recipe.image}}" alt="recipe-image" />
+                <div class="col s12 m3">
+                    <div class="card recipe-card">
+                        {% if recipe.image %}
+                        <div>
+                            <img class="card-image" src="{{recipe.image}}" alt="recipe-image" />
+                        </div>
+                        {% else %}
+                        <div>
+                            <img class="card-image" src="{{ url_for('static', filename='images/defaultmeal.jpg') }}" alt="recipe-image"/>
+                        </div>
+                        {% endif %}
+                        <p class="card-name recipe-info">{{recipe.recipe_name}}</p>
                     </div>
-                    {% else %}
-                    <div>
-                        <img class="card-image" src="{{ url_for('static', filename='images/defaultmeal.jpg') }}" alt="recipe-image"/>
-                    </div>
-                    {% endif %}
-                    <p class="card-name recipe-info">{{recipe.recipe_name}}</p>
                 </div>
             </a>
             {% endif %}
