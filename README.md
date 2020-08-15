@@ -493,6 +493,17 @@ os.environ["MONGO_DBNAME"] = "your MongoDB collection name"
 6. OR in the manual deployment section, select the master branch and click 'Deploy Branch".
 7. The site should be successfully deployed
 
+### Contributions
+1. If you wish to implement changes to the code, I would recommend creating a separate branch, as this will keep the original master branch as a backup if the any issues arise.
+2. Use `git checkout -b <brancname>` to create a new branch.
+3. You can now edit the code accordingly.
+4. Once you have made changes, you need to stage the changes to be committed. You can do this as follows `git add <filename>` for a single file or `git add .` to stage all updated files.
+5. You then need to commit the changes. You can do this as follows `git commit -m "summary of updates"`.
+4. Use `git push `to push the changes to the repository.
+5. You will need to merge these changes to the master branch in order for them to be deployed to the live site.
+6. To do this, switch to the new branch on GitHub using the branch selector dropdown menu.
+7. Create a new pull request, note the changes made in the comments section, and submit.
+8. Switch back to the master branch and you will have the option to merge the pull request.
 [Back to Top](#overview)
 
 ## Credits
